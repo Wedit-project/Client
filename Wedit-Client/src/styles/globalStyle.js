@@ -7,6 +7,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Pretendard"
   }
 
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   @media (min-width: 768px) and (max-width: 1023px) {
     html {
       font-size: 62.5%;
