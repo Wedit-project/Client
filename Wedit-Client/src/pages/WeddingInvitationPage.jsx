@@ -33,41 +33,47 @@ const WeddingInvitationWrapper = styled.div`
 	background-position: center;
 	background-repeat: no-repeat;
 	width: 100%;
-	height: calc(100vw * 3.87); /* 이미지 원본 비율에 따라 높이 설정 (5601 / 1446 ≈ 3.87) */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 30rem;
 `;
 
 const MoveButtonBox = styled.div`
+	margin-top: 18.7rem;
 	display: flex;
 	flex-direction: row;
-	gap: 30rem;
+	gap: 23.8rem;
+	margin-bottom: 63.9rem;
 `;
 const HomePageButton = styled.button`
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 3.2909rem;
+	color: var(--gray-0, #fff);
+	font-size: 3.3rem;
 	font-style: normal;
-	line-height: 88.889%;
-	letter-spacing: -0.0625rem;
-	border-radius: 1.4626rem;
-	border: 0.0914rem solid var(--gray_3, #d9d9d9);
-	background: var(--white, #fff);
-	width: 36rem;
-	height: 10.6954rem;
-	padding: 3.8394rem 8.8671rem;
+	line-height: 88.643%;
+	letter-spacing: -0.0627rem;
+	border-radius: 1.6rem;
+	border: 0.1rem solid var(--gray-300, #e4e4e4);
+	background: var(--Basic-wedding-invitation-2-4, #4d5941);
+	display: flex;
+	width: 35rem;
+	height: 10rem;
+	justify-content: center;
+	align-items: center;
 `;
 const MyPageButton = styled.button`
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 3.2909rem;
+	color: var(--gray-0, #fff);
+	font-size: 3.3rem;
 	font-style: normal;
-	line-height: 88.889%;
-	letter-spacing: -0.0625rem;
-	border-radius: 1.4626rem;
-	border: 0.0914rem solid var(--gray_3, #d9d9d9);
-	background: var(--white, #fff);
-	width: 36rem;
-	height: 10.6954rem;
-	padding: 3.8394rem 4.3878rem;
+	line-height: 88.643%;
+	letter-spacing: -0.0627rem;
+	border-radius: 1.6rem;
+	border: 0.1rem solid var(--gray-300, #e4e4e4);
+	background: var(--Basic-wedding-invitation-2-4, #4d5941);
+	display: flex;
+	width: 35rem;
+	height: 10rem;
+	justify-content: center;
+	align-items: center;
 `;

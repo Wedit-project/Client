@@ -20,6 +20,7 @@ export default Gallery;
 
 // CSS
 const GalleryWrapper = styled.div`
+	margin-top: 10.7rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -32,20 +33,42 @@ const GallerySpan = styled.span`
 	font-style: normal;
 	line-height: 66.667%;
 	letter-spacing: -0.0834rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		width: 49rem;
+		height: 0.2rem;
+		background-color: var(--brown, #3c140d);
+	}
+
+	&::before {
+		margin-right: 5.2rem;
+	}
+
+	&::after {
+		margin-left: 5.2rem;
+	}
 `;
 
 const GalleryContainer = styled.div`
-	margin-top: 10rem;
+	margin-top: 4.9rem;
 	display: flex;
 	flex-direction: row;
-	gap: 11rem;
+	gap: 5.7rem;
 `;
 
 const GalleryImage2 = styled.img`
 	background: url('src/assets/img/gallery2.png');
-	width: 48.266rem;
-	height: 62.801rem;
-	border-radius: 1.828rem;
+	width: 48.3rem;
+	height: 62.8rem;
+	border-radius: 1.6rem;
 `;
 
 const GalleryBox = styled.div`
@@ -55,15 +78,15 @@ const GalleryBox = styled.div`
 
 const GalleryImage3 = styled.img`
 	background: url('src/assets/img/gallery3.png');
-	width: 58.047rem;
-	height: 28.978rem;
-	border-radius: 1.828rem;
+	width: 58.1rem;
+	height: 29rem;
+	border-radius: 1.6rem;
 `;
 
 const GalleryImage4 = styled.img`
+	margin-top: 4.8rem;
 	background: url('src/assets/img/gallery4.png');
-	width: 58.047rem;
-	height: 28.978rem;
-	border-radius: 1.828rem;
-	margin-top: 5rem;
+	width: 58.1rem;
+	height: 29rem;
+	border-radius: 1.6rem;
 `;

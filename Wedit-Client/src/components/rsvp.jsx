@@ -30,6 +30,7 @@ export default RSVP;
 
 // CSS
 const RSVPWrapper = styled.div`
+	margin-top: 19.7rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -38,35 +39,65 @@ const RSVPWrapper = styled.div`
 const RSVPSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
 	color: var(--brown, #3c140d);
-	font-size: 4.3878rem;
+	font-size: 4.4rem;
 	font-style: normal;
-	line-height: 66.667%;
-	letter-spacing: -0.0834rem;
+	line-height: 66.482%;
+	letter-spacing: -0.0836rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+
+	&::before,
+	&::after {
+		content: '';
+		display: block;
+		width: 39rem;
+		height: 0.2rem;
+		background-color: var(--brown, #3c140d);
+	}
+
+	&::before {
+		margin-right: 5.2rem;
+	}
+
+	&::after {
+		margin-left: 5.2rem;
+	}
 `;
 
 const RSVPText = styled.p`
+	margin-top: 4.5rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	color: var(--brown, #3c140d);
 	text-align: center;
-	font-size: 2.1939rem;
+	font-size: 2.2rem;
 	font-style: normal;
-	line-height: 133.333%;
-	letter-spacing: -0.0417rem;
-	margin-top: 5rem;
+	line-height: 132.965%;
+	letter-spacing: -0.0418rem;
+
+	width: 22rem;
 `;
 
 const RSVPButton = styled.button`
+	margin-top: 12.9rem;
 	font-weight: ${theme.font.bold.fontWeight};
+	color: var(--gray-0, #fff);
 	text-align: center;
-	font-size: 2.1939rem;
+	font-size: 2.2rem;
 	font-style: normal;
-	line-height: 133.333%;
-	letter-spacing: -0.0417rem;
-	border-radius: 1.4626rem;
-	border: 0.0914rem solid var(--gray_3, #d9d9d9);
-	background: var(--white, #fff);
+	line-height: 132.965%;
+	letter-spacing: -0.0418rem;
+	border-radius: 1.6rem;
+	border: 0.1rem solid var(--gray-300, #e4e4e4);
+	background: var(--brown, #3c140d);
+	display: flex;
 	width: 42.5986rem;
 	height: 5.302rem;
-	padding: 1.1884rem 11.7923rem;
-	margin-top: 15rem;
+	padding: 1.2rem 11.8rem;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	flex-shrink: 0;
 `;

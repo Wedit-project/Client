@@ -32,87 +32,92 @@ const RequiredInformationTextWrapper = styled.div`
 `;
 
 const TitleText = styled.p`
+	margin-top: 32.5rem;
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 5.526rem;
 	color: var(--brown, #3c140d);
+	text-align: center;
+	font-size: 5.5rem;
 	font-style: normal;
-	line-height: 105.096%;
-	letter-spacing: 0.5em; /* 50% */
-	margin-top: 45rem;
-	margin-bottom: 20rem;
+	line-height: 105.594%;
+	letter-spacing: 2.75rem;
 `;
 
 const RequiredInformationTextContainer = styled.div`
+	margin-top: 12.8rem;
 	display: flex;
 	flex-direction: row;
-	gap: 3rem;
+	gap: 7.7rem;
 `;
 
 const MainImage = styled.img`
 	background: url('src/assets/img/gallery1.png');
-	width: 48.2662rem;
-	height: 55.4879rem;
-	border-radius: 4.571rem;
+	width: 48.7rem;
+	height: 55.5rem;
+	border-radius: 5rem;
 `;
 
 const RequiredInformationTextBox = styled.div``;
 
 const GroomBrideNameSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 88.889%;
-	letter-spacing: -0.0625rem;
+	line-height: 91.413%;
+	letter-spacing: -0.0608rem;
 `;
 
 const GroomParentsNameText = styled.p`
+	margin-top: 3rem;
 	font-weight: ${theme.font.medium.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 138.889%;
-	letter-spacing: -0.0625rem;
+	line-height: 142.833%;
+	letter-spacing: -0.0608rem;
 	margin-bottom: 0;
 `;
 
 const BrideParentsNameText = styled.p`
 	font-weight: ${theme.font.medium.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 138.889%;
-	letter-spacing: -0.0625rem;
+	line-height: 142.833%;
+	letter-spacing: -0.0608rem;
 	margin-top: 0;
 `;
 
 const DateText = styled.p`
+	margin-top: 5.6rem;
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 88.889%;
-	letter-spacing: -0.0625rem;
-	margin-top: 8rem;
+	line-height: 91.413%;
+	letter-spacing: -0.0608rem;
 `;
 
 const DateDetailText = styled.p`
+	margin-top: 3rem;
 	font-weight: ${theme.font.medium.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 88.889%;
-	letter-spacing: -0.0625rem;
+	line-height: 91.413%;
+	letter-spacing: -0.0608rem;
 `;
 
 const LocationText = styled.p`
+	margin-top: 8.1rem;
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 88.889%;
-	letter-spacing: -0.0625rem;
-	margin-top: 8rem;
+	line-height: 91.413%;
+	letter-spacing: -0.0608rem;
 `;
 
 const LocationDetailText = styled.p`
+	margin-top: 3rem;
 	font-weight: ${theme.font.medium.fontWeight};
-	font-size: 3.2909rem;
+	font-size: 3.2rem;
 	font-style: normal;
-	line-height: 111.111% 
-	letter-spacing: -0.0625rem;
+	line-height: 114.267%;
+	letter-spacing: -0.0608rem;
+	width: 56rem;
 `;
