@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 
-const GuestBookModal = ({ isVisible, onClose }) => {
+const RSVPModal = ({ isVisible, onClose }) => {
 	const [name, setName] = useState('');
-	const [content, setContent] = useState('');
+	const [phone, setPhone] = useState('');
+	const [guestNum, setguestNum] = useState(0);
 
 	// ModalContainer 밖인 ModalWrapper 클릭 시 모달창 닫힘
 	const handleWrapperClick = (e) => {
@@ -14,14 +15,14 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 		}
 	};
 
-	// 이름과 내용 입력 여부 확인
-	const isButtonActive = name.trim() !== '' && content.trim() !== '';
+	// 이름, 연락처, 추가 인원 선택 여부 확인
+	const isButtonActive = name.trim() !== '' && phone.trim() !== '' && guestNum !== 0;
 
 	return (
 		isVisible && (
 			<ModalWrapper onClick={handleWrapperClick}>
 				<ModalContainer>
-					<TitleSpan>방명록</TitleSpan>
+					<TitleSpan>참석의사 전달하기</TitleSpan>
 					<ModalBox>
 						<NameInput
 							type="text"
@@ -29,12 +30,25 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 							value={name}
 							onChange={(e) => setName(e.target.value)}
 						/>
-						<ContentInput
-							placeholder="내용을 입력해 주세요"
-							value={content}
-							onChange={(e) => setContent(e.target.value)}
+						<PhoneInput
+							placeholder="연락처를 입력해 주세요"
+							value={phone}
+							onChange={(e) => setPhone(e.target.value)}
 						/>
-						<SubmitButton isActive={isButtonActive}>작성 완료</SubmitButton>
+						<GuestNumDropdown
+							value={guestNum === 0 ? '' : guestNum}
+							onChange={(e) => setguestNum(Number(e.target.value))}>
+							<option value="" disabled hidden>
+								추가 인원
+							</option>
+							{Array.from({ length: 3 }, (_, i) => (
+								<option key={i} value={i}>
+									외 {i}명
+								</option>
+							))}
+						</GuestNumDropdown>
+
+						<SubmitButton isActive={isButtonActive}>전달 하기</SubmitButton>
 					</ModalBox>
 				</ModalContainer>
 			</ModalWrapper>
@@ -42,7 +56,7 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 	);
 };
 
-export default GuestBookModal;
+export default RSVPModal;
 
 const ModalWrapper = styled.div`
 	position: fixed;
@@ -59,7 +73,7 @@ const ModalWrapper = styled.div`
 
 const ModalContainer = styled.div`
 	width: 80.8rem;
-	height: 78.7rem;
+	height: 70.1rem;
 	border-radius: 4rem;
 	background: #fff;
 	display: flex;
@@ -69,7 +83,7 @@ const ModalBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 3rem;
+	gap: 4.5rem;
 `;
 
 const TitleSpan = styled.p`
@@ -78,7 +92,7 @@ const TitleSpan = styled.p`
 	font-style: normal;
 	line-height: 106.667%;
 	letter-spacing: -0.057rem;
-	margin: 8.3rem 62.4rem 6.5rem 10.7rem;
+	margin: 8.3rem 49.1rem 6.5rem 10.7rem;
 `;
 
 const NameInput = styled.input`
@@ -86,7 +100,7 @@ const NameInput = styled.input`
 	border: 0.1rem solid #a8a8a8;
 	background: #fff;
 	display: flex;
-	width: 60.1rem;
+	width: 59.3rem;
 	height: 3.2rem;
 	align-items: flex-start;
 	gap: 1rem;
@@ -94,34 +108,50 @@ const NameInput = styled.input`
 	color: #808080;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
-	font-family: Pretendard;
 	font-style: normal;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
-	padding-left: 2.5rem;
+	padding-left: 3.1rem;
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
 `;
 
-const ContentInput = styled.textarea`
+const PhoneInput = styled.input`
 	border-radius: 1.6rem;
 	border: 0.1rem solid #a8a8a8;
 	background: #fff;
 	display: flex;
-	width: 60.1rem;
-	height: 28.2rem;
+	width: 59.3rem;
+	height: 3.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
 	color: #808080;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
-	font-family: Pretendard;
 	font-style: normal;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
-	padding-left: 2.5rem;
-	padding-top: 3rem;
+	padding-left: 3.1rem;
+	padding-top: 2.8rem;
+	padding-bottom: 2.8rem;
+`;
+
+const GuestNumDropdown = styled.select`
+	border-radius: 1.6rem;
+	border: 0.1rem solid #a8a8a8;
+	background: #fff;
+	display: flex;
+	width: 63.3rem;
+	height: 8.8rem;
+	color: #808080;
+	font-weight: ${theme.font.semibold.fontWeight};
+	font-size: ${theme.fontSize.xlarge};
+	font-style: normal;
+	line-height: 133.333%;
+	letter-spacing: -0.0456rem;
+	padding-left: 2.8rem;
+	padding-right: 2.8rem;
 `;
 
 const SubmitButton = styled.button`

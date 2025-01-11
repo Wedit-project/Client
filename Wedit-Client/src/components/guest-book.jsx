@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../styles/theme';
-import Modal from './guest-book-modal';
+import GuestBookModal from './guest-book-modal';
 
 const GuestBook = () => {
 	// 초기에는 4개의 아이템
@@ -37,7 +37,7 @@ const GuestBook = () => {
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
 			<WritingButton onClick={handleWritingButtonClick}>작성하기</WritingButton>
-			<Modal isVisible={isModalVisible} onClose={handleModalClose} />
+			<GuestBookModal isVisible={isModalVisible} onClose={handleModalClose} />
 		</GuestBookWrapper>
 	);
 };
