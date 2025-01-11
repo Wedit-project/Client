@@ -60,6 +60,7 @@ const AccountInfoPage = () => {
 					</AccountNameBox>
 				</AccountBox>
 			</Container>
+			<CautionBox>필수 정보를 모두 입력해 주세요!</CautionBox>
 			<NavBox>
 				<NavButton
 					onPrevious={handlePrevious}
@@ -166,6 +167,19 @@ const NameInput = styled.input`
 	letter-spacing: -0.456px;
 `;
 
+const CautionBox = styled.div`
+	width: 29.3rem;
+	height: 4.1rem;
+	margin: 6rem 57.3rem 2.9rem 57.4rem;
+	color: #e80c0c;
+	font-family: Pretendard;
+	font-size: 2.4rem;
+	font-style: normal;
+	font-weight: ${theme.font.medium.fontWeight};
+	line-height: 3.2rem;
+	letter-spacing: -0.456px;
+`;
+
 const NavBox = styled.div`
-	margin: 13rem 50.3rem 6.4rem 50.1rem;
+	margin: 0 50.3rem 6.4rem 50.1rem;
 `;
