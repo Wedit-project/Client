@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../styles/theme';
+import Modal from './guest-book-modal';
 
 const GuestBook = () => {
 	// 초기에는 4개의 아이템
@@ -9,6 +10,16 @@ const GuestBook = () => {
 	const handleMoreButtonClick = () => {
 		// 더보기 버튼을 클릭 시 4개씩 추가
 		setVisibleItems((prev) => prev + 4);
+	};
+
+	const [isModalVisible, setModalVisible] = useState(false);
+
+	const handleWritingButtonClick = () => {
+		setModalVisible(true);
+	};
+
+	const handleModalClose = () => {
+		setModalVisible(false);
 	};
 
 	return (
@@ -25,7 +36,8 @@ const GuestBook = () => {
 			{visibleItems < guestBookData.length && (
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
-			<WritingButton>작성하기</WritingButton>
+			<WritingButton onClick={handleWritingButtonClick}>작성하기</WritingButton>
+			<Modal isVisible={isModalVisible} onClose={handleModalClose} />
 		</GuestBookWrapper>
 	);
 };
