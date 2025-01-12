@@ -5,14 +5,14 @@ import Wedit from '../assets/img/Wedit.svg?react';
 
 const LogoComponent = () => {
 	return (
-		<LogoSpan>
+		<LogoBox>
 			<LogoIcon />
 			<WeditIcon />
-		</LogoSpan>
+		</LogoBox>
 	);
 };
 
-const LogoSpan = styled.span`
+const LogoBox = styled.div`
 	display: flex;
 	align-items: center;
 	margin-top: 2.7rem;
