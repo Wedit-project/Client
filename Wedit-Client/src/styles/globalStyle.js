@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     font-family: "Pretendard"
   }
+  button {
+    font-family: "Pretendard"
+  }
 
   @media (min-width: 768px) and (max-width: 1023px) {
     html {
