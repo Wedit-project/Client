@@ -44,4 +44,5 @@ const StyledLogo = styled(Logo)`
   margin-left: 3.2rem;
   margin-top: 2.7rem;
   margin-bottom: 5.7rem;
+  height: 4rem;
 `;
