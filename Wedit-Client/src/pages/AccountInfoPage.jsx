@@ -22,52 +22,54 @@ const AccountInfoPage = () => {
 			<LogoComponent />
 			<TitleBox>축의금 계좌 입력</TitleBox>
 			<DescriptionSpan>계좌명과 계좌번호를 입력해주세요</DescriptionSpan>
-			<Container>
-				<AccountBox>
-					<BankAndNumBox>
-						<InfoBox>
-							<LabelSpan>신랑측 은행:</LabelSpan>
-							<InfoInput />
-						</InfoBox>
-						<InfoBox>
-							<LabelSpan>신랑측 계좌번호:</LabelSpan>
-							<InfoInput />
-						</InfoBox>
-					</BankAndNumBox>
-					<AccountNameBox>
-						<InfoBox>
-							<LabelSpan>신랑측 계좌명:</LabelSpan>
-							<NameInput />
-						</InfoBox>
-					</AccountNameBox>
-				</AccountBox>
-				<AccountBox>
-					<BankAndNumBox>
-						<InfoBox>
-							<LabelSpan>신부측 은행:</LabelSpan>
-							<InfoInput />
-						</InfoBox>
-						<InfoBox>
-							<LabelSpan>신부측 계좌번호:</LabelSpan>
-							<InfoInput />
-						</InfoBox>
-					</BankAndNumBox>
-					<AccountNameBox>
-						<InfoBox>
-							<LabelSpan>신부측 계좌명:</LabelSpan>
-							<NameInput />
-						</InfoBox>
-					</AccountNameBox>
-				</AccountBox>
-			</Container>
-			<CautionBox>필수 정보를 모두 입력해 주세요!</CautionBox>
-			<NavBox>
-				<NavButton
-					onPrevious={handlePrevious}
-					onNext={handleNext}
-					isNextActive={isNextActive} // 다음 버튼 활성화 상태 전달
-				/>
-			</NavBox>
+			<CenterBox>
+				<Container>
+					<AccountBox>
+						<BankAndNumBox>
+							<InfoBox>
+								<LabelSpan>신랑측 은행:</LabelSpan>
+								<InfoInput />
+							</InfoBox>
+							<InfoBox>
+								<LabelSpan>신랑측 계좌번호:</LabelSpan>
+								<InfoInput />
+							</InfoBox>
+						</BankAndNumBox>
+						<AccountNameBox>
+							<InfoBox>
+								<LabelSpan>신랑측 계좌명:</LabelSpan>
+								<NameInput />
+							</InfoBox>
+						</AccountNameBox>
+					</AccountBox>
+					<AccountBox>
+						<BankAndNumBox>
+							<InfoBox>
+								<LabelSpan>신부측 은행:</LabelSpan>
+								<InfoInput />
+							</InfoBox>
+							<InfoBox>
+								<LabelSpan>신부측 계좌번호:</LabelSpan>
+								<InfoInput />
+							</InfoBox>
+						</BankAndNumBox>
+						<AccountNameBox>
+							<InfoBox>
+								<LabelSpan>신부측 계좌명:</LabelSpan>
+								<NameInput />
+							</InfoBox>
+						</AccountNameBox>
+					</AccountBox>
+				</Container>
+				<CautionBox>필수 정보를 모두 입력해 주세요!</CautionBox>
+				<NavBox>
+					<NavButton
+						onPrevious={handlePrevious}
+						onNext={handleNext}
+						isNextActive={isNextActive} // 다음 버튼 활성화 상태 전달
+					/>
+				</NavBox>
+			</CenterBox>
 		</Wrapper>
 	);
 };
@@ -76,7 +78,11 @@ export default AccountInfoPage;
 
 // CSS
 const Wrapper = styled.div`
-	width: 144rem;
+	width: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 `;
 
 const TitleBox = styled.div`
@@ -101,10 +107,17 @@ const DescriptionSpan = styled.div`
 	letter-spacing: -0.456px;
 `;
 
+const CenterBox = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin: 9.1rem 12.2rem 0 12.2rem;
+	margin-top: 9.1rem;
 	gap: 12.4rem;
 `;
 
@@ -170,7 +183,8 @@ const NameInput = styled.input`
 const CautionBox = styled.div`
 	width: 29.3rem;
 	height: 4.1rem;
-	margin: 6rem 57.3rem 2.9rem 57.4rem;
+	margin-top: 6rem;
+	margin-bottom: 1.4rem;
 	color: #e80c0c;
 	font-family: Pretendard;
 	font-size: 2.4rem;
@@ -181,5 +195,5 @@ const CautionBox = styled.div`
 `;
 
 const NavBox = styled.div`
-	margin: 0 50.3rem 6.4rem 50.1rem;
+	margin-bottom: 7.9rem;
 `;
