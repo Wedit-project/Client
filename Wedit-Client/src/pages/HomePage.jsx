@@ -1,16 +1,26 @@
 import styled from 'styled-components';
-import theme from '../styles/theme';
+import PreviewBox from "../components/mainpage/PreviewBox";
+import MainBanner from '../components/mainpage/MainBanner';
+import MainPageHeader from '../components/mainpage/MainPageHeader';
+import MainPageSection from "../components/mainpage/MainPageSection";
+import MainPageFooter from "../components/mainpage/MainPageFooter";
 
 const HomePage = () => {
 	return (
-		<HomeText>홈 페이지</HomeText>
+		<HomePageContainer>
+			<MainPageHeader />
+			<MainBanner />
+			<PreviewBox />
+			<MainPageSection />
+			<MainPageFooter />
+		</HomePageContainer>
 	);
 };
 
 export default HomePage;
 
 // CSS
-const HomeText = styled.p`
-	font-size: ${theme.fontSize.xlarge};
-  	font-weight: ${theme.font.bold.fontWeight};
+
+const HomePageContainer = styled.div`
+  background-color: #F6F6FA;
 `;
