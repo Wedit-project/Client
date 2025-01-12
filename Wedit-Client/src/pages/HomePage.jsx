@@ -1,16 +1,18 @@
 import styled from 'styled-components';
-import theme from '../styles/theme';
+import PreviewBox from "../components/mainpage/PreviewBox";
 
 const HomePage = () => {
 	return (
-		<HomeText>홈 페이지</HomeText>
+		<HomePageContainer>
+			<PreviewBox />
+		</HomePageContainer>
 	);
 };
 
 export default HomePage;
 
 // CSS
-const HomeText = styled.p`
-	font-size: ${theme.fontSize.xlarge};
-  	font-weight: ${theme.font.bold.fontWeight};
+
+const HomePageContainer = styled.div`
+  background-color: #F6F6FA;
 `;
