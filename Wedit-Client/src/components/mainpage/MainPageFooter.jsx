@@ -31,6 +31,7 @@ const FooterContainer = styled.footer`
   &.center-align {
     justify-content: center;
     border-top: none;
+    padding-bottom: 9.5rem;
   }
 `;
 
