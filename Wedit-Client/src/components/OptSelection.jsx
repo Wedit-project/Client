@@ -74,7 +74,6 @@ const Container = styled.div`
 
 const OptBox = styled.div`
 	display: flex;
-	align-items: flex-start;
 `;
 
 const Checkbox = styled.input`
@@ -96,6 +95,7 @@ const Checkbox = styled.input`
 const ContentBox = styled.div`
 	display: flex;
 	flex-direction: column;
+	width: 76.1rem;
 `;
 
 const TitleSpan = styled.span`
