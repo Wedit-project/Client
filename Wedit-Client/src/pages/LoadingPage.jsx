@@ -1,4 +1,3 @@
-import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoSet from '../assets/img/LogoSet.svg?react';
@@ -21,7 +20,10 @@ export default LoadingPage;
 
 // CSS
 const Wrapper = styled.div`
-	width: 144rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
 
 const IllustIcon = styled(LoadingImg)`
@@ -33,12 +35,11 @@ const IllustIcon = styled(LoadingImg)`
 
 const LogoFrameIcon = styled(LogoSet)`
 	position: absolute;
-	top: 49.8rem;
-	left: 19.6rem;
+	top: 55%;
+	transform: translateX(-74%);
 `;
 
 const ProgressBarBox = styled.div`
-	margin-left: 16rem;
 	width: 112rem;
 	height: 6rem;
 	border-radius: 3rem;
@@ -54,7 +55,8 @@ const ProgressBox = styled.div`
 `;
 
 const LoadingTextBox = styled.div`
-	margin: 3.8rem 55.9rem 14.4rem 53.7rem;
+	margin-top: 3.8rem;
+	margin-bottom: 14.4rem;
 	color: #000;
 	font-family: Pretendard;
 	font-size: 3.2rem;
