@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import PreviewBox from "../components/mainpage/PreviewBox";
+import MainBanner from '../components/mainpage/MainBanner';
 
 const HomePage = () => {
 	return (
 		<HomePageContainer>
+			<MainBanner />
 			<PreviewBox />
 		</HomePageContainer>
 	);
