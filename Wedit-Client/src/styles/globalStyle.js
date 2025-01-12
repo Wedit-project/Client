@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     font-family: "Pretendard"
   }
+  button {
+    font-family: "Pretendard"
+  }
 
   body {
     margin: 0;

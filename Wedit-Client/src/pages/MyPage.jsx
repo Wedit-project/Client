@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import MyPageHeader from "../components/mypage/MyPageHeader";
 
 const MyPage = () => {
-	return <MyText>마이 페이지</MyText>;
+	return(
+		<>
+		<MyPageHeader />
+		</>
+	);
 };
 
 export default MyPage;
 
 // CSS
-const MyText = styled.p`
-	color: black;
-`;
