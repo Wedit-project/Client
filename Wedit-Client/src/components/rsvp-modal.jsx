@@ -41,11 +41,12 @@ const RSVPModal = ({ isVisible, onClose }) => {
 							<option value="" disabled hidden>
 								추가 인원
 							</option>
-							{Array.from({ length: 3 }, (_, i) => (
-								<option key={i} value={i}>
-									외 {i}명
-								</option>
-							))}
+							<option>외 0명</option>
+							<option>외 1명</option>
+							<option>외 2명</option>
+							<option>외 3명</option>
+							<option>외 4명</option>
+							<option>외 5명 이상</option>
 						</GuestNumDropdown>
 
 						<SubmitButton isActive={isButtonActive}>전달 하기</SubmitButton>
