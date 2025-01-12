@@ -4,12 +4,11 @@ import theme from '../styles/theme';
 import GuestBookModal from './guest-book-modal';
 
 const GuestBook = () => {
-	// 초기에는 4개의 아이템
-	const [visibleItems, setVisibleItems] = useState(4);
+	const [isScrollable, setScrollable] = useState(false);
 
 	const handleMoreButtonClick = () => {
-		// 더보기 버튼을 클릭 시 4개씩 추가
-		setVisibleItems((prev) => prev + 4);
+		// 스크롤 활성화
+		setScrollable(true);
 	};
 
 	const [isModalVisible, setModalVisible] = useState(false);
@@ -25,17 +24,20 @@ const GuestBook = () => {
 	return (
 		<GuestBookWrapper>
 			<GuestBookSpan>방명록</GuestBookSpan>
-			<GuestBookList>
-				{guestBookData.slice(0, visibleItems).map((item, index) => (
+			<GuestBookList isScrollable={isScrollable}>
+				{guestBookData.map((item, index) => (
 					<GuestBookItem key={index}>
 						<GuestNameText>{item.name}</GuestNameText>
 						<ContentText>{item.content}</ContentText>
 					</GuestBookItem>
 				))}
 			</GuestBookList>
-			{visibleItems < guestBookData.length && (
+
+			{!isScrollable && (
+				// 스크롤 활성화 후 버튼 숨김
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
+
 			<WritingButton onClick={handleWritingButtonClick}>작성하기</WritingButton>
 			<GuestBookModal isVisible={isModalVisible} onClose={handleModalClose} />
 		</GuestBookWrapper>
@@ -128,6 +130,9 @@ const GuestBookList = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 3.8rem;
+	height: 94rem;
+	max-height: ${({ isScrollable }) => (isScrollable ? '94rem' : 'none')};
+	overflow-y: ${({ isScrollable }) => (isScrollable ? 'scroll' : 'hidden')};
 `;
 
 const GuestBookItem = styled.div`
