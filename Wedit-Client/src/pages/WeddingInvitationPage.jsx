@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import theme from '../styles/theme';
-import RequiredInformation from '../components/required-information';
-import Location from '../components/location';
-import Gallery from '../components/gallery';
-import GuestBook from '../components/guest-book';
-import CongratulatoryMoney from '../components/congratulatory-money';
-import RSVP from '../components/rsvp';
+import RequiredInformation from '../components/WeddingInvitationPage/required-information';
+import Location from '../components/WeddingInvitationPage/location';
+import Gallery from '../components/WeddingInvitationPage/gallery';
+import GuestBook from '../components/WeddingInvitationPage/guest-book';
+import CongratulatoryMoney from '../components/WeddingInvitationPage/congratulatory-money';
+import RSVP from '../components/WeddingInvitationPage/rsvp';
 
 const WeddingInvitationPage = () => {
 	return (

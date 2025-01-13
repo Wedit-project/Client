@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import theme from '../styles/theme';
+import theme from '../../styles/theme';
 import GuestBookModal from './guest-book-modal';
 
 const GuestBook = () => {
