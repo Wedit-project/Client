@@ -2,10 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-const Gallery = ({ variant = 'basic' }) => {
+const Gallery = ({ $variant = 'basic' }) => {
 	return (
 		<GalleryWrapper>
-			<GallerySpan variant={variant}>갤러리</GallerySpan>
+			<GallerySpan $variant={$variant}>갤러리</GallerySpan>
 			<GalleryContainer>
 				<GalleryImage2 />
 				<GalleryBox>
@@ -39,8 +39,8 @@ const GallerySpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			color: var(--brown, #3c140d);
 			&::before,

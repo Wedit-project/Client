@@ -2,10 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-const CongratulatoryMoney = ({ variant = 'basic' }) => {
+const CongratulatoryMoney = ({ $variant = 'basic' }) => {
 	return (
 		<CongratulatoryMoneyWrapper>
-			<GuestBookSpan variant={variant}>마음 전하실 곳</GuestBookSpan>
+			<GuestBookSpan $variant={$variant}>마음 전하실 곳</GuestBookSpan>
 
 			<CongratulatoryMoneyContainer>
 				<GroomCongratulatoryMoneyBox>
@@ -50,8 +50,8 @@ const GuestBookSpan = styled.span`
 	line-height: 66.482%;
 	letter-spacing: -0.0836rem;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			color: var(--brown, #3c140d);
 		`}

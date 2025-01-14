@@ -2,10 +2,10 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-const Location = ({ variant = 'basic' }) => {
+const Location = ({ $variant = 'basic' }) => {
 	return (
 		<LocationWrapper>
-			<LocationSpan variant={variant}>위치</LocationSpan>
+			<LocationSpan $variant={$variant}>위치</LocationSpan>
 			<LocationImage />
 		</LocationWrapper>
 	);
@@ -34,8 +34,8 @@ const LocationSpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			color: var(--brown, #3c140d);
 			&::before,

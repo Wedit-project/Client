@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import GuestBookModal from './guest-book-modal';
 
-const GuestBook = ({ variant = 'basic' }) => {
+const GuestBook = ({ $variant = 'basic' }) => {
 	const [isScrollable, setScrollable] = useState(false);
 
 	const handleMoreButtonClick = () => {
@@ -23,7 +23,7 @@ const GuestBook = ({ variant = 'basic' }) => {
 
 	return (
 		<GuestBookWrapper>
-			<GuestBookSpan variant={variant}>방명록</GuestBookSpan>
+			<GuestBookSpan $variant={$variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
 				{guestBookData.map((item, index) => (
 					<GuestBookItem key={index}>
@@ -38,7 +38,7 @@ const GuestBook = ({ variant = 'basic' }) => {
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
 
-			<WritingButton variant={variant} onClick={handleWritingButtonClick}>
+			<WritingButton $variant={$variant} onClick={handleWritingButtonClick}>
 				작성하기
 			</WritingButton>
 			<GuestBookModal isVisible={isModalVisible} onClose={handleModalClose} />
@@ -109,8 +109,8 @@ const GuestBookSpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			color: var(--brown, #3c140d);
 			&::before,
@@ -132,7 +132,10 @@ const GuestBookSpan = styled.span`
 		`}
 `;
 
-const GuestBookList = styled.div`
+const GuestBookList = styled.div.withConfig({
+	// isScrollable가 CSS로만 사용되도록
+	shouldForwardProp: (prop) => prop !== 'isScrollable',
+})`
 	margin-top: 7.05rem;
 	display: flex;
 	flex-direction: column;
@@ -204,8 +207,8 @@ const WritingButton = styled.button`
 	gap: 1rem;
 	margin-left: 85.5rem;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			background: var(--brown, #3c140d);
 		`}

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import theme from '../styles/theme';
 import RequiredInformation from '../components/WeddingInvitationPage/required-information';
 import Location from '../components/WeddingInvitationPage/location';
@@ -11,16 +12,20 @@ const WeddingInvitationPage = () => {
 	return (
 		// 기본형 variant="basic"
 		// 전통형 = variant="tradition"
-		<WeddingInvitationWrapper variant="tradition">
+		<WeddingInvitationWrapper $variant="tradition">
 			<RequiredInformation />
-			<Location variant="tradition" />
-			<Gallery variant="tradition" />
-			<GuestBook variant="tradition" />
-			<CongratulatoryMoney variant="tradition" />
-			<RSVP variant="tradition" />
+			<Location $variant="tradition" />
+			<Gallery $variant="tradition" />
+			<GuestBook $variant="tradition" />
+			<CongratulatoryMoney $variant="tradition" />
+			<RSVP $variant="tradition" />
 			<MoveButtonBox>
-				<HomePageButton variant="tradition">홈으로 이동</HomePageButton>
-				<MyPageButton variant="tradition">마이페이지로 이동</MyPageButton>
+				<HomePageButton to="/" $variant="tradition">
+					홈으로 이동
+				</HomePageButton>
+				<MyPageButton to="/my" $variant="tradition">
+					마이페이지로 이동
+				</MyPageButton>
 			</MoveButtonBox>
 		</WeddingInvitationWrapper>
 	);
@@ -39,8 +44,8 @@ const WeddingInvitationWrapper = styled.div`
 	flex-direction: column;
 	align-items: center;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			background-image: url('src/assets/img/tradition.png');
 		`}
@@ -53,7 +58,8 @@ const MoveButtonBox = styled.div`
 	gap: 23.8rem;
 	margin-bottom: 63.9rem;
 `;
-const HomePageButton = styled.button`
+const HomePageButton = styled(Link)`
+	text-decoration: none;
 	font-weight: ${theme.font.bold.fontWeight};
 	color: var(--gray-0, #fff);
 	font-size: 3.3rem;
@@ -69,13 +75,14 @@ const HomePageButton = styled.button`
 	justify-content: center;
 	align-items: center;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			background: var(--Basic-wedding-invitation-2-4, #4d5941);
 		`}
 `;
-const MyPageButton = styled.button`
+const MyPageButton = styled(Link)`
+	text-decoration: none;
 	font-weight: ${theme.font.bold.fontWeight};
 	color: var(--gray-0, #fff);
 	font-size: 3.3rem;
@@ -91,8 +98,8 @@ const MyPageButton = styled.button`
 	justify-content: center;
 	align-items: center;
 
-	${({ variant }) =>
-		variant === 'tradition' &&
+	${({ $variant }) =>
+		$variant === 'tradition' &&
 		css`
 			background: var(--Basic-wedding-invitation-2-4, #4d5941);
 		`}
