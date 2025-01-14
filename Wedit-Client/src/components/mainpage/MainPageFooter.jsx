@@ -26,7 +26,7 @@ const FooterContainer = styled.footer`
   display: flex;
   justify-content: flex-end;
   background-color: transparent;
-  border-top: 0.1rem solid #C1C1C1;
+  border-top: 0.1rem solid ${theme.colors.gray[400]};
 
   &.center-align {
     justify-content: center;

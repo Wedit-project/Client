@@ -15,7 +15,7 @@ const MakingInvitation = () => {
 export default MakingInvitation;
 
 const MakingInvitationWrapper = styled.div`
-  background-color: #EEF0E2;
+  background-color: ${theme.colors.green["20%"]};
 `;
 
 const Text = styled.div`
@@ -31,14 +31,14 @@ const Divider = styled.div`
   margin-right: 10.7rem;
   margin-top: 2.6rem;
   margin-bottom: 2.6rem;
-  border: 0.2rem solid #ACB66D;
+  border: 0.2rem solid ${theme.colors.green.main};
   border-radius: 0.2rem;
 `;
 
 const NothingText = styled.div`
   margin: 0;
   text-align: center;
-  color: #B6B6B6;
+  color: ${theme.colors.gray[500]};
   font-size: ${theme.fontSize.xlarge};
   font-weight: ${theme.font.medium.fontWeight};
   margin-top: 8.7rem;

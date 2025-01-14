@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import theme from "../../styles/theme";
 
 export const MainBannerSlider = ({ sliderSettings, sliderRef, activeData }) => (
   <SliderWrapper>
@@ -40,11 +41,11 @@ const StyledSlider = styled(Slider)`
     width: 1.6rem;
     height: 1.6rem;
     border-radius: 50%;
-    background-color: #E4E4E4;
+    background-color: ${theme.colors.gray[300]};
   }
 
   .slick-dots li.slick-active button {
-    background-color: #56AABA;
+    background-color: ${theme.colors.example.example1};
   }
 `;
 

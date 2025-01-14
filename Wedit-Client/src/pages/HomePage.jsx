@@ -4,6 +4,7 @@ import MainBanner from '../components/mainpage/MainBanner';
 import MainPageHeader from '../components/mainpage/MainPageHeader';
 import MainPageSection from "../components/mainpage/MainPageSection";
 import MainPageFooter from "../components/mainpage/MainPageFooter";
+import theme from '../styles/theme';
 
 const HomePage = () => {
 	return (
@@ -22,5 +23,5 @@ export default HomePage;
 // CSS
 
 const HomePageContainer = styled.div`
-  background-color: #F6F6FA;
+  background-color: ${theme.colors.background.background1};
 `;

@@ -18,7 +18,7 @@ export default Content;
 
 const ContentWrapper = styled.div`
     text-align: center;
-    background-color: #EEF0E2;
+    background-color: ${theme.colors.green["20%"]};
 `;
 
 const Text = styled.p`

@@ -10,7 +10,7 @@ export default PreviewButton;
 
 // CSS
 const Button = styled.button`
-  border: 0.2rem solid #ACB66D;
+  border: 0.2rem solid ${theme.colors.green.main};
   border-radius: 1.6rem;
   padding: 1.3rem 2.5rem;
   margin-right: 16.2rem;
