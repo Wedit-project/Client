@@ -18,7 +18,7 @@ const Button = styled.button`
   justify-content: center;
   width: 60rem;
   height: 9rem;
-  background-color: #FEE500;
+  background-color: ${theme.colors.example.kakao};
   border: none;
   border-radius: 1.2rem;
   cursor: pointer;

@@ -15,12 +15,12 @@ export default InvitationButton;
 const InvitationButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-  background-color: #EEF0E2;
+  background-color: ${theme.colors.green["20%"]};
   padding-bottom: 6rem;
 `;
 
 const CreateButton = styled.button`
-  background-color: #ACB66D;
+  background-color: ${theme.colors.green.main};
   color: #fff;
   padding: 1.3rem 2.5rem;
   font-size: ${theme.fontSize.xlarge};

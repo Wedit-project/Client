@@ -32,8 +32,11 @@ const SidebarContainer = styled.div`
 
 const MenuItem = styled.div`
   cursor: pointer;
-  background-color: ${({ $active }) => ($active ? "#ACB66D" : "#E4E4E4")};
-  color: ${({ $active }) => ($active ? "#fff" : "#000")};
+  background-color: ${({ $active, theme }) =>
+    $active ? theme.colors.green.main : theme.colors.gray[300]};
+  color: ${({ $active, theme }) =>
+    $active ? theme.colors.gray[0] : theme.colors.gray[900]};
+
   border-radius: 2rem 2rem 0 0;
 
   display: flex;
