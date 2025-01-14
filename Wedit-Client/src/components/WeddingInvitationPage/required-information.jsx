@@ -5,7 +5,6 @@ import theme from '../../styles/theme';
 const RequiredInformation = () => {
 	return (
 		<RequiredInformationTextWrapper>
-			<TitleText>저희 결혼해요</TitleText>
 			<RequiredInformationTextContainer>
 				<MainImage />
 				<RequiredInformationTextBox>
@@ -26,24 +25,13 @@ export default RequiredInformation;
 
 // CSS
 const RequiredInformationTextWrapper = styled.div`
+	margin-top: 51.2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 `;
 
-const TitleText = styled.p`
-	margin-top: 32.5rem;
-	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--brown, #3c140d);
-	text-align: center;
-	font-size: 5.5rem;
-	font-style: normal;
-	line-height: 105.594%;
-	letter-spacing: 2.75rem;
-`;
-
 const RequiredInformationTextContainer = styled.div`
-	margin-top: 12.8rem;
 	display: flex;
 	flex-direction: row;
 	gap: 7.7rem;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import GuestBookModal from './guest-book-modal';
 
-const GuestBook = () => {
+const GuestBook = ({ variant = 'basic' }) => {
 	const [isScrollable, setScrollable] = useState(false);
 
 	const handleMoreButtonClick = () => {
@@ -23,7 +23,7 @@ const GuestBook = () => {
 
 	return (
 		<GuestBookWrapper>
-			<GuestBookSpan>방명록</GuestBookSpan>
+			<GuestBookSpan variant={variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
 				{guestBookData.map((item, index) => (
 					<GuestBookItem key={index}>
@@ -38,7 +38,9 @@ const GuestBook = () => {
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
 
-			<WritingButton onClick={handleWritingButtonClick}>작성하기</WritingButton>
+			<WritingButton variant={variant} onClick={handleWritingButtonClick}>
+				작성하기
+			</WritingButton>
 			<GuestBookModal isVisible={isModalVisible} onClose={handleModalClose} />
 		</GuestBookWrapper>
 	);
@@ -96,7 +98,7 @@ const GuestBookWrapper = styled.div`
 
 const GuestBookSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--brown, #3c140d);
+	color: #acb66d;
 	font-size: 4.3878rem;
 	font-style: normal;
 	line-height: 66.667%;
@@ -107,22 +109,27 @@ const GuestBookSpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	&::before,
-	&::after {
-		content: '';
-		display: block;
-		width: 49rem;
-		height: 0.2rem;
-		background-color: var(--brown, #3c140d);
-	}
+	${({ variant }) =>
+		variant === 'tradition' &&
+		css`
+			color: var(--brown, #3c140d);
+			&::before,
+			&::after {
+				content: '';
+				display: block;
+				width: 49rem;
+				height: 0.2rem;
+				background-color: var(--brown, #3c140d);
+			}
 
-	&::before {
-		margin-right: 5.2rem;
-	}
+			&::before {
+				margin-right: 5.2rem;
+			}
 
-	&::after {
-		margin-left: 5.2rem;
-	}
+			&::after {
+				margin-left: 5.2rem;
+			}
+		`}
 `;
 
 const GuestBookList = styled.div`
@@ -130,13 +137,13 @@ const GuestBookList = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 3.8rem;
-	height: 94rem;
+	height: 70.6rem;
 	max-height: ${({ isScrollable }) => (isScrollable ? '94rem' : 'none')};
 	overflow-y: ${({ isScrollable }) => (isScrollable ? 'scroll' : 'hidden')};
 `;
 
 const GuestBookItem = styled.div`
-	width: 107rem;
+	width: 112.1rem;
 	height: 14.8rem;
 	padding: 3rem 2.5rem;
 	border-radius: 1.6rem;
@@ -146,19 +153,23 @@ const GuestBookItem = styled.div`
 `;
 
 const GuestNameText = styled.p`
+	margin-top: 0;
 	font-weight: ${theme.font.bold.fontWeight};
 	font-size: 3.3rem;
 	font-style: normal;
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
+	margin-bottom: 2.377rem;
 `;
 
 const ContentText = styled.p`
+	margin-top: 2.377rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: 3.3rem;
 	font-style: normal;
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
+	margin-bottom: 0;
 `;
 
 const MoreButton = styled.button`
@@ -185,11 +196,17 @@ const WritingButton = styled.button`
 	letter-spacing: -0.0418rem;
 	border-radius: 1.6rem;
 	border: 0.1rem solid var(--gray-300, #e4e4e4);
-	background: var(--brown, #3c140d);
+	background: #acb66d;
 	display: inline-flex;
 	padding: 1.2rem 5.3rem;
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
 	margin-left: 85.5rem;
+
+	${({ variant }) =>
+		variant === 'tradition' &&
+		css`
+			background: var(--brown, #3c140d);
+		`}
 `;
