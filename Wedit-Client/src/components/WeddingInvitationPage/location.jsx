@@ -1,12 +1,24 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
+import { Map } from 'react-kakao-maps-sdk';
+import useKakaoLoader from '../../hooks/useKakaoLoader';
 
 const Location = ({ $variant = 'basic' }) => {
+	useKakaoLoader(); // 카카오 지도 SDK 로딩
+
 	return (
 		<LocationWrapper>
 			<LocationSpan $variant={$variant}>위치</LocationSpan>
-			<LocationImage />
+			<MapBox
+				center={{
+					// 지도 중심 좌표
+					lat: 33.450701,
+					lng: 126.570667,
+				}}
+				// 지도 확대 레벨
+				level={3}
+			/>
 		</LocationWrapper>
 	);
 };
@@ -57,9 +69,8 @@ const LocationSpan = styled.span`
 		`}
 `;
 
-const LocationImage = styled.img`
+const MapBox = styled(Map)`
 	margin-top: 3.9rem;
-	background: url('src/assets/img/location.png');
 	width: 112.1rem;
 	height: 50.2rem;
 	border-radius: 2rem;
