@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
+// 글자 제한 설정
+const MAX_CONTENT_LENGTH = 100;
+
 const GuestBookModal = ({ isVisible, onClose }) => {
 	const [name, setName] = useState('');
 	const [content, setContent] = useState('');
@@ -11,6 +14,13 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 		// e.target이 ModalWrapper일 경우에만 onClose 호출
 		if (e.target === e.currentTarget) {
 			onClose();
+		}
+	};
+
+	const handleContentValue = (e) => {
+		const newValue = e.target.value;
+		if (newValue.length <= MAX_CONTENT_LENGTH) {
+			setContent(newValue);
 		}
 	};
 
@@ -28,12 +38,17 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 							placeholder="이름을 입력해 주세요"
 							value={name}
 							onChange={(e) => setName(e.target.value)}
+							maxLength={100}
 						/>
-						<ContentInput
-							placeholder="내용을 입력해 주세요"
-							value={content}
-							onChange={(e) => setContent(e.target.value)}
-						/>
+						<ContentBox>
+							<ContentInput
+								placeholder="내용을 입력해 주세요"
+								value={content}
+								onChange={handleContentValue}></ContentInput>
+							<ContentCount>
+								{content.length}/{MAX_CONTENT_LENGTH}
+							</ContentCount>
+						</ContentBox>
 						<SubmitButton isActive={isButtonActive}>작성 완료</SubmitButton>
 					</ModalBox>
 				</ModalContainer>
@@ -103,16 +118,20 @@ const NameInput = styled.input`
 	padding-bottom: 2.8rem;
 `;
 
+const ContentBox = styled.div`
+	position: relative;
+	width: 60.1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
 const ContentInput = styled.textarea`
 	border-radius: 1.6rem;
 	border: 0.1rem solid #a8a8a8;
 	background: #fff;
-	display: flex;
-	width: 60.1rem;
+	width: 100%;
 	height: 28.2rem;
-	align-items: flex-start;
-	gap: 1rem;
-	flex-shrink: 0;
 	color: #808080;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
@@ -121,7 +140,17 @@ const ContentInput = styled.textarea`
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
 	padding-left: 2.5rem;
-	padding-top: 3rem;
+	padding-top: 2.8rem;
+	padding-bottom: 2.8rem;
+	resize: none;
+`;
+
+const ContentCount = styled.div`
+	position: absolute;
+	bottom: 2.8rem;
+	right: 2.5rem;
+	font-size: ${theme.fontSize.medium};
+	color: #808080;
 `;
 
 const SubmitButton = styled.button`
