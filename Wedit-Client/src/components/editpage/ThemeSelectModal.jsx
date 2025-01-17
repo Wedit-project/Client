@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import { Link } from 'react-router-dom';
 
 const ThemaSelectModal = ({ isVisible, onClose }) => {
+	const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+
+	const handleCheckboxChange = (thema) => {
+		setSelectedCheckbox(selectedCheckbox === thema ? null : thema);
+	};
+
 	const handlePreviousButtonClick = (e) => {
 		if (e.target === e.currentTarget) {
 			onClose();
@@ -17,7 +23,10 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 					<TitleSpan>테마를 선택하세요</TitleSpan>
 					<ModalBox>
 						<BasicContainer>
-							<BasicCheckbox type="checkbox"></BasicCheckbox>
+							<BasicCheckbox
+								type="checkbox"
+								checked={selectedCheckbox === 'basic'}
+								onChange={() => handleCheckboxChange('basic')}></BasicCheckbox>
 							<BasicBox>
 								<BasicSpan>기본형</BasicSpan>
 								<BasicText>
@@ -28,7 +37,10 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						</BasicContainer>
 
 						<TraditionContainer>
-							<TraditionCheckbox type="checkbox"></TraditionCheckbox>
+							<TraditionCheckbox
+								type="checkbox"
+								checked={selectedCheckbox === 'tradition'}
+								onChange={() => handleCheckboxChange('tradition')}></TraditionCheckbox>
 							<TraditionBox>
 								<TraditionSpan>전통형</TraditionSpan>
 								<TraditionText>
@@ -38,8 +50,7 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 							</TraditionBox>
 						</TraditionContainer>
 
-						<ThemaText>테마를 선택해 주세요!</ThemaText>
-
+						<ThemaText $isVisible={!selectedCheckbox}>테마를 선택해 주세요!</ThemaText>
 						<ButtonBox>
 							<PreviousButton onClick={handlePreviousButtonClick}>이전</PreviousButton>
 							<NextButton to="/edit">다음</NextButton>
@@ -184,15 +195,15 @@ const ThemaText = styled.p`
 	margin-top: 3.7rem;
 	width: 20rem;
 	height: 4.1rem;
-	color: var(--Other-Warning, var(--Warning, #e80c0c));
+	color: ${({ $isVisible }) => ($isVisible ? '#e80c0c' : 'transparent')};
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
-	margin-bottom: 1.6rem;
 `;
 
 const ButtonBox = styled.div`
+	margin-top: 1.6rem;
 	display: flex;
 	flex-direction: row;
 	gap: 4rem;
