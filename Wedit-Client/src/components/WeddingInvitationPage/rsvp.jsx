@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import RSVPModal from '../WeddingInvitationPage/rsvp-modal';
 
-const RSVP = () => {
+const RSVP = ({ $variant = 'basic' }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
 
 	const handleWritingButtonClick = () => {
@@ -16,11 +16,13 @@ const RSVP = () => {
 
 	return (
 		<RSVPWrapper>
-			<RSVPSpan>참석의사 전달하기</RSVPSpan>
+			<RSVPSpan $variant={$variant}>참석의사 전달하기</RSVPSpan>
 
 			<RSVPText>신랑 신부에게 참석 의사를 미리 전달할 수 있어요</RSVPText>
 
-			<RSVPButton onClick={handleWritingButtonClick}>참석의사 전달하기</RSVPButton>
+			<RSVPButton $variant={$variant} onClick={handleWritingButtonClick}>
+				참석의사 전달하기
+			</RSVPButton>
 			<RSVPModal isVisible={isModalVisible} onClose={handleModalClose} />
 		</RSVPWrapper>
 	);
@@ -38,7 +40,7 @@ const RSVPWrapper = styled.div`
 
 const RSVPSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--brown, #3c140d);
+	color: #acb66d;
 	font-size: 4.4rem;
 	font-style: normal;
 	line-height: 66.482%;
@@ -49,22 +51,27 @@ const RSVPSpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	&::before,
-	&::after {
-		content: '';
-		display: block;
-		width: 39rem;
-		height: 0.2rem;
-		background-color: var(--brown, #3c140d);
-	}
+	${({ $variant }) =>
+		$variant === 'tradition' &&
+		css`
+			color: var(--brown, #3c140d);
+			&::before,
+			&::after {
+				content: '';
+				display: block;
+				width: 39rem;
+				height: 0.2rem;
+				background-color: var(--brown, #3c140d);
+			}
 
-	&::before {
-		margin-right: 5.2rem;
-	}
+			&::before {
+				margin-right: 5.2rem;
+			}
 
-	&::after {
-		margin-left: 5.2rem;
-	}
+			&::after {
+				margin-left: 5.2rem;
+			}
+		`}
 `;
 
 const RSVPText = styled.p`
@@ -76,8 +83,8 @@ const RSVPText = styled.p`
 	font-style: normal;
 	line-height: 132.965%;
 	letter-spacing: -0.0418rem;
-
 	width: 22rem;
+	margin-bottom: 0;
 `;
 
 const RSVPButton = styled.button`
@@ -91,7 +98,7 @@ const RSVPButton = styled.button`
 	letter-spacing: -0.0418rem;
 	border-radius: 1.6rem;
 	border: 0.1rem solid var(--gray-300, #e4e4e4);
-	background: var(--brown, #3c140d);
+	background: #acb66d;
 	display: flex;
 	width: 42.5986rem;
 	height: 5.302rem;
@@ -100,4 +107,10 @@ const RSVPButton = styled.button`
 	align-items: center;
 	gap: 1rem;
 	flex-shrink: 0;
+
+	${({ $variant }) =>
+		$variant === 'tradition' &&
+		css`
+			background: var(--brown, #3c140d);
+		`}
 `;

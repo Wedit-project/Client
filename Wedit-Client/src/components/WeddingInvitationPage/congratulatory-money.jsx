@@ -1,11 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
+import toast, { Toaster } from 'react-hot-toast';
 
-const CongratulatoryMoney = () => {
+const CongratulatoryMoney = ({ $variant = 'basic' }) => {
+	const handleCopy = (text) => {
+		navigator.clipboard.writeText(text).then(() => {
+			toast.success('복사가 완료되었습니다!');
+		});
+	};
+
 	return (
 		<CongratulatoryMoneyWrapper>
-			<GuestBookSpan>마음 전하실 곳</GuestBookSpan>
+			<GuestBookSpan $variant={$variant}>마음 전하실 곳</GuestBookSpan>
 
 			<CongratulatoryMoneyContainer>
 				<GroomCongratulatoryMoneyBox>
@@ -15,7 +22,7 @@ const CongratulatoryMoney = () => {
 						<AccountText>123-4567-8901</AccountText>
 						<NameText>(김도현)</NameText>
 					</AccountInfoBox>
-					<CopyButton>복사하기</CopyButton>
+					<CopyButton onClick={() => handleCopy('123-4567-8901')}>복사하기</CopyButton>{' '}
 				</GroomCongratulatoryMoneyBox>
 
 				<BrideCongratulatoryMoneyBox>
@@ -25,8 +32,9 @@ const CongratulatoryMoney = () => {
 						<AccountText>234-5678-9012</AccountText>
 						<NameText>(은수아)</NameText>
 					</AccountInfoBox>
-					<CopyButton>복사하기</CopyButton>
+					<CopyButton onClick={() => handleCopy('234-5678-9012')}>복사하기</CopyButton>{' '}
 				</BrideCongratulatoryMoneyBox>
+				<Toaster position="top-right" reverseOrder={true} />
 			</CongratulatoryMoneyContainer>
 		</CongratulatoryMoneyWrapper>
 	);
@@ -44,11 +52,17 @@ const CongratulatoryMoneyWrapper = styled.div`
 
 const GuestBookSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--brown, #3c140d);
+	color: #acb66d;
 	font-size: 4.4rem;
 	font-style: normal;
 	line-height: 66.482%;
 	letter-spacing: -0.0836rem;
+
+	${({ $variant }) =>
+		$variant === 'tradition' &&
+		css`
+			color: var(--brown, #3c140d);
+		`}
 `;
 
 const CongratulatoryMoneyContainer = styled.div`
@@ -63,8 +77,8 @@ const GroomCongratulatoryMoneyBox = styled.div`
 	border: 0.1rem solid var(--gray_3, #d9d9d9);
 	background: var(--white, #fff);
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
-	width: 50.2rem;
-	height: 20.3rem;
+	width: 46.6rem;
+	height: 17.8rem;
 	padding: 2.5rem 1.8rem;
 `;
 
@@ -73,8 +87,8 @@ const BrideCongratulatoryMoneyBox = styled.div`
 	border: 0.1rem solid var(--gray_3, #d9d9d9);
 	background: var(--white, #fff);
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
-	width: 50.2rem;
-	height: 20.3rem;
+	width: 46.6rem;
+	height: 17.8rem;
 	padding: 2.5rem 1.8rem;
 `;
 
@@ -85,6 +99,7 @@ const GroomSpan = styled.p`
 	font-style: normal;
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
+	margin-bottom: 1.828rem;
 `;
 
 const BrideSpan = styled.p`
@@ -94,9 +109,11 @@ const BrideSpan = styled.p`
 	font-style: normal;
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
+	margin-bottom: 1.828rem;
 `;
 
 const BankText = styled.p`
+	margin-top: 0;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: 3rem;
 	font-style: normal;
@@ -118,18 +135,21 @@ const AccountText = styled.p`
 	font-style: normal;
 	line-height: 121.884%;
 	letter-spacing: -0.057rem;
+	margin-bottom: 0;
 `;
 
 const NameText = styled.p`
+	margin-top: 0;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: 3rem;
 	font-style: normal;
 	line-height: 121.884%;
 	letter-spacing: -0.057rem;
-	margin-top: 0;
+	margin-bottom: 0;
 `;
 
 const CopyButton = styled.button`
+	margin-top: 1.828rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: 2.2rem;
 	font-style: normal;

@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-const Gallery = () => {
+const Gallery = ({ $variant = 'basic' }) => {
 	return (
 		<GalleryWrapper>
-			<GallerySpan>갤러리</GallerySpan>
+			<GallerySpan $variant={$variant}>갤러리</GallerySpan>
 			<GalleryContainer>
 				<GalleryImage2 />
 				<GalleryBox>
@@ -28,7 +28,7 @@ const GalleryWrapper = styled.div`
 
 const GallerySpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--brown, #3c140d);
+	color: #acb66d;
 	font-size: 4.3878rem;
 	font-style: normal;
 	line-height: 66.667%;
@@ -39,22 +39,27 @@ const GallerySpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	&::before,
-	&::after {
-		content: '';
-		display: block;
-		width: 49rem;
-		height: 0.2rem;
-		background-color: var(--brown, #3c140d);
-	}
+	${({ $variant }) =>
+		$variant === 'tradition' &&
+		css`
+			color: var(--brown, #3c140d);
+			&::before,
+			&::after {
+				content: '';
+				display: block;
+				width: 49rem;
+				height: 0.2rem;
+				background-color: var(--brown, #3c140d);
+			}
 
-	&::before {
-		margin-right: 5.2rem;
-	}
+			&::before {
+				margin-right: 5.2rem;
+			}
 
-	&::after {
-		margin-left: 5.2rem;
-	}
+			&::after {
+				margin-left: 5.2rem;
+			}
+		`}
 `;
 
 const GalleryContainer = styled.div`

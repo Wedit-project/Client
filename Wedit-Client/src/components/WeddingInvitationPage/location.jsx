@@ -1,12 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
+import { Map } from 'react-kakao-maps-sdk';
+import useKakaoLoader from '../../hooks/useKakaoLoader';
 
-const Location = () => {
+const Location = ({ $variant = 'basic' }) => {
+	useKakaoLoader(); // 카카오 지도 SDK 로딩
+
 	return (
 		<LocationWrapper>
-			<LocationSpan>위치</LocationSpan>
-			<LocationImage />
+			<LocationSpan $variant={$variant}>위치</LocationSpan>
+			<MapBox
+				center={{
+					// 지도 중심 좌표
+					lat: 33.450701,
+					lng: 126.570667,
+				}}
+				// 지도 확대 레벨
+				level={3}
+			/>
 		</LocationWrapper>
 	);
 };
@@ -23,7 +35,7 @@ const LocationWrapper = styled.div`
 
 const LocationSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--brown, #3c140d);
+	color: #acb66d;
 	font-size: 4.4rem;
 	font-style: normal;
 	line-height: 66.482%;
@@ -34,27 +46,31 @@ const LocationSpan = styled.span`
 	justify-content: center;
 	position: relative;
 
-	&::before,
-	&::after {
-		content: '';
-		display: block;
-		width: 49rem;
-		height: 0.2rem;
-		background-color: var(--brown, #3c140d);
-	}
+	${({ $variant }) =>
+		$variant === 'tradition' &&
+		css`
+			color: var(--brown, #3c140d);
+			&::before,
+			&::after {
+				content: '';
+				display: block;
+				width: 49rem;
+				height: 0.2rem;
+				background-color: var(--brown, #3c140d);
+			}
 
-	&::before {
-		margin-right: 7.1rem;
-	}
+			&::before {
+				margin-right: 7.1rem;
+			}
 
-	&::after {
-		margin-left: 7.1rem;
-	}
+			&::after {
+				margin-left: 7.1rem;
+			}
+		`}
 `;
 
-const LocationImage = styled.img`
+const MapBox = styled(Map)`
 	margin-top: 3.9rem;
-	background: url('src/assets/img/location.png');
 	width: 112.1rem;
 	height: 50.2rem;
 	border-radius: 2rem;
