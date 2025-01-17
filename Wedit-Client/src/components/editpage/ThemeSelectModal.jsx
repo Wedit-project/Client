@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
+import { Link } from 'react-router-dom';
 
 const ThemaSelectModal = ({ isVisible, onClose }) => {
-	const handleWrapperClick = (e) => {
+	const handlePreviousButtonClick = (e) => {
 		if (e.target === e.currentTarget) {
 			onClose();
 		}
@@ -11,7 +12,7 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 
 	return (
 		isVisible && (
-			<ModalWrapper onClick={handleWrapperClick}>
+			<ModalWrapper>
 				<ModalContainer>
 					<TitleSpan>테마를 선택하세요</TitleSpan>
 					<ModalBox>
@@ -40,8 +41,8 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						<ThemaText>테마를 선택해 주세요!</ThemaText>
 
 						<ButtonBox>
-							<PreviousButton>이전</PreviousButton>
-							<NextButton>다음</NextButton>
+							<PreviousButton onClick={handlePreviousButtonClick}>이전</PreviousButton>
+							<NextButton to="/edit">다음</NextButton>
 						</ButtonBox>
 					</ModalBox>
 				</ModalContainer>
@@ -217,11 +218,11 @@ const PreviousButton = styled.button`
 	border: none;
 `;
 
-const NextButton = styled.button`
+const NextButton = styled(Link)`
+	text-decoration: none;
 	display: flex;
 	width: 19.8rem;
 	height: 5.8rem;
-	padding: 1.3rem 7.7rem;
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
