@@ -1,8 +1,15 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
+import toast, { Toaster } from 'react-hot-toast';
 
 const CongratulatoryMoney = ({ $variant = 'basic' }) => {
+	const handleCopy = (text) => {
+		navigator.clipboard.writeText(text).then(() => {
+			toast.success('복사가 완료되었습니다!');
+		});
+	};
+
 	return (
 		<CongratulatoryMoneyWrapper>
 			<GuestBookSpan $variant={$variant}>마음 전하실 곳</GuestBookSpan>
@@ -15,7 +22,7 @@ const CongratulatoryMoney = ({ $variant = 'basic' }) => {
 						<AccountText>123-4567-8901</AccountText>
 						<NameText>(김도현)</NameText>
 					</AccountInfoBox>
-					<CopyButton>복사하기</CopyButton>
+					<CopyButton onClick={() => handleCopy('123-4567-8901')}>복사하기</CopyButton>{' '}
 				</GroomCongratulatoryMoneyBox>
 
 				<BrideCongratulatoryMoneyBox>
@@ -25,8 +32,9 @@ const CongratulatoryMoney = ({ $variant = 'basic' }) => {
 						<AccountText>234-5678-9012</AccountText>
 						<NameText>(은수아)</NameText>
 					</AccountInfoBox>
-					<CopyButton>복사하기</CopyButton>
+					<CopyButton onClick={() => handleCopy('234-5678-9012')}>복사하기</CopyButton>{' '}
 				</BrideCongratulatoryMoneyBox>
+				<Toaster position="top-right" reverseOrder={true} />
 			</CongratulatoryMoneyContainer>
 		</CongratulatoryMoneyWrapper>
 	);
