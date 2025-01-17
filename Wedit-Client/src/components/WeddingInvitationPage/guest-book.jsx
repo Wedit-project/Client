@@ -33,7 +33,7 @@ const GuestBook = ({ $variant = 'basic' }) => {
 				))}
 			</GuestBookList>
 
-			{!isScrollable && (
+			{guestBookData.length > 4 && !isScrollable && (
 				// 스크롤 활성화 후 버튼 숨김
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
