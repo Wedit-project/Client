@@ -38,7 +38,9 @@ const PrevButton = styled.button`
 	letter-spacing: -0.456px;
 `;
 
-const NextButton = styled.button`
+const NextButton = styled.button.withConfig({
+	shouldForwardProp: (prop) => !['isActive'].includes(prop), // isActive를 DOM에 전달하지 않음
+})`
 	width: 19.8rem;
 	padding: 1.3rem 7.7rem;
 	border: none;
