@@ -9,7 +9,6 @@ const GalleryPhoto = ({ previewImage, secondImage, thirdImage, step }) => {
 	return (
 		<Container>
 			<FirstPhotoBox>
-				{/* FirstPhotoBox에 previewImage가 있으면 해당 이미지를 표시 */}
 				{previewImage ? (
 					<img
 						src={previewImage}
@@ -22,7 +21,6 @@ const GalleryPhoto = ({ previewImage, secondImage, thirdImage, step }) => {
 			</FirstPhotoBox>
 			<NextPhotoBox>
 				<SecondPhotoBox isActive={step >= 2}>
-					{/* SecondPhotoBox에 secondImage가 있으면 해당 이미지를 표시 */}
 					{step >= 2 && secondImage ? (
 						<img
 							src={secondImage}
@@ -36,15 +34,13 @@ const GalleryPhoto = ({ previewImage, secondImage, thirdImage, step }) => {
 					)}
 				</SecondPhotoBox>
 				<ThirdPhotoBox isActive={step >= 3}>
-					{/* ThirdPhotoBox에 thirdImage가 있으면 해당 이미지를 표시 */}
 					{step >= 3 && thirdImage ? (
 						<img
 							src={thirdImage}
 							alt="Selected"
 							style={{ width: '100%', height: '100%', borderRadius: '1.6rem' }}
 						/>
-					) : // ThirdPhotoBox가 세 번째 단계에서 선택되었을 때만 PhotoVectorIcon3을 표시
-					step === 1 || step === 2 ? (
+					) : step === 1 || step === 2 ? (
 						<PhotoVectorIcon2 />
 					) : (
 						<PhotoVectorIcon3 />
