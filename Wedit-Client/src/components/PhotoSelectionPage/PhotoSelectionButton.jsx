@@ -10,9 +10,9 @@ const PhotoSelectionButton = ({ onFileSelect }) => {
 			const reader = new FileReader();
 			reader.onloadend = () => {
 				const imageSrc = reader.result;
-				onFileSelect(imageSrc); // Pass the image src to the parent
+				onFileSelect(imageSrc);
 			};
-			reader.readAsDataURL(file); // Read the file as a data URL
+			reader.readAsDataURL(file);
 		}
 	};
 
