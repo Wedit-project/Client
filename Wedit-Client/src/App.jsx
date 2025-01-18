@@ -5,7 +5,8 @@ import NotFound from './pages/NotFound.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import MyPage from './pages/MyPage.jsx';
 import EditPage from './pages/EditPage.jsx';
-import PhotoSelectionPage from './pages/PhotoSelectionPage.jsx';
+import MainPhotoSelectionPage from './pages/MainPhotoSelectionPage.jsx';
+import GalleryPhotoSelectionPage from './pages/GalleryPhotoSelectionPage.jsx';
 import OptionSelectionPage from './pages/OptionSelectionPage.jsx';
 import AccountInfoPage from './pages/AccountInfoPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
@@ -30,8 +31,12 @@ const router = createBrowserRouter([
 		element: <EditPage />,
 	},
 	{
-		path: 'photo-selection',
-		element: <PhotoSelectionPage />,
+		path: 'main-photo-selection',
+		element: <MainPhotoSelectionPage />,
+	},
+	{
+		path: 'gallery-photo-selection',
+		element: <GalleryPhotoSelectionPage />,
 	},
 	{
 		path: 'option-selection',
