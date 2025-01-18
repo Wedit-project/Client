@@ -454,8 +454,8 @@ const PhotoPrevIcon = styled(PhotoPrev)`
 `;
 
 const AddPhotoButton = styled.button`
-	width: 10.2099rem;
-	height: 10.7108rem;
+	width: 10.2rem;
+	height: 10.7rem;
 	border: none;
 	border-radius: 0.4rem;
 	background-color: #d9d9d9;
