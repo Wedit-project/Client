@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import theme from "../../styles/theme";
 
-const EditButton = ({ className }) => {
+export const CreateInvitationButton = ({ className }) => {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
@@ -16,8 +16,6 @@ const EditButton = ({ className }) => {
     </Button>
   );
 };
-
-export default EditButton;
 
 // CSS
 const Button = styled.button`

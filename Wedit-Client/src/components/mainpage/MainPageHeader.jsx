@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { LoginButton } from "./LoginButton";
-import CreateInvitationButton from "./CreatInvitationButton";
+import { CreateInvitationButton } from "./CreateInvitationButton";
 import Logo from "../../assets/icons/Logo.svg?react"; // Logo 컴포넌트를 불러옵니다.
 
 const Header = () => {
