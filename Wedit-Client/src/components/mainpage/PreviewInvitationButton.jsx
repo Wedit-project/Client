@@ -1,9 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom"; // React Router's navigation hook
 import theme from "../../styles/theme";
 
 const PreviewButton = () => {
-  return <Button>청첩장 미리보기</Button>;
+  const navigate = useNavigate(); // useNavigate hook for navigation
+
+  const handleNavigation = () => {
+    navigate("/preview-invitation"); // Navigate to PreviewInvitation page
+  };
+
+  return <Button onClick={handleNavigation}>청첩장 미리보기</Button>;
 };
 
 export default PreviewButton;
