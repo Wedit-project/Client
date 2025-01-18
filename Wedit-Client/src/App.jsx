@@ -11,6 +11,7 @@ import OptionSelectionPage from './pages/OptionSelectionPage.jsx';
 import AccountInfoPage from './pages/AccountInfoPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
 import WeddingInvitationPage from './pages/WeddingInvitationPage.jsx';
+import PreviewInvitationPage from './pages/PreviewInvitationPage.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
 		path: 'wedding-invitation',
 		element: <WeddingInvitationPage />,
 	},
+	{
+		path: 'preview-invitation',
+		element: <PreviewInvitationPage />,
+	},	  
 ]);
 
 function App() {
