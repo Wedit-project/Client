@@ -42,7 +42,7 @@ const MainPhotoSelectionPage = () => {
 			<Container>
 				<ContentContainer>
 					<MainPhotoBox>
-						{previewImage ? ( // Conditional rendering for preview
+						{previewImage ? (
 							<img
 								src={previewImage}
 								alt="미리보기"
