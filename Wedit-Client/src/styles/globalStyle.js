@@ -22,6 +22,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  @media screen and (max-width: 479px) {
+    html {
+      font-size: 17%;
+    }
+  }
 `;
 
 export default GlobalStyle;

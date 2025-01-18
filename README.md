@@ -182,7 +182,7 @@
   @media (min-width: 480px) and (max-width: 1023px) {
     /* 태블릿 */
   }
-  @media (max-width: 480px) {
+  @media (max-width: 479px) {
     /* 모바일 */
   }
   ```
