@@ -42,7 +42,7 @@ const BackgroundBox = styled.div`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background: #fff;
+	background: ${theme.colors.gray['0']};
 `;
 
 const TriangleIcon = styled(Triangle)`
@@ -52,13 +52,13 @@ const TriangleIcon = styled(Triangle)`
 
 const DescriptionSpan = styled.span`
 	display: block;
-	color: #000;
+	color: ${theme.colors.gray['900']};
 	font-family: Pretendard;
 	font-size: 2.4rem;
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const SelectLabel = styled.label`
@@ -69,7 +69,7 @@ const SelectLabel = styled.label`
 	font-size: 2.4rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 	text-decoration-line: underline;
 `;
 
