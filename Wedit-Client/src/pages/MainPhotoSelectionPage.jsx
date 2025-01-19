@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../src/styles/theme';
-import LogoComponent from '../components/Logo';
+import theme from '../styles/theme';
+import LogoComponent from '../components/editpage/Logo';
 import PhotoSelectionButton from '../components/PhotoSelectionPage/PhotoSelectionButton';
 import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
-import NavButton from '../components/NavButton';
+import NavButton from '../components/editpage/NavButton';
 import PhotoVector from '../assets/img/photovector1.svg?react';
 
 const MainPhotoSelectionPage = () => {
@@ -19,7 +19,7 @@ const MainPhotoSelectionPage = () => {
 
 	const handleNext = () => {
 		if (isNextActive) {
-			navigate('/gallery-photo-selection');
+			navigate('/gallery-photo-selection', { state: { mainImage: previewImage } });
 		}
 	};
 
@@ -95,7 +95,7 @@ const TitleBox = styled.div`
 	font-family: Pretendard;
 	font-weight: ${theme.font.bold.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 `;
 
 const DescriptionBox = styled.div`
@@ -108,13 +108,12 @@ const DescriptionSpan = styled.span`
 	display: block;
 	width: 35.2rem;
 	height: 4.1rem;
-	color: var(--black, #000);
 	font-family: Pretendard;
 	font-size: 2.4rem;
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const CautionSpan = styled.span`
@@ -128,7 +127,7 @@ const CautionSpan = styled.span`
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const Container = styled.div`
@@ -172,7 +171,7 @@ const LabelSpan = styled.span`
 	font-size: 3.2rem;
 	font-weight: ${theme.font.bold.fontWeight};
 	line-height: 2.9252rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 	margin-bottom: 2.9rem;
 `;
 
@@ -181,7 +180,7 @@ const FamilyNameBox = styled.div`
 	font-size: 3.2rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 4.5707rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 	margin-bottom: 5.742rem;
 `;
 
@@ -190,7 +189,7 @@ const DateBox = styled.div`
 	font-size: 3.2rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 2.9252rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 	margin-bottom: 8.194rem;
 `;
 
@@ -199,7 +198,7 @@ const LocationBox = styled.div`
 	font-size: 3.2rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.6565rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 `;
 
 const SelectionButtonBox = styled.div`
