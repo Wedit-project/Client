@@ -1,21 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
-import LogoComponent from '../components/Logo';
-import NavButton from '../components/NavButton';
+import LogoComponent from '../components/editpage/Logo';
+import NavButton from '../components/editpage/NavButton';
 
 const AccountInfoPage = () => {
-	const [isNextActive, setIsNextActive] = useState(false); // 다음 버튼 활성화 상태
+	const navigate = useNavigate();
+	const [isNextActive, setIsNextActive] = useState(false);
+	const [bankGroom, setBankGroom] = useState('');
+	const [accountNumGroom, setAccountNumGroom] = useState('');
+	const [accountNameGroom, setAccountNameGroom] = useState('');
+	const [bankBride, setBankBride] = useState('');
+	const [accountNumBride, setAccountNumBride] = useState('');
+	const [accountNameBride, setAccountNameBride] = useState('');
 
 	const handlePrevious = () => {
-		console.log('이전 버튼 클릭');
-		// 이전 페이지로 이동하는 로직 추가
+		navigate('/option-selection');
 	};
 
 	const handleNext = () => {
-		console.log('다음 버튼 클릭');
-		// 다음 페이지로 이동하는 로직 추가
+		navigate('/loading');
 	};
+
+	useEffect(() => {
+		const allFieldsFilled =
+			bankGroom &&
+			accountNumGroom &&
+			accountNameGroom &&
+			bankBride &&
+			accountNumBride &&
+			accountNameBride;
+
+		setIsNextActive(allFieldsFilled);
+	}, [bankGroom, accountNumGroom, accountNameGroom, bankBride, accountNumBride, accountNameBride]);
 
 	return (
 		<Wrapper>
@@ -28,17 +46,23 @@ const AccountInfoPage = () => {
 						<BankAndNumBox>
 							<InfoBox>
 								<LabelSpan>신랑측 은행:</LabelSpan>
-								<InfoInput />
+								<InfoInput value={bankGroom} onChange={(e) => setBankGroom(e.target.value)} />
 							</InfoBox>
 							<InfoBox>
 								<LabelSpan>신랑측 계좌번호:</LabelSpan>
-								<InfoInput />
+								<InfoInput
+									value={accountNumGroom}
+									onChange={(e) => setAccountNumGroom(e.target.value)}
+								/>
 							</InfoBox>
 						</BankAndNumBox>
 						<AccountNameBox>
 							<InfoBox>
 								<LabelSpan>신랑측 계좌명:</LabelSpan>
-								<NameInput />
+								<NameInput
+									value={accountNameGroom}
+									onChange={(e) => setAccountNameGroom(e.target.value)}
+								/>
 							</InfoBox>
 						</AccountNameBox>
 					</AccountBox>
@@ -46,28 +70,30 @@ const AccountInfoPage = () => {
 						<BankAndNumBox>
 							<InfoBox>
 								<LabelSpan>신부측 은행:</LabelSpan>
-								<InfoInput />
+								<InfoInput value={bankBride} onChange={(e) => setBankBride(e.target.value)} />
 							</InfoBox>
 							<InfoBox>
 								<LabelSpan>신부측 계좌번호:</LabelSpan>
-								<InfoInput />
+								<InfoInput
+									value={accountNumBride}
+									onChange={(e) => setAccountNumBride(e.target.value)}
+								/>
 							</InfoBox>
 						</BankAndNumBox>
 						<AccountNameBox>
 							<InfoBox>
 								<LabelSpan>신부측 계좌명:</LabelSpan>
-								<NameInput />
+								<NameInput
+									value={accountNameBride}
+									onChange={(e) => setAccountNameBride(e.target.value)}
+								/>
 							</InfoBox>
 						</AccountNameBox>
 					</AccountBox>
 				</Container>
-				<CautionBox>필수 정보를 모두 입력해 주세요!</CautionBox>
+				<CautionBox>{!isNextActive && '필수 정보를 모두 입력해 주세요!'}</CautionBox>
 				<NavBox>
-					<NavButton
-						onPrevious={handlePrevious}
-						onNext={handleNext}
-						isNextActive={isNextActive} // 다음 버튼 활성화 상태 전달
-					/>
+					<NavButton onPrevious={handlePrevious} onNext={handleNext} isNextActive={isNextActive} />
 				</NavBox>
 			</CenterBox>
 		</Wrapper>
@@ -91,20 +117,20 @@ const TitleBox = styled.div`
 	font-size: 3.2rem;
 	font-family: Pretendard;
 	font-weight: ${theme.font.bold.fontWeight};
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 `;
 
 const DescriptionSpan = styled.div`
 	width: 76.1rem;
 	margin-top: 1.6rem;
 	margin-left: 7.9rem;
-	color: var(--black, #000);
+	color: ${theme.colors.gray['900']};
 	font-family: Pretendard;
 	font-size: 2.4rem;
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const CenterBox = styled.div`
@@ -147,7 +173,7 @@ const LabelSpan = styled.span`
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const InfoInput = styled.input`
@@ -155,14 +181,14 @@ const InfoInput = styled.input`
 	padding: 0.9rem 1.8rem;
 	margin-left: 2.4rem;
 	border-radius: 5px;
-	border: 1px solid var(--gray_6, #a8a8a8);
+	border: 1px solid ${theme.colors.gray['600']};
 	background: rgba(217, 217, 217, 0);
 	font-family: Pretendard;
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.6565rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const NameInput = styled.input`
@@ -170,14 +196,14 @@ const NameInput = styled.input`
 	padding: 0.9rem 1.8rem;
 	margin-left: 2.4rem;
 	border-radius: 5px;
-	border: 1px solid var(--gray_6, #a8a8a8);
+	border: 1px solid ${theme.colors.gray['600']};
 	background: rgba(217, 217, 217, 0);
 	font-family: Pretendard;
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.6565rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const CautionBox = styled.div`
