@@ -16,33 +16,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @media (min-width: 768px) and (max-width: 1023px) {
+  @media screen and (min-width: 480px) and (max-width: 1023px) {
     html {
-      font-size: 62.5%;
+      font-size: 34%;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  @media screen and (max-width: 479px) {
     html {
-      font-size: 62.5%;
-    }
-  }
-
-  @media (min-width: 600px) and (max-width: 768px) and (orientation: portrait) {
-    html {
-      font-size: 62.5%;
-    }
-  }
-
-  @media (min-width: 480px) and (max-width: 768px) and (orientation: landscape) {
-    html {
-      font-size: 62.5%;
-    }
-  }
-
-  @media (max-width: 479px) and (orientation: portrait) {
-    html {
-      font-size: 62.5%;
+      font-size: 17%;
     }
   }
 `;
