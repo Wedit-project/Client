@@ -43,7 +43,7 @@ const ProgressBarBox = styled.div`
 	width: 112rem;
 	height: 6rem;
 	border-radius: 3rem;
-	background: var(--gray_2, #e0e0e0);
+	background: ${theme.colors.gray['300']};
 `;
 
 const ProgressBox = styled.div`
@@ -51,17 +51,17 @@ const ProgressBox = styled.div`
 	width: 52.9rem;
 	height: 6rem;
 	border-radius: 3rem;
-	background: var(--main-green, #acb66d);
+	background: ${theme.colors.green['main']};
 `;
 
 const LoadingTextBox = styled.div`
 	margin-top: 3.8rem;
 	margin-bottom: 14.4rem;
-	color: #000;
+	color: ${theme.colors.gray['900']};
 	font-family: Pretendard;
 	font-size: 3.2rem;
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 `;
