@@ -5,7 +5,8 @@ import theme from '../../styles/theme';
 const RSVPModal = ({ isVisible, onClose }) => {
 	const [name, setName] = useState('');
 	const [phone, setPhone] = useState('');
-	const [guestNum, setguestNum] = useState(0);
+	const [guestNum, setGuestNum] = useState(0);
+	const [sideSelect, setSideSelect] = useState(0);
 
 	// ModalContainer 밖인 ModalWrapper 클릭 시 모달창 닫힘
 	const handleWrapperClick = (e) => {
@@ -16,7 +17,8 @@ const RSVPModal = ({ isVisible, onClose }) => {
 	};
 
 	// 이름, 연락처, 추가 인원 선택 여부 확인
-	const isButtonActive = name.trim() !== '' && phone.trim() !== '' && guestNum !== 0;
+	const isButtonActive =
+		name.trim() !== '' && phone.trim() !== '' && guestNum !== 0 && sideSelect !== 0;
 
 	return (
 		isVisible && (
@@ -24,6 +26,15 @@ const RSVPModal = ({ isVisible, onClose }) => {
 				<ModalContainer>
 					<TitleSpan>참석의사 전달하기</TitleSpan>
 					<ModalBox>
+						<SideSelectDropdown
+							value={sideSelect === 0 ? '' : sideSelect}
+							onChange={(e) => setSideSelect(Number(e.target.value))}>
+							<option value="" disabled hidden>
+								신랑측인지 신부측인지 선택해 주세요
+							</option>
+							<option>신랑측</option>
+							<option>신부측</option>
+						</SideSelectDropdown>
 						<NameInput
 							type="text"
 							placeholder="이름을 입력해 주세요"
@@ -37,7 +48,7 @@ const RSVPModal = ({ isVisible, onClose }) => {
 						/>
 						<GuestNumDropdown
 							value={guestNum === 0 ? '' : guestNum}
-							onChange={(e) => setguestNum(Number(e.target.value))}>
+							onChange={(e) => setGuestNum(Number(e.target.value))}>
 							<option value="" disabled hidden>
 								추가 인원
 							</option>
@@ -46,7 +57,7 @@ const RSVPModal = ({ isVisible, onClose }) => {
 							<option>외 2명</option>
 							<option>외 3명</option>
 							<option>외 4명</option>
-							<option>외 5명 이상</option>
+							<option>외 5명</option>
 						</GuestNumDropdown>
 
 						<SubmitButton isActive={isButtonActive}>전달 하기</SubmitButton>
@@ -74,7 +85,7 @@ const ModalWrapper = styled.div`
 
 const ModalContainer = styled.div`
 	width: 80.8rem;
-	height: 70.1rem;
+	height: 84.5rem;
 	border-radius: 4rem;
 	background: ${theme.colors.background.background2};
 	display: flex;
@@ -96,6 +107,23 @@ const TitleSpan = styled.p`
 	margin: 8.3rem 49.1rem 6.5rem 10.7rem;
 `;
 
+const SideSelectDropdown = styled.select`
+	border-radius: 1.6rem;
+	border: 0.1rem solid ${theme.colors.gray[500]};
+	background: ${theme.colors.background.background2};
+	display: flex;
+	width: 63.3rem;
+	height: 8.8rem;
+	color: ${theme.colors.gray[600]};
+	font-weight: ${theme.font.semibold.fontWeight};
+	font-size: ${theme.fontSize.xlarge};
+	font-style: normal;
+	line-height: 133.333%;
+	letter-spacing: -0.0456rem;
+	padding-left: 2.8rem;
+	padding-right: 2.8rem;
+`;
+
 const NameInput = styled.input`
 	border-radius: 1.6rem;
 	border: 0.1rem solid ${theme.colors.gray[500]};
@@ -106,7 +134,6 @@ const NameInput = styled.input`
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
-	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
@@ -115,6 +142,10 @@ const NameInput = styled.input`
 	padding-left: 3.1rem;
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
+
+	&::placeholder {
+		color: ${theme.colors.gray[600]};
+	}
 `;
 
 const PhoneInput = styled.input`
@@ -127,7 +158,6 @@ const PhoneInput = styled.input`
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
-	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
@@ -136,6 +166,10 @@ const PhoneInput = styled.input`
 	padding-left: 3.1rem;
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
+
+	&::placeholder {
+		color: ${theme.colors.gray[600]};
+	}
 `;
 
 const GuestNumDropdown = styled.select`
@@ -156,6 +190,7 @@ const GuestNumDropdown = styled.select`
 `;
 
 const SubmitButton = styled.button`
+	margin-top: 1.7rem;
 	border-radius: 1.6rem;
 	border: 0.1rem solid ${theme.colors.gray[500]};
 	background: ${({ isActive }) => (isActive ? '#ACB66D' : 'rgba(172, 182, 109, 0.5)')};
@@ -173,4 +208,5 @@ const SubmitButton = styled.button`
 	font-style: normal;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+	margin-bottom: 5.8rem;
 `;
