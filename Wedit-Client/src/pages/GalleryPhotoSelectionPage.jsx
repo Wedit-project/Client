@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import theme from '../../src/styles/theme';
-import LogoComponent from '../components/Logo';
+import theme from '../styles/theme';
+import LogoComponent from '../components/editpage/Logo';
 import GalleryPhoto from '../components/PhotoSelectionPage/GalleryPhoto';
 import PhotoSelectionButton from '../components/PhotoSelectionPage/PhotoSelectionButton';
 import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
-import NavButton from '../components/NavButton';
+import NavButton from '../components/editpage/NavButton';
 
 const GalleryPhotoSelectionPage = () => {
+	const location = useLocation();
+	const mainImage = location.state?.mainImage;
 	const [isNextActive, setIsNextActive] = useState(false);
-	const [previewImage, setPreviewImage] = useState(null); // FirstPhotoBox의 이미지
-	const [secondImage, setSecondImage] = useState(null); // SecondPhotoBox에 들어갈 이미지
-	const [thirdImage, setThirdImage] = useState(null); // ThirdPhotoBox에 들어갈 이미지
-	const [step, setStep] = useState(1); // 현재 단계 추적
+	const [previewImage, setPreviewImage] = useState(null);
+	const [secondImage, setSecondImage] = useState(null);
+	const [thirdImage, setThirdImage] = useState(null);
+	const [step, setStep] = useState(1);
 
 	const navigate = useNavigate();
 
@@ -24,7 +26,9 @@ const GalleryPhotoSelectionPage = () => {
 	const handleNext = () => {
 		if (isNextActive) {
 			if (step === 3) {
-				navigate('/edit');
+				navigate('/edit', {
+					state: { selectedImages: [mainImage, previewImage, secondImage, thirdImage] },
+				});
 			} else {
 				setStep((prev) => prev + 1);
 			}
@@ -102,7 +106,7 @@ const TitleBox = styled.div`
 	font-family: Pretendard;
 	font-weight: ${theme.font.bold.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 `;
 
 const DescriptionBox = styled.div`
@@ -115,13 +119,12 @@ const DescriptionSpan = styled.span`
 	display: block;
 	width: 35.2rem;
 	height: 4.1rem;
-	color: var(--black, #000);
 	font-family: Pretendard;
 	font-size: 2.4rem;
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const CautionSpan = styled.span`
@@ -135,7 +138,7 @@ const CautionSpan = styled.span`
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const Container = styled.div`

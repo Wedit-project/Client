@@ -1,21 +1,36 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
-import LogoComponent from '../components/Logo';
-import OptSelection from '../components/OptSelection';
-import NavButton from '../components/NavButton';
+import LogoComponent from '../components/editpage/Logo';
+import OptSelection from '../components/editpage/OptSelection';
+import NavButton from '../components/editpage/NavButton';
 
 const OptionSelectionPage = () => {
-	const [isNextActive, setIsNextActive] = useState(false); // 다음 버튼 활성화 상태
+	const navigate = useNavigate();
+	const [isNextActive, setIsNextActive] = useState(true);
+	const [checkedItems, setCheckedItems] = useState({
+		guestbook: true,
+		rsvp: false,
+		accountInfo: false,
+	});
+
+	const handleCheckChange = (newCheckedItems) => {
+		setCheckedItems(newCheckedItems);
+		const anyChecked = Object.values(newCheckedItems).some((checked) => checked);
+		setIsNextActive(anyChecked);
+	};
 
 	const handlePrevious = () => {
-		console.log('이전 버튼 클릭');
-		// 이전 페이지로 이동하는 로직 추가
+		navigate('/edit');
 	};
 
 	const handleNext = () => {
-		console.log('다음 버튼 클릭');
-		// 다음 페이지로 이동하는 로직 추가
+		if (checkedItems.accountInfo) {
+			navigate('/account-information');
+		} else {
+			navigate('/loading');
+		}
 	};
 
 	return (
@@ -25,15 +40,11 @@ const OptionSelectionPage = () => {
 			<DescriptionSpan>1개 이상의 옵션을 선택해주세요.</DescriptionSpan>
 			<CenterBox>
 				<ContentContainer>
-					<OptSelection />
+					<OptSelection checkedItems={checkedItems} onCheckChange={handleCheckChange} />
 				</ContentContainer>
-				<CautionBox>1개 의상의 옵션을 선택을 해주세요!</CautionBox>
+				<CautionBox>{!isNextActive && '1개 이상의 옵션을 선택을 해주세요!'}</CautionBox>
 				<NavBox>
-					<NavButton
-						onPrevious={handlePrevious}
-						onNext={handleNext}
-						isNextActive={isNextActive} // 다음 버튼 활성화 상태 전달
-					/>
+					<NavButton onPrevious={handlePrevious} onNext={handleNext} isNextActive={isNextActive} />
 				</NavBox>
 			</CenterBox>
 		</Wrapper>
@@ -57,7 +68,7 @@ const TitleSpan = styled.span`
 	font-size: 3.2rem;
 	font-family: Pretendard;
 	font-weight: ${theme.font.bold.fontWeight};
-	letter-spacing: -0.608px;
+	letter-spacing: -0.0608rem;
 `;
 
 const DescriptionSpan = styled.span`
@@ -66,13 +77,12 @@ const DescriptionSpan = styled.span`
 	top: 18.8rem;
 	left: 7.5rem;
 	width: 76.1rem;
-	color: var(--black, #000);
 	font-family: Pretendard;
 	font-size: 2.4rem;
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const CenterBox = styled.div`
@@ -97,7 +107,7 @@ const CautionBox = styled.div`
 	font-style: normal;
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
-	letter-spacing: -0.456px;
+	letter-spacing: -0.0456rem;
 `;
 
 const NavBox = styled.div`
