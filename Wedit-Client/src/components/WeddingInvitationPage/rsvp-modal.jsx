@@ -76,7 +76,7 @@ const ModalContainer = styled.div`
 	width: 80.8rem;
 	height: 70.1rem;
 	border-radius: 4rem;
-	background: #fff;
+	background: ${theme.colors.background.background2};
 	display: flex;
 	flex-direction: column;
 `;
@@ -98,15 +98,15 @@ const TitleSpan = styled.p`
 
 const NameInput = styled.input`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
-	background: #fff;
+	border: 0.1rem solid ${theme.colors.gray[500]};
+	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 59.3rem;
 	height: 3.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
-	color: #808080;
+	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
@@ -119,15 +119,15 @@ const NameInput = styled.input`
 
 const PhoneInput = styled.input`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
-	background: #fff;
+	border: 0.1rem solid ${theme.colors.gray[500]};
+	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 59.3rem;
 	height: 3.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
-	color: #808080;
+	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
@@ -140,12 +140,12 @@ const PhoneInput = styled.input`
 
 const GuestNumDropdown = styled.select`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
-	background: #fff;
+	border: 0.1rem solid ${theme.colors.gray[500]};
+	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 63.3rem;
 	height: 8.8rem;
-	color: #808080;
+	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-style: normal;
@@ -157,7 +157,7 @@ const GuestNumDropdown = styled.select`
 
 const SubmitButton = styled.button`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
+	border: 0.1rem solid ${theme.colors.gray[500]};
 	background: ${({ isActive }) => (isActive ? '#ACB66D' : 'rgba(172, 182, 109, 0.5)')};
 	cursor: ${({ isActive }) => (isActive ? 'pointer' : 'default')};
 	display: flex;
@@ -166,7 +166,7 @@ const SubmitButton = styled.button`
 	justify-content: center;
 	align-items: center;
 	flex-shrink: 0;
-	color: #fff;
+	color: ${theme.colors.background.background2};
 	text-align: center;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};

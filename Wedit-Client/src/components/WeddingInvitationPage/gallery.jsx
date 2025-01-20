@@ -28,7 +28,7 @@ const GalleryWrapper = styled.div`
 
 const GallerySpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: #acb66d;
+	color: ${theme.colors.green.main};
 	font-size: 4.3878rem;
 	font-style: normal;
 	line-height: 66.667%;
@@ -42,14 +42,14 @@ const GallerySpan = styled.span`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			color: var(--brown, #3c140d);
+			color: ${theme.colors.traditionalWedding.invitation5};
 			&::before,
 			&::after {
 				content: '';
 				display: block;
 				width: 49rem;
 				height: 0.2rem;
-				background-color: var(--brown, #3c140d);
+				background-color: ${theme.colors.traditionalWedding.invitation5};
 			}
 
 			&::before {

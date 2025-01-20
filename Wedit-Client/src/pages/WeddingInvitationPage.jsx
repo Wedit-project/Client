@@ -61,14 +61,14 @@ const MoveButtonBox = styled.div`
 const HomePageButton = styled(Link)`
 	text-decoration: none;
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--gray-0, #fff);
+	color: ${theme.colors.gray[0]};
 	font-size: 3.3rem;
 	font-style: normal;
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray-300, #e4e4e4);
-	background: #acb66d;
+	border: 0.1rem solid ${theme.colors.gray[300]};
+	background: ${theme.colors.green.main};
 	display: flex;
 	width: 35rem;
 	height: 10rem;
@@ -78,20 +78,20 @@ const HomePageButton = styled(Link)`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			background: var(--Basic-wedding-invitation-2-4, #4d5941);
+			background: ${theme.colors.traditionalWedding.invitation4};
 		`}
 `;
 const MyPageButton = styled(Link)`
 	text-decoration: none;
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--gray-0, #fff);
+	color: ${theme.colors.gray[0]};
 	font-size: 3.3rem;
 	font-style: normal;
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray-300, #e4e4e4);
-	background: #acb66d;
+	border: 0.1rem solid ${theme.colors.gray[300]};
+	background: ${theme.colors.green.main};
 	display: flex;
 	width: 35rem;
 	height: 10rem;
@@ -101,6 +101,6 @@ const MyPageButton = styled(Link)`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			background: var(--Basic-wedding-invitation-2-4, #4d5941);
+			background: ${theme.colors.traditionalWedding.invitation4};
 		`}
 `;
