@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import GuestBookModal from './guest-book-modal';
@@ -21,14 +21,33 @@ const GuestBook = ({ $variant = 'basic' }) => {
 		setModalVisible(false);
 	};
 
+	const [isLoading, setIsLoading] = useState(true);
+
+	// 로딩 시뮬레이션, 추후 API 호출 로직으로 대체
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsLoading(false);
+		}, 1000);
+		return () => clearTimeout(timer);
+	}, []);
+
 	return (
 		<GuestBookWrapper>
 			<GuestBookSpan $variant={$variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
 				{guestBookData.map((item, index) => (
 					<GuestBookItem key={index}>
-						<GuestNameText>{item.name}</GuestNameText>
-						<ContentText>{item.content}</ContentText>
+						{isLoading ? (
+							<>
+								<Skeleton />
+								<Skeleton />
+							</>
+						) : (
+							<>
+								<GuestNameText>{item.name}</GuestNameText>
+								<ContentText>{item.content}</ContentText>
+							</>
+						)}
 					</GuestBookItem>
 				))}
 			</GuestBookList>
@@ -88,7 +107,6 @@ const guestBookData = [
 	},
 ];
 
-// CSS
 const GuestBookWrapper = styled.div`
 	margin-top: 15.9rem;
 	display: flex;
@@ -133,7 +151,6 @@ const GuestBookSpan = styled.span`
 `;
 
 const GuestBookList = styled.div.withConfig({
-	// isScrollable가 CSS로만 사용되도록
 	shouldForwardProp: (prop) => prop !== 'isScrollable',
 })`
 	margin-top: 7.05rem;
@@ -173,6 +190,25 @@ const ContentText = styled.p`
 	line-height: 88.643%;
 	letter-spacing: -0.0627rem;
 	margin-bottom: 0;
+`;
+
+const Skeleton = styled.div`
+	width: 100%;
+	height: 3.5rem;
+	border-radius: 1rem;
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 0.8rem;
+	margin-bottom: 0.6rem;
+	@keyframes shimmer {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
+	}
 `;
 
 const MoreButton = styled.button`
