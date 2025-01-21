@@ -89,7 +89,7 @@ const ModalBox = styled.div`
 
 const TitleSpan = styled.p`
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 30px;
+	font-size: 3rem;
 	font-style: normal;
 	line-height: 106.667%;
 	letter-spacing: -0.057rem;
@@ -116,6 +116,9 @@ const NameInput = styled.input`
 	padding-left: 2.5rem;
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
+	&::placeholder {
+		color: ${theme.colors.gray[600]};
+	}
 `;
 
 const ContentBox = styled.div`
@@ -143,6 +146,9 @@ const ContentInput = styled.textarea`
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
 	resize: none;
+	&::placeholder {
+		color: ${theme.colors.gray[600]};
+	}
 `;
 
 const ContentCount = styled.div`
