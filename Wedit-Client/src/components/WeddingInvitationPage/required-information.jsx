@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
 const RequiredInformation = () => {
+	const [isImageLoading, setIsImageLoading] = useState(true);
+
 	return (
 		<RequiredInformationTextWrapper>
 			<RequiredInformationTextContainer>
-				<MainImage />
+				<MainImageBox>
+					{isImageLoading && <Skeleton />}
+					<MainImage
+						isLoading={isImageLoading}
+						src="src/assets/img/gallery1.png"
+						alt="Main Image"
+						onLoad={() => setIsImageLoading(false)}
+					/>
+				</MainImageBox>
 				<RequiredInformationTextBox>
 					<GroomBrideNameSpan>김 도 현 ❤️ 은 수 아</GroomBrideNameSpan>
 					<GroomParentsNameText>아버지 김철현 / 어머니 김순자</GroomParentsNameText>
@@ -37,12 +47,36 @@ const RequiredInformationTextContainer = styled.div`
 	gap: 7.7rem;
 `;
 
-const MainImage = styled.div`
-	background: url('src/assets/img/gallery1.png') center center / cover;
+const MainImageBox = styled.div`
 	width: 48.7rem;
 	height: 55.5rem;
 	border-radius: 5rem;
-  }
+	position: relative;
+	overflow: hidden;
+`;
+
+const MainImage = styled.img`
+	width: 100%;
+	height: 100%;
+	border-radius: 5rem;
+	display: ${({ isLoading }) => (isLoading ? 'none' : 'block')};
+`;
+
+const Skeleton = styled.div`
+	width: 100%;
+	height: 100%;
+	border-radius: 5rem;
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	@keyframes shimmer {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
+	}
 `;
 
 const RequiredInformationTextBox = styled.div``;
