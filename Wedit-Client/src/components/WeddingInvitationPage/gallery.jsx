@@ -70,7 +70,7 @@ const GalleryContainer = styled.div`
 `;
 
 const GalleryImage2 = styled.img`
-	background: url('src/assets/img/gallery2.png');
+	background: url('src/assets/img/gallery2.png') center center / cover;
 	width: 48.3rem;
 	height: 62.8rem;
 	border-radius: 1.6rem;
@@ -82,7 +82,7 @@ const GalleryBox = styled.div`
 `;
 
 const GalleryImage3 = styled.img`
-	background: url('src/assets/img/gallery3.png');
+	background: url('src/assets/img/gallery3.png') center center / cover;
 	width: 58.1rem;
 	height: 29rem;
 	border-radius: 1.6rem;
@@ -90,7 +90,7 @@ const GalleryImage3 = styled.img`
 
 const GalleryImage4 = styled.img`
 	margin-top: 4.8rem;
-	background: url('src/assets/img/gallery4.png');
+	background: url('src/assets/img/gallery4.png') center center / cover;
 	width: 58.1rem;
 	height: 29rem;
 	border-radius: 1.6rem;

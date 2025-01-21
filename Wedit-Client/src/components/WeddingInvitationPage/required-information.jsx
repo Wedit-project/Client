@@ -37,11 +37,12 @@ const RequiredInformationTextContainer = styled.div`
 	gap: 7.7rem;
 `;
 
-const MainImage = styled.img`
-	background: url('src/assets/img/gallery1.png');
+const MainImage = styled.div`
+	background: url('src/assets/img/gallery1.png') center center / cover;
 	width: 48.7rem;
 	height: 55.5rem;
 	border-radius: 5rem;
+  }
 `;
 
 const RequiredInformationTextBox = styled.div``;
