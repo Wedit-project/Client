@@ -53,7 +53,9 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						<ThemaText $isVisible={!selectedCheckbox}>테마를 선택해 주세요!</ThemaText>
 						<ButtonBox>
 							<PreviousButton onClick={handlePreviousButtonClick}>이전</PreviousButton>
-							<NextButton to="/edit">다음</NextButton>
+							<NextButton isEnabled={selectedCheckbox} to="/edit">
+								다음
+							</NextButton>
 						</ButtonBox>
 					</ModalBox>
 				</ModalContainer>
@@ -233,7 +235,9 @@ const PreviousButton = styled.button`
 	border: none;
 `;
 
-const NextButton = styled(Link)`
+const NextButton = styled(Link).withConfig({
+	shouldForwardProp: (prop) => prop !== 'isEnabled', // isEnabled를 DOM으로 전달하지 않음
+})`
 	text-decoration: none;
 	display: flex;
 	width: 19.8rem;
@@ -242,7 +246,9 @@ const NextButton = styled(Link)`
 	align-items: center;
 	gap: 1rem;
 	border-radius: 1.6rem;
-	background: ${theme.colors.green['50%']};
+	background: ${({ isEnabled }) =>
+		isEnabled ? theme.colors.green.main : theme.colors.green['50%']};
+	pointer-events: ${({ isEnabled }) => (isEnabled ? 'auto' : 'none')};
 	color: ${theme.colors.gray[0]};
 	text-align: center;
 	font-weight: ${theme.font.semibold.fontWeight};
