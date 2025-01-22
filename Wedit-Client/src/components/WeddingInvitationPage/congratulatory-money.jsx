@@ -52,7 +52,7 @@ const CongratulatoryMoneyWrapper = styled.div`
 
 const GuestBookSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: #acb66d;
+	color: ${theme.colors.green.main};
 	font-size: 4.4rem;
 	font-style: normal;
 	line-height: 66.482%;
@@ -61,7 +61,7 @@ const GuestBookSpan = styled.span`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			color: var(--brown, #3c140d);
+			color: ${theme.colors.traditionalWedding.invitation5};
 		`}
 `;
 
@@ -74,8 +74,8 @@ const CongratulatoryMoneyContainer = styled.div`
 
 const GroomCongratulatoryMoneyBox = styled.div`
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray_3, #d9d9d9);
-	background: var(--white, #fff);
+	border: 0.1rem solid ${theme.colors.gray[300]};
+	background: ${theme.colors.background.background2};
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
 	width: 46.6rem;
 	height: 17.8rem;
@@ -84,7 +84,7 @@ const GroomCongratulatoryMoneyBox = styled.div`
 
 const BrideCongratulatoryMoneyBox = styled.div`
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray_3, #d9d9d9);
+	border: 0.1rem solid ${theme.colors.gray[300]};
 	background: var(--white, #fff);
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
 	width: 46.6rem;

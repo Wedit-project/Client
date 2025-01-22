@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import GuestBookModal from './guest-book-modal';
@@ -21,14 +21,33 @@ const GuestBook = ({ $variant = 'basic' }) => {
 		setModalVisible(false);
 	};
 
+	const [isLoading, setIsLoading] = useState(true);
+
+	// 로딩 시뮬레이션, 추후 API 호출 로직으로 대체
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsLoading(false);
+		}, 1000);
+		return () => clearTimeout(timer);
+	}, []);
+
 	return (
 		<GuestBookWrapper>
 			<GuestBookSpan $variant={$variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
 				{guestBookData.map((item, index) => (
 					<GuestBookItem key={index}>
-						<GuestNameText>{item.name}</GuestNameText>
-						<ContentText>{item.content}</ContentText>
+						{isLoading ? (
+							<>
+								<Skeleton />
+								<Skeleton />
+							</>
+						) : (
+							<>
+								<GuestNameText>{item.name}</GuestNameText>
+								<ContentText>{item.content}</ContentText>
+							</>
+						)}
 					</GuestBookItem>
 				))}
 			</GuestBookList>
@@ -88,7 +107,6 @@ const guestBookData = [
 	},
 ];
 
-// CSS
 const GuestBookWrapper = styled.div`
 	margin-top: 15.9rem;
 	display: flex;
@@ -98,7 +116,7 @@ const GuestBookWrapper = styled.div`
 
 const GuestBookSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: #acb66d;
+	color: ${theme.colors.green.main};
 	font-size: 4.3878rem;
 	font-style: normal;
 	line-height: 66.667%;
@@ -112,14 +130,14 @@ const GuestBookSpan = styled.span`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			color: var(--brown, #3c140d);
+			color: ${theme.colors.traditionalWedding.invitation5};
 			&::before,
 			&::after {
 				content: '';
 				display: block;
 				width: 49rem;
 				height: 0.2rem;
-				background-color: var(--brown, #3c140d);
+				background-color: ${theme.colors.traditionalWedding.invitation5};
 			}
 
 			&::before {
@@ -133,7 +151,6 @@ const GuestBookSpan = styled.span`
 `;
 
 const GuestBookList = styled.div.withConfig({
-	// isScrollable가 CSS로만 사용되도록
 	shouldForwardProp: (prop) => prop !== 'isScrollable',
 })`
 	margin-top: 7.05rem;
@@ -150,8 +167,8 @@ const GuestBookItem = styled.div`
 	height: 14.8rem;
 	padding: 3rem 2.5rem;
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray_3, #d9d9d9);
-	background: var(--white, #fff);
+	border: 0.1rem solid ${theme.colors.gray[300]};
+	background: ${theme.colors.background.background2};
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
 `;
 
@@ -175,6 +192,25 @@ const ContentText = styled.p`
 	margin-bottom: 0;
 `;
 
+const Skeleton = styled.div`
+	width: 100%;
+	height: 3.5rem;
+	border-radius: 1rem;
+	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 0.8rem;
+	margin-bottom: 0.6rem;
+	@keyframes shimmer {
+		0% {
+			background-position: 200% 0;
+		}
+		100% {
+			background-position: -200% 0;
+		}
+	}
+`;
+
 const MoreButton = styled.button`
 	margin-top: 5.15rem;
 	font-weight: ${theme.font.medium.fontWeight};
@@ -190,7 +226,7 @@ const MoreButton = styled.button`
 
 const WritingButton = styled.button`
 	margin-top: 2.9rem;
-	color: var(--gray-0, #fff);
+	color: ${theme.colors.gray[0]};
 	text-align: center;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: 2.2rem;
@@ -198,8 +234,8 @@ const WritingButton = styled.button`
 	line-height: 132.965%;
 	letter-spacing: -0.0418rem;
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray-300, #e4e4e4);
-	background: #acb66d;
+	border: 0.1rem solid ${theme.colors.gray[300]};
+	background: ${theme.colors.green.main};
 	display: inline-flex;
 	padding: 1.2rem 5.3rem;
 	justify-content: center;
@@ -210,6 +246,6 @@ const WritingButton = styled.button`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			background: var(--brown, #3c140d);
+			background: ${theme.colors.traditionalWedding.invitation5};
 		`}
 `;

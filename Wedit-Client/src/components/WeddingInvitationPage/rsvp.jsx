@@ -40,7 +40,7 @@ const RSVPWrapper = styled.div`
 
 const RSVPSpan = styled.span`
 	font-weight: ${theme.font.bold.fontWeight};
-	color: #acb66d;
+	color: ${theme.colors.green.main};
 	font-size: 4.4rem;
 	font-style: normal;
 	line-height: 66.482%;
@@ -54,14 +54,14 @@ const RSVPSpan = styled.span`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			color: var(--brown, #3c140d);
+			color: ${theme.colors.traditionalWedding.invitation5};
 			&::before,
 			&::after {
 				content: '';
 				display: block;
 				width: 39rem;
 				height: 0.2rem;
-				background-color: var(--brown, #3c140d);
+				background-color: ${theme.colors.traditionalWedding.invitation5};
 			}
 
 			&::before {
@@ -77,7 +77,7 @@ const RSVPSpan = styled.span`
 const RSVPText = styled.p`
 	margin-top: 4.5rem;
 	font-weight: ${theme.font.medium.fontWeight};
-	color: var(--brown, #3c140d);
+	color: ${theme.colors.traditionalWedding.invitation5};
 	text-align: center;
 	font-size: 2.2rem;
 	font-style: normal;
@@ -90,14 +90,14 @@ const RSVPText = styled.p`
 const RSVPButton = styled.button`
 	margin-top: 12.9rem;
 	font-weight: ${theme.font.bold.fontWeight};
-	color: var(--gray-0, #fff);
+	color: ${theme.colors.gray[0]};
 	text-align: center;
 	font-size: 2.2rem;
 	font-style: normal;
 	line-height: 132.965%;
 	letter-spacing: -0.0418rem;
 	border-radius: 1.6rem;
-	border: 0.1rem solid var(--gray-300, #e4e4e4);
+	border: 0.1rem solid ${theme.colors.gray[300]};
 	background: #acb66d;
 	display: flex;
 	width: 42.5986rem;
@@ -111,6 +111,6 @@ const RSVPButton = styled.button`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			background: var(--brown, #3c140d);
+			background: ${theme.colors.traditionalWedding.invitation5};
 		`}
 `;

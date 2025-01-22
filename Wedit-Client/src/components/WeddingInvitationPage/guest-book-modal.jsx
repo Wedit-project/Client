@@ -76,7 +76,7 @@ const ModalContainer = styled.div`
 	width: 80.8rem;
 	height: 78.7rem;
 	border-radius: 4rem;
-	background: #fff;
+	background: ${theme.colors.background.background2};
 	display: flex;
 	flex-direction: column;
 `;
@@ -89,7 +89,7 @@ const ModalBox = styled.div`
 
 const TitleSpan = styled.p`
 	font-weight: ${theme.font.bold.fontWeight};
-	font-size: 30px;
+	font-size: 3rem;
 	font-style: normal;
 	line-height: 106.667%;
 	letter-spacing: -0.057rem;
@@ -98,15 +98,15 @@ const TitleSpan = styled.p`
 
 const NameInput = styled.input`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
-	background: #fff;
+	border: 0.1rem solid ${theme.colors.gray[500]};
+	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 60.1rem;
 	height: 3.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
-	color: #808080;
+	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-family: Pretendard;
@@ -116,6 +116,9 @@ const NameInput = styled.input`
 	padding-left: 2.5rem;
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
+	&::placeholder {
+		color: ${theme.colors.gray[600]};
+	}
 `;
 
 const ContentBox = styled.div`
@@ -128,11 +131,11 @@ const ContentBox = styled.div`
 
 const ContentInput = styled.textarea`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
-	background: #fff;
+	border: 0.1rem solid ${theme.colors.gray[500]};
+	background: ${theme.colors.background.background2};
 	width: 100%;
 	height: 28.2rem;
-	color: #808080;
+	color: ${theme.colors.gray[600]};
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
 	font-family: Pretendard;
@@ -143,6 +146,9 @@ const ContentInput = styled.textarea`
 	padding-top: 2.8rem;
 	padding-bottom: 2.8rem;
 	resize: none;
+	&::placeholder {
+		color: ${theme.colors.gray[600]};
+	}
 `;
 
 const ContentCount = styled.div`
@@ -150,12 +156,12 @@ const ContentCount = styled.div`
 	bottom: 2.8rem;
 	right: 2.5rem;
 	font-size: ${theme.fontSize.medium};
-	color: #808080;
+	color: ${theme.colors.gray[500]};
 `;
 
 const SubmitButton = styled.button`
 	border-radius: 1.6rem;
-	border: 0.1rem solid #a8a8a8;
+	border: 0.1rem solid ${theme.colors.gray[500]};
 	background: ${({ isActive }) => (isActive ? '#ACB66D' : 'rgba(172, 182, 109, 0.5)')};
 	cursor: ${({ isActive }) => (isActive ? 'pointer' : 'default')};
 	display: flex;
@@ -164,7 +170,7 @@ const SubmitButton = styled.button`
 	justify-content: center;
 	align-items: center;
 	flex-shrink: 0;
-	color: #fff;
+	color: ${theme.colors.background.background2};
 	text-align: center;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
