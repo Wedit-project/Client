@@ -49,6 +49,7 @@ export default NameContainer;
 const Container = styled.div`
 	display: flex;
 	justify-content: center;
+	margin-top: 2.3rem;
 `;
 
 const GroomNameContainer = styled.div`
@@ -75,6 +76,11 @@ const NameLabelSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 17.1rem;
+	}
 `;
 
 const NameInput = styled.input`
@@ -89,4 +95,9 @@ const NameInput = styled.input`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 35.3rem;
+	}
 `;
