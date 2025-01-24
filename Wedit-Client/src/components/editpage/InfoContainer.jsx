@@ -116,12 +116,17 @@ const AddressLabelSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 14.8rem;
+	}
 `;
 
 const Zipcode = styled.input`
 	width: 23rem;
 	padding: 1.6rem 2rem;
-	margin-left: 2.4rem;
+	margin-left: 2.3rem;
 	border: none;
 	border-radius: 0.5rem;
 	background: rgba(182, 182, 182, 0.2);
@@ -132,6 +137,11 @@ const Zipcode = styled.input`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 2.4rem;
 	letter-spacing: -0.1rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 25rem;
+	}
 `;
 
 const SearchButton = styled.button`
@@ -148,6 +158,10 @@ const SearchButton = styled.button`
 	font-size: 1.5rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	letter-spacing: -0.075rem;
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 11.2rem;
+	}
 `;
 
 const SearchIcon = styled(SearchSymbol)`
@@ -169,6 +183,11 @@ const AddressInput = styled.input`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 35.3rem;
+	}
 `;
 
 const DateContainer = styled.div`
@@ -176,6 +195,10 @@ const DateContainer = styled.div`
 	flex-direction: column;
 	margin-top: 2.2rem;
 	margin-left: 8rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		margin-left: 7.4rem;
+	}
 `;
 
 const DateBox = styled.div`
@@ -191,6 +214,11 @@ const DateLabelSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 6.1rem;
+	}
 `;
 
 const DateInputBox = styled.div`
@@ -210,6 +238,12 @@ const DateInput = styled.input`
 	font-weight: ${theme.font.regular.fontWeight};
 	line-height: 2.6rem;
 	letter-spacing: -0.075rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		width: 32.5rem;
+		margin-left: 12.3rem;
+	}
 `;
 
 const CalendarIcon = styled(Calendar)`

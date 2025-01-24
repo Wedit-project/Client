@@ -46,7 +46,10 @@ const Container = styled.div`
 	flex-direction: column;
 	margin-top: 1.8rem;
 	width: 71.3%;
-	align-items: flex-start;
+
+	@media screen and (max-width: 1366px) {
+		width: auto;
+	}
 `;
 
 const ImgLabelSpan = styled.span`
