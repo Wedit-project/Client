@@ -26,4 +26,6 @@ const Button = styled.button`
   font-weight: ${theme.font.semibold.fontWeight};
   cursor: pointer;
   background-color: transparent;
+  line-height: 133.333%;
+  letter-spacing: -0.0456rem;
 `;
