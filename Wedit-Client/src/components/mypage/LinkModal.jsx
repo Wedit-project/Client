@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import CloseIcon from "../../assets/icons/close.svg?react";
 
 const LinkModal = ({ url, onClose }) => {
   const handleCopy = () => {
@@ -9,9 +10,12 @@ const LinkModal = ({ url, onClose }) => {
   };
 
   return (
-    <ModalOverlay onClick={onClose}>
+    <ModalOverlay>
       <ModalContainer onClick={(e) => e.stopPropagation()}>
-        <Header>배포 링크</Header>
+        <ModalHeader>
+            <Header>배포 링크</Header>
+            <StyledCloseIcon onClick={onClose} />
+        </ModalHeader>
         <Content>
           <LinkText>{url}</LinkText>
           <CopyButton onClick={handleCopy}>복사하기</CopyButton>
@@ -45,6 +49,12 @@ const ModalContainer = styled.div`
     border-radius: 1.6rem;
 `;
 
+const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 const Header = styled.div`
     font-size: ${theme.fontSize.xlarge};
     font-weight: ${theme.font.medium.fontWeight};
@@ -54,6 +64,14 @@ const Header = styled.div`
     margin-top: 2.1rem;
     margin-left: 2.8rem;
     margin-bottom: 2.9rem;
+`;
+
+const StyledCloseIcon = styled(CloseIcon)`
+    margin-right: 1.8rem;
+    margin-bottom: 2rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    cursor: pointer;
 `;
 
 const Content = styled.div`
@@ -74,7 +92,7 @@ const LinkText = styled.span`
 `;
 
 const CopyButton = styled.button`
-    font-size: ${theme.fontSize.large};
+    font-size: ${theme.fontSize.xlarge};
     font-weight: ${theme.font.medium.fontWeight};
     color: ${theme.colors.gray[900]};
     background-color: transparent;
