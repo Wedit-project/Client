@@ -67,7 +67,8 @@ const GalleryPhotoSelectionPage = () => {
 			</DescriptionBox>
 			<SelectionButtonBox
 				top={step === 1 ? '30.7rem' : step === 2 ? '20.5rem' : '50.5rem'}
-				left={step === 1 ? '66rem' : step === 2 ? '106.5rem' : '108.8rem'}>
+				left={step === 1 ? '66rem' : step === 2 ? '106.5rem' : '108.8rem'}
+				step={step}>
 				{step === 1 && !previewImage && <PhotoSelectionButton onFileSelect={handleFileSelect} />}
 				{step === 2 && !secondImage && <PhotoSelectionButton onFileSelect={handleFileSelect} />}
 				{step === 3 && !thirdImage && <PhotoSelectionButton onFileSelect={handleFileSelect} />}
@@ -150,11 +151,113 @@ const Container = styled.div`
 	position: relative;
 `;
 
+// top={step === 1 ? '30.7rem' : step === 2 ? '20.5rem' : '50.5rem'}
+// left={step === 1 ? '66rem' : step === 2 ? '106.5rem' : '108.8rem'}
 const SelectionButtonBox = styled.div`
 	position: absolute;
-	top: ${(props) => props.top};
-	left: ${(props) => props.left};
+	top: ${(props) => {
+		if (props.step === 1) return props.top;
+		if (props.step === 2) return props.top;
+		if (props.step === 3) return props.top;
+	}};
+	left: ${(props) => {
+		if (props.step === 1) return props.left;
+		if (props.step === 2) return props.left;
+		if (props.step === 3) return props.left;
+	}};
 	z-index: 10;
+
+	@media screen and (min-width: 1181px) and (max-width: 1366px) {
+		/*ipad pro 가로*/
+		top: ${(props) => {
+			if (props.step === 2) return '19rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '48rem';
+			if (props.step === 2) return '90rem';
+			if (props.step === 3) return '91rem';
+		}};
+	}
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		/*ipad air 가로*/
+		top: ${(props) => {
+			if (props.step === 2) return '22rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '40rem';
+			if (props.step === 2) return '75rem';
+			if (props.step === 3) return '75rem';
+		}};
+	}
+
+	@media screen and (min-width: 821px) and (max-width: 1024px) {
+		/*ipad mini 가로*/
+		top: ${(props) => {
+			if (props.step === 2) return '22rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '75rem';
+			if (props.step === 2) return '120rem';
+			if (props.step === 3) return '120rem';
+		}};
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 820px) {
+		/*ipad air, mini 세로*/
+		top: ${(props) => {
+			if (props.step === 2) return '22rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '55rem';
+			if (props.step === 2) return '96rem';
+			if (props.step === 3) return '96rem';
+		}};
+	}
+
+	@media screen and (min-width: 853px) and (max-width: 884px) {
+		/*galaxy note 20 ultra 가로*/
+		top: ${(props) => {
+			if (props.step === 2) return '22rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '62rem';
+			if (props.step === 2) return '105rem';
+			if (props.step === 3) return '105rem';
+		}};
+	}
+
+	@media screen and (min-width: 821px) and (max-width: 852px) {
+		/*iphone 14 pro/15/15 pro/16 가로*/
+		top: ${(props) => {
+			if (props.step === 2) return '22rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '59rem';
+			if (props.step === 2) return '102rem';
+			if (props.step === 3) return '102rem';
+		}};
+	}
+
+	@media screen and (min-width: 390px) and (max-width: 480px) {
+		/*모바일 세로*/
+		top: ${(props) => {
+			if (props.step === 1) return '37rem';
+			if (props.step === 2) return '28rem';
+			if (props.step === 3) return '57rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '53rem';
+			if (props.step === 2) return '96rem';
+			if (props.step === 3) return '96rem';
+		}};
+	}
 `;
 
 const IndicatorBox = styled.div`
