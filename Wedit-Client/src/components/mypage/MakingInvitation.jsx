@@ -55,7 +55,6 @@ const NothingText = styled.div`
   padding-bottom: 10.6rem; 
   line-height: 133.333%;
   letter-spacing: -0.0456rem; 
-<<<<<<< HEAD
 `;
 
 const ScrollableContainer = styled.div`
@@ -73,6 +72,4 @@ const ScrollableContainer = styled.div`
     background-color: ${theme.colors.gray[400]};
     border-radius: 0.25rem;
   }
-=======
->>>>>>> 556c45b357963b3833c79e7bce45381d3344bec5
 `;
