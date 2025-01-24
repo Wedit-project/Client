@@ -36,28 +36,26 @@ const FooterContainer = styled.footer`
 `;
 
 const FooterItem = styled.a`
-  cursor: pointer;
-  margin-top: 4.5rem;
-  margin-bottom: 4.7rem;
-  margin-right: 3.2rem;
-  margin-left: 1rem;
-  text-align: center;
-  text-decoration: none;
-  color: black;
-  &:not(:last-child) {
-      margin-right: 1rem;
-      margin-left: 1rem;
-  }
-  font-size: ${theme.fontSize.xlarge};
-  font-weight: ${theme.font.regular.fontWeight};
-  line-height: 133.333%
-  letter-spacing: -0.0456rem;
+    cursor: pointer;
+    margin-top: 4.5rem;
+    margin-bottom: 4.7rem;
+    margin-right: 3.2rem;
+    margin-left: 1rem;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    &:not(:last-child) {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    font-size: ${theme.fontSize.xlarge};
+    font-weight: ${theme.font.regular.fontWeight};
 `;
 
 const Divider = styled.span`
-  color: #000;
-  font-size: ${theme.fontSize.xlarge};
-  font-weight: ${theme.font.regular.fontWeight};
-  margin-top: 4.5rem;
-  margin-bottom: 4.7rem;
+    color: #000;
+    font-size: ${theme.fontSize.xlarge};
+    font-weight: ${theme.font.regular.fontWeight};
+    margin-top: 4.5rem;
+    margin-bottom: 4.7rem;
 `;

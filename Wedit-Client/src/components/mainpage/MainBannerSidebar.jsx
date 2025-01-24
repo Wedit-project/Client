@@ -46,10 +46,7 @@ const MenuItem = styled.div`
 
   width: 20.2rem;
   height: 4.1rem;
-  padding: 0 4.4rem 0 4.4rem;
 
   font-size: ${theme.fontSize.large};
   font-weight: ${theme.font.semibold.fontWeight};
-  line-height: 160%;
-  letter-spacing: -0.038rem;
 `;

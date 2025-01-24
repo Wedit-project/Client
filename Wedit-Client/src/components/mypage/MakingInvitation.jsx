@@ -24,8 +24,6 @@ const Text = styled.div`
   font-size: ${theme.fontSize.xlarge};
   font-weight: ${theme.font.medium.fontWeight};
   margin-left: 10.5rem;
-  line-height: 133.333%;
-  letter-spacing: -0.0456rem;
 `;
 
 const Divider = styled.div`
@@ -44,7 +42,5 @@ const NothingText = styled.div`
   font-size: ${theme.fontSize.xlarge};
   font-weight: ${theme.font.medium.fontWeight};
   margin-top: 8.7rem;
-  padding-bottom: 10.6rem; 
-  line-height: 133.333%;
-  letter-spacing: -0.0456rem; 
+  padding-bottom: 10.6rem;  
 `;

@@ -58,29 +58,6 @@ const MainBanner = () => {
         }
       });
     },
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
   };
 
   const handleMenuClick = (menu) => {
@@ -97,6 +74,7 @@ const MainBanner = () => {
 
   return (
     <MainBannerContainer>
+      <MainBannerContent>
         <MainBannerSidebar
           carouselData={carouselData}
           activeMenu={activeMenu}
@@ -107,12 +85,19 @@ const MainBanner = () => {
           sliderRef={sliderRef}
           activeData={activeData}
         />
+      </MainBannerContent>
     </MainBannerContainer>
   );
 };
 
 export default MainBanner;
 
-// CSS
+// 스타일 정의
 const MainBannerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MainBannerContent = styled.div`
 `;

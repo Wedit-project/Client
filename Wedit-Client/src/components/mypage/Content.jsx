@@ -28,14 +28,10 @@ const Text = styled.p`
     font-weight: ${theme.font.semibold.fontWeight};
     margin-left: 10.5rem;
     padding-bottom: 8.3rem;
-    line-height: 133.333%;
-  letter-spacing: -0.0456rem;
 `;
 
 
 const StyledBigLogo = styled(BigLogo)`
     margin-top: 7.7rem;
     margin-bottom: 3.5rem;
-    width: 42.2rem;
-    height: 14.4rem;
 `;

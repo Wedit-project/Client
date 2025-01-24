@@ -22,20 +22,9 @@ export default MainBannerSlider;
 // CSS
 
 const SliderWrapper = styled.div`
-  width: 100%
-  height: 0;
-  padding-top: 27.78%;
-  position: relative;
-
-  & > div {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  width: 144rem;
+  height: 40rem;
 `;
-
 
 const StyledSlider = styled(Slider)`
   .slick-dots {

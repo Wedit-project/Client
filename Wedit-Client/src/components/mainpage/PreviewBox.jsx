@@ -33,10 +33,10 @@ export default FeatureCards;
 // CSS
 const Wrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 104.6rem;
-  margin: 0 auto;
+  flex-wrap: wrap; /* 카드가 넘칠 경우 줄바꿈 */
+  justify-content: center; /* 중앙 정렬 */
+  max-width: 104.6rem; /* 최대 가로 길이 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
   gap: 3.6rem 24rem;
   margin-top: 4.3rem;
   margin-bottom: 5rem;
@@ -44,8 +44,8 @@ const Wrapper = styled.div`
 
 const Card = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: row; /* 가로 정렬로 변경 */
+  align-items: center; /* 세로 중앙 정렬 */
   justify-content: left;
   border-radius: 2rem;
   width: 40.3rem;
@@ -67,6 +67,4 @@ const Title = styled.p`
   font-weight: ${theme.font.bold.fontWeight};
   white-space: pre-line;
   text-align: left;
-  line-height: 133.333%
-  letter-spacing: -0.0456rem;
 `;

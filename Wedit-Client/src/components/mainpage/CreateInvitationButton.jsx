@@ -7,7 +7,7 @@ export const CreateInvitationButton = ({ className }) => {
   const navigate = useNavigate();
 
   const handleEditClick = () => {
-    navigate("/my");
+    navigate("/edit");
   };
 
   return (
@@ -19,11 +19,9 @@ export const CreateInvitationButton = ({ className }) => {
 
 // CSS
 const Button = styled.button`
-  border: none;
-  font-size: ${theme.fontSize.xlarge};
-  font-weight: ${theme.font.medium.fontWeight};
-  cursor: pointer;
-  background-color: transparent;
-  line-height: 133.333%
-  letter-spacing: -0.0456rem;
+    border: none;
+    font-size: ${theme.fontSize.xlarge};
+    font-weight: ${theme.font.medium.fontWeight};
+    cursor: pointer;
+    background-color: transparent;
 `;
