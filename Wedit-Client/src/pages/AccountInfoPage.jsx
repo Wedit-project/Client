@@ -174,6 +174,11 @@ const LabelSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 16.5rem;
+	}
 `;
 
 const InfoInput = styled.input`
@@ -189,6 +194,11 @@ const InfoInput = styled.input`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.6565rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 25.3rem;
+	}
 `;
 
 const NameInput = styled.input`
@@ -204,6 +214,11 @@ const NameInput = styled.input`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.6565rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		width: 100%;
+		max-width: 35.7rem;
+	}
 `;
 
 const CautionBox = styled.div`

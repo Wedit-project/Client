@@ -26,7 +26,11 @@ const SliderWrapper = styled.div`
   height: 0;
   padding-top: 27.78%;
   position: relative;
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 556c45b357963b3833c79e7bce45381d3344bec5
   & > div {
     position: absolute;
     top: 0;
@@ -35,6 +39,7 @@ const SliderWrapper = styled.div`
     height: 100%;
   }
 `;
+
 
 const StyledSlider = styled(Slider)`
   .slick-dots {

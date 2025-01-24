@@ -206,6 +206,42 @@ const SelectionButtonBox = styled.div`
 	top: 36.7rem;
 	left: 70rem;
 	z-index: 10;
+
+	@media screen and (min-width: 1181px) and (max-width: 1366px) {
+		/*ipad pro 가로*/
+		left: 55rem;
+	}
+
+	@media screen and (min-width: 1025px) and (max-width: 1180px) {
+		/*ipad air 가로*/
+		left: 45rem;
+	}
+
+	@media screen and (min-width: 821px) and (max-width: 1024px) {
+		/*ipad mini 가로*/
+		left: 80rem;
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 820px) {
+		/*ipad air, mini 세로*/
+		left: 60rem;
+	}
+
+	@media screen and (min-width: 853px) and (max-width: 884px) {
+		/*galaxy note 20 ultra 가로*/
+		left: 68rem;
+	}
+
+	@media screen and (min-width: 821px) and (max-width: 852px) {
+		/*iphone 14 pro/15/15 pro/16 가로*/
+		left: 65rem;
+	}
+
+	@media screen and (min-width: 390px) and (max-width: 480px) {
+		/*모바일 세로*/
+		top: 43rem;
+		left: 60rem;
+	}
 `;
 
 const IndicatorBox = styled.div`

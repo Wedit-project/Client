@@ -12,8 +12,8 @@ const IconButtonSection = () => {
           <StyledMainInvitationIcon />
         </IconWrapper>
         <Text>
-            내 손 안에서 미리 만나는 특별한 청첩장, <br />
-            지금 미리보기를 통해 확인해 보세요!
+          내 손 안에서 미리 만나는 특별한 청첩장, <br />
+          지금 미리보기를 통해 확인해 보세요!
         </Text>
         <StyledPreviewButton />
       </IconTextWrapper>
@@ -47,6 +47,7 @@ const Text = styled.div`
   text-align: left;
   width: 48.5rem;
   height: 10.4rem;
+
   @media (min-width: 529px) and (max-width: 608px) {
     font-size: 2.5rem;
   }
