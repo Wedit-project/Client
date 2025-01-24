@@ -83,6 +83,10 @@ const DescriptionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 393px) and (max-width: 412px) {
+		top: 25rem;
+	}
 `;
 
 const CenterBox = styled.div`
@@ -108,6 +112,10 @@ const CautionBox = styled.div`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media screen and (min-width: 393px) and (max-width: 412px) {
+		top: 89rem;
+	}
 `;
 
 const NavBox = styled.div`
