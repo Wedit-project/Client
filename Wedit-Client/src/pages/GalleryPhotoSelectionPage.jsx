@@ -172,9 +172,9 @@ const SelectionButtonBox = styled.div`
 			if (props.step === 3) return '51rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '48rem';
-			if (props.step === 2) return '90rem';
-			if (props.step === 3) return '91rem';
+			if (props.step === 1) return '63rem';
+			if (props.step === 2) return '105rem';
+			if (props.step === 3) return '105rem';
 		}};
 	}
 
@@ -185,9 +185,9 @@ const SelectionButtonBox = styled.div`
 			if (props.step === 3) return '51rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '40rem';
-			if (props.step === 2) return '75rem';
-			if (props.step === 3) return '75rem';
+			if (props.step === 1) return '52rem';
+			if (props.step === 2) return '95rem';
+			if (props.step === 3) return '95rem';
 		}};
 	}
 

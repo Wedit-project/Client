@@ -1,32 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import theme from "../../styles/theme";
+import Skeleton from "./Skeleton";
 
-export const MainBannerSlider = ({ sliderSettings, sliderRef, activeData }) => (
-  <SliderWrapper>
-    <StyledSlider {...sliderSettings} ref={sliderRef}>
-      {activeData.map((item) => (
-        <Slide key={item.id}>
-          <img src={item.svg} alt={`banner-${item.id}`} />
-        </Slide>
-      ))}
-    </StyledSlider>
-  </SliderWrapper>
-);
+export const MainBannerSlider = ({ sliderSettings, sliderRef, activeData }) => {
+  const [imagesLoaded, setImagesLoaded] = useState(new Array(activeData.length).fill(false));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (imagesLoaded.every((loaded) => loaded)) {
+      setLoading(false);
+    }
+  }, [imagesLoaded]);
+
+  const handleImageLoad = (index) => {
+    setImagesLoaded((prev) => {
+      const updated = [...prev];
+      updated[index] = true;
+      return updated;
+    });
+  };
+
+  return (
+    <SliderWrapper>
+      {loading && <Skeleton />}
+      <StyledSlider {...sliderSettings} ref={sliderRef}>
+        {activeData.map((item, index) => (
+          <Slide key={item.id}>
+            <img
+              src={item.svg}
+              alt={`banner-${item.id}`}
+              onLoad={() => handleImageLoad(index)}
+            />
+          </Slide>
+        ))}
+      </StyledSlider>
+    </SliderWrapper>
+  );
+};
 
 export default MainBannerSlider;
 
 // CSS
-
 const SliderWrapper = styled.div`
-  width: 100%
+  width: 100%;
   height: 0;
   padding-top: 27.78%;
   position: relative;
-
+  
   & > div {
     position: absolute;
     top: 0;
@@ -35,7 +59,6 @@ const SliderWrapper = styled.div`
     height: 100%;
   }
 `;
-
 
 const StyledSlider = styled(Slider)`
   .slick-dots {
