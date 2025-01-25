@@ -209,12 +209,12 @@ const SelectionButtonBox = styled.div`
 
 	@media screen and (min-width: 1181px) and (max-width: 1366px) {
 		/*ipad pro 가로*/
-		left: 55rem;
+		left: 70rem;
 	}
 
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		/*ipad air 가로*/
-		left: 45rem;
+		left: 59rem;
 	}
 
 	@media screen and (min-width: 821px) and (max-width: 1024px) {
