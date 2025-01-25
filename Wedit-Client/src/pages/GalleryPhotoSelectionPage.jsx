@@ -151,8 +151,6 @@ const Container = styled.div`
 	position: relative;
 `;
 
-// top={step === 1 ? '30.7rem' : step === 2 ? '20.5rem' : '50.5rem'}
-// left={step === 1 ? '66rem' : step === 2 ? '106.5rem' : '108.8rem'}
 const SelectionButtonBox = styled.div`
 	position: absolute;
 	top: ${(props) => {
