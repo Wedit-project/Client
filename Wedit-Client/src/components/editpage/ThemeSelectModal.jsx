@@ -53,7 +53,9 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						<ThemaText $isVisible={!selectedCheckbox}>테마를 선택해 주세요!</ThemaText>
 						<ButtonBox>
 							<PreviousButton onClick={handlePreviousButtonClick}>이전</PreviousButton>
-							<NextButton to="/edit">다음</NextButton>
+							<NextButton isEnabled={selectedCheckbox} to="/edit">
+								다음
+							</NextButton>
 						</ButtonBox>
 					</ModalBox>
 				</ModalContainer>
@@ -79,7 +81,8 @@ const ModalWrapper = styled.div`
 const ModalContainer = styled.div`
 	width: 94.4rem;
 	height: 72.3rem;
-	background: #fff;
+	border-radius: 4rem;
+	background: ${theme.colors.background.background2};
 	display: flex;
 	flex-direction: column;
 `;
@@ -88,7 +91,7 @@ const TitleSpan = styled.p`
 	margin-left: 7.1rem;
 	font-weight: ${theme.font.bold.fontWeight};
 	width: 76.1rem;
-	color: var(--gray-900, #000);
+	color: ${theme.colors.gray[900]};
 	font-size: 3.2rem;
 	line-height: 100%;
 	letter-spacing: -0.0608rem;
@@ -114,7 +117,7 @@ const BasicCheckbox = styled.input`
 	appearance: none;
 	width: 2.2rem;
 	height: 1.8rem;
-	border: 0.1rem solid #949494;
+	border: 0.1rem solid ${theme.colors.gray[600]};
 	border-radius: 0.5rem;
 
 	&:checked {
@@ -135,7 +138,7 @@ const BasicSpan = styled.p`
 	margin-top: 0;
 	width: 77.5rem;
 	font-weight: ${theme.font.semibold.fontWeight};
-	color: var(--gray-900, #000);
+	color: ${theme.colors.gray[900]};
 	font-size: 3.6rem;
 	line-height: 88.889%;
 	letter-spacing: -0.0684rem;
@@ -146,7 +149,7 @@ const BasicText = styled.p`
 	width: 77.5rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
-	color: var(--gray-900, #000);
+	color: ${theme.colors.gray[900]};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
 	margin-bottom: 0;
@@ -156,7 +159,7 @@ const TraditionCheckbox = styled.input`
 	appearance: none;
 	width: 2.2rem;
 	height: 1.8rem;
-	border: 0.1rem solid #949494;
+	border: 0.1rem solid ${theme.colors.gray[600]};
 	border-radius: 0.5rem;
 
 	&:checked {
@@ -177,7 +180,7 @@ const TraditionSpan = styled.p`
 	margin-top: 0;
 	width: 77.5rem;
 	font-weight: ${theme.font.semibold.fontWeight};
-	color: var(--gray-900, #000);
+	color: ${theme.colors.gray[900]};
 	font-size: 3.6rem;
 	line-height: 88.889%;
 	letter-spacing: -0.0684rem;
@@ -189,7 +192,7 @@ const TraditionText = styled.p`
 	width: 77.5rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
-	color: var(--gray-900, #000);
+	color: ${theme.colors.gray[900]};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
 	margin-bottom: 0;
@@ -223,8 +226,8 @@ const PreviousButton = styled.button`
 	align-items: center;
 	gap: 1rem;
 	border-radius: 1.6rem;
-	background: var(--gray-300, #e4e4e4);
-	color: var(--gray-900, #000);
+	background: ${theme.colors.gray[300]};
+	color: ${theme.colors.gray[900]};
 	text-align: center;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
@@ -233,7 +236,9 @@ const PreviousButton = styled.button`
 	border: none;
 `;
 
-const NextButton = styled(Link)`
+const NextButton = styled(Link).withConfig({
+	shouldForwardProp: (prop) => prop !== 'isEnabled', // isEnabled를 DOM으로 전달하지 않음
+})`
 	text-decoration: none;
 	display: flex;
 	width: 19.8rem;
@@ -242,8 +247,10 @@ const NextButton = styled(Link)`
 	align-items: center;
 	gap: 1rem;
 	border-radius: 1.6rem;
-	background: var(--main-green-50, rgba(172, 182, 109, 0.5));
-	color: var(--gray-0, #fff);
+	background: ${({ isEnabled }) =>
+		isEnabled ? theme.colors.green.main : theme.colors.green['50%']};
+	pointer-events: ${({ isEnabled }) => (isEnabled ? 'auto' : 'none')};
+	color: ${theme.colors.gray[0]};
 	text-align: center;
 	font-weight: ${theme.font.semibold.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
