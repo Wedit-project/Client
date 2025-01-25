@@ -151,8 +151,6 @@ const Container = styled.div`
 	position: relative;
 `;
 
-// top={step === 1 ? '30.7rem' : step === 2 ? '20.5rem' : '50.5rem'}
-// left={step === 1 ? '66rem' : step === 2 ? '106.5rem' : '108.8rem'}
 const SelectionButtonBox = styled.div`
 	position: absolute;
 	top: ${(props) => {
@@ -174,9 +172,9 @@ const SelectionButtonBox = styled.div`
 			if (props.step === 3) return '51rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '48rem';
-			if (props.step === 2) return '90rem';
-			if (props.step === 3) return '91rem';
+			if (props.step === 1) return '63rem';
+			if (props.step === 2) return '105rem';
+			if (props.step === 3) return '105rem';
 		}};
 	}
 
@@ -187,9 +185,9 @@ const SelectionButtonBox = styled.div`
 			if (props.step === 3) return '51rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '40rem';
-			if (props.step === 2) return '75rem';
-			if (props.step === 3) return '75rem';
+			if (props.step === 1) return '52rem';
+			if (props.step === 2) return '95rem';
+			if (props.step === 3) return '95rem';
 		}};
 	}
 
