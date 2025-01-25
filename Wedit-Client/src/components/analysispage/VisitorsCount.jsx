@@ -22,7 +22,7 @@ export default VisitorsCount;
 const VisitorsWrapper = styled.div`
   width: 123rem;
   height: 20.4rem;
-  border: 1px solid ${theme.colors.gray[900]};
+  border: 0.1rem solid ${theme.colors.gray[900]};
   margin-bottom: 1.7rem;
 `;
 

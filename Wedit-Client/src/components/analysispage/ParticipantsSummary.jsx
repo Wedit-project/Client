@@ -16,7 +16,7 @@ export default ParticipantsSummary;
 const SummaryWrapper = styled.div`
     width: 123rem;
     height: 42rem;
-    border: 1px solid ${theme.colors.gray[900]};
+    border: 0.1rem solid ${theme.colors.gray[900]};
 `;
 
 const SummaryTitle = styled.div`
@@ -35,9 +35,10 @@ const SummaryContent = styled.div`
     font-size: ${theme.fontSize.xlarge};
     font-weight: ${theme.font.medium.fontWeight};
     margin-top: 15.8rem;
-    margin-left: 46.2rem;
-    margin-right: 46.1rem;
     margin-bottom: 15.8rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
     line-height: 133.333%;
     letter-spacing: -0.0456rem;
 `;
