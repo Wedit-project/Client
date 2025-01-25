@@ -146,6 +146,10 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	@media screen and (min-width: 1023px) and (max-width: 1024px) {
+		margin-top: 12rem;
+	}
 `;
 
 const ModalBox = styled.div`
@@ -164,11 +168,24 @@ const ModalContentBox = styled.div`
 	width: 90.3rem;
 	height: auto;
 	background: ${theme.colors.gray['0']};
+
+	@media screen and (min-width: 852px) and (max-width: 884px) {
+		max-height: 80vh;
+		overflow-y: auto;
+	}
+
+	@media screen and (min-width: 393px) and (max-width: 412px) {
+		width: 80%;
+	}
 `;
 
 const ModalHeaderBox = styled.div`
 	display: flex;
 	flex-direction: column;
+
+	@media screen and (min-width: 393px) and (max-width: 412px) {
+		display: none;
+	}
 `;
 
 const KakaoServiceTextSpan = styled.span`

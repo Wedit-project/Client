@@ -40,4 +40,6 @@ const CreateButton = styled.button`
 	border: none;
 	border-radius: 1.6rem;
 	cursor: pointer;
+	line-height: 133.333%;
+	letter-spacing: -0.0456rem;
 `;

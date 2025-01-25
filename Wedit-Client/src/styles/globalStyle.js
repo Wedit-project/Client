@@ -16,13 +16,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @media screen and (min-width: 480px) and (max-width: 1023px) {
+  @media screen and (min-width: 480px) and (max-width: 1024px) {
     html {
       font-size: 34%;
     }
   }
 
-  @media screen and (max-width: 479px) {
+  @media screen and (max-width: 480px) {
     html {
       font-size: 17%;
     }
