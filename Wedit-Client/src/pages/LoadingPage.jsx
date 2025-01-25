@@ -46,7 +46,8 @@ const LogoFrameIcon = styled(LogoSet)`
 
 	@media screen and (min-width: 1181px) and (max-width: 1366px) {
 		/*ipad pro 가로*/
-		top: 49%;
+		width: 25%;
+		top: 38%;
 	}
 
 	@media screen and (max-width: 1024px) {
@@ -58,7 +59,8 @@ const LogoFrameIcon = styled(LogoSet)`
 
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		/*ipad air 가로*/
-		top: 45%;
+		width: 29%;
+		top: 34%;
 		transform: translateX(-65%);
 	}
 
