@@ -26,7 +26,7 @@ const SliderWrapper = styled.div`
   height: 0;
   padding-top: 27.78%;
   position: relative;
-
+  
   & > div {
     position: absolute;
     top: 0;

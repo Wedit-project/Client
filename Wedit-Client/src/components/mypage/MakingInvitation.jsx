@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import Invitation from "./Invitation";
 
 const MakingInvitation = () => {
   return (
     <MakingInvitationWrapper>
       <Text>제작 중인 페이지</Text>
       <Divider />
-      <NothingText>아직 제작 중인 청첩장이 없어요!</NothingText>
+      {/* <NothingText>아직 제작 중인 청첩장이 없어요!</NothingText> */}
+      <ScrollableContainer>
+        <Invitation />
+        <Invitation />
+        <Invitation />
+        <Invitation />
+        <Invitation />
+      </ScrollableContainer>
     </MakingInvitationWrapper>
   );
 };
@@ -32,7 +40,7 @@ const Divider = styled.div`
   margin-left: 10.7rem;
   margin-right: 10.7rem;
   margin-top: 2.6rem;
-  margin-bottom: 2.6rem;
+  margin-bottom: 5.1rem;
   border: 0.2rem solid ${theme.colors.green.main};
   border-radius: 0.2rem;
 `;
@@ -47,4 +55,21 @@ const NothingText = styled.div`
   padding-bottom: 10.6rem; 
   line-height: 133.333%;
   letter-spacing: -0.0456rem; 
+`;
+
+const ScrollableContainer = styled.div`
+  height: 11.8rem;
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.colors.green.main};
+    border-radius: 0.25rem;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: ${theme.colors.gray[400]};
+    border-radius: 0.25rem;
+  }
 `;

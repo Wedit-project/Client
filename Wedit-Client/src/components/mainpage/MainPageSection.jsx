@@ -11,10 +11,10 @@ const IconButtonSection = () => {
         <IconWrapper>
           <StyledMainInvitationIcon />
         </IconWrapper>
-          <Text>
-            내 손 안에서 미리 만나는 특별한 청첩장, <br />
-            지금 미리보기를 통해 확인해 보세요!
-          </Text>
+        <Text>
+          내 손 안에서 미리 만나는 특별한 청첩장, <br />
+          지금 미리보기를 통해 확인해 보세요!
+        </Text>
         <StyledPreviewButton />
       </IconTextWrapper>
     </SectionContainer>
