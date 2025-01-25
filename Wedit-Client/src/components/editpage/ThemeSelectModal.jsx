@@ -81,6 +81,7 @@ const ModalWrapper = styled.div`
 const ModalContainer = styled.div`
 	width: 94.4rem;
 	height: 72.3rem;
+	border-radius: 4rem;
 	background: ${theme.colors.background.background2};
 	display: flex;
 	flex-direction: column;
