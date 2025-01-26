@@ -12,6 +12,7 @@ import AccountInfoPage from './pages/AccountInfoPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
 import WeddingInvitationPage from './pages/WeddingInvitationPage.jsx';
 import PreviewInvitationPage from './pages/PreviewInvitationPage.jsx';
+import AnalysisPage from './pages/AnalysisPage.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -58,7 +59,11 @@ const router = createBrowserRouter([
 	{
 		path: 'preview-invitation',
 		element: <PreviewInvitationPage />,
-	},	  
+	},
+	{
+		path: 'analysis',
+		element: <AnalysisPage />,
+	},
 ]);
 
 function App() {
