@@ -5,9 +5,14 @@ import NotFound from './pages/NotFound.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import MyPage from './pages/MyPage.jsx';
 import EditPage from './pages/EditPage.jsx';
-import PhotoSelectionPage from './pages/PhotoSelectionPage.jsx';
+import MainPhotoSelectionPage from './pages/MainPhotoSelectionPage.jsx';
+import GalleryPhotoSelectionPage from './pages/GalleryPhotoSelectionPage.jsx';
+import OptionSelectionPage from './pages/OptionSelectionPage.jsx';
+import AccountInfoPage from './pages/AccountInfoPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
 import WeddingInvitationPage from './pages/WeddingInvitationPage.jsx';
+import PreviewInvitationPage from './pages/PreviewInvitationPage.jsx';
+import AnalysisPage from './pages/AnalysisPage.jsx';
 
 const router = createBrowserRouter([
 	{
@@ -28,8 +33,20 @@ const router = createBrowserRouter([
 		element: <EditPage />,
 	},
 	{
-		path: 'photo-selection',
-		element: <PhotoSelectionPage />,
+		path: 'main-photo-selection',
+		element: <MainPhotoSelectionPage />,
+	},
+	{
+		path: 'gallery-photo-selection',
+		element: <GalleryPhotoSelectionPage />,
+	},
+	{
+		path: 'option-selection',
+		element: <OptionSelectionPage />,
+	},
+	{
+		path: 'account-information',
+		element: <AccountInfoPage />,
 	},
 	{
 		path: 'loading',
@@ -38,6 +55,14 @@ const router = createBrowserRouter([
 	{
 		path: 'wedding-invitation',
 		element: <WeddingInvitationPage />,
+	},
+	{
+		path: 'preview-invitation',
+		element: <PreviewInvitationPage />,
+	},
+	{
+		path: 'analysis',
+		element: <AnalysisPage />,
 	},
 ]);
 
