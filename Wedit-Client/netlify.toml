@@ -1,4 +1,0 @@
-[build]
-  base = "Wedit-Client"
-  command = "yarn build"
-  publish = "Wedit-Client/dist"
