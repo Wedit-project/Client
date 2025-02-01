@@ -4,9 +4,16 @@ import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
 import NavButton from '../components/editpage/NavButton';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { contentState, selectedImagesState, accountInfoState } from '../atoms';
+import { registerInvitation } from '../apis/api/registerInvitation';
 
 const AccountInfoPage = () => {
 	const navigate = useNavigate();
+	const [content, setContent] = useRecoilState(contentState);
+	const selectedImages = useRecoilValue(selectedImagesState);
+	const [accountInfo, setAccountInfo] = useRecoilState(accountInfoState);
+
 	const [isNextActive, setIsNextActive] = useState(false);
 	const [bankGroom, setBankGroom] = useState('');
 	const [accountNumGroom, setAccountNumGroom] = useState('');
@@ -15,25 +22,66 @@ const AccountInfoPage = () => {
 	const [accountNumBride, setAccountNumBride] = useState('');
 	const [accountNameBride, setAccountNameBride] = useState('');
 
-	const handlePrevious = () => {
-		navigate('/option-selection');
-	};
-
-	const handleNext = () => {
-		navigate('/loading');
+	const handleInputChange = (e) => {
+		const { name, value } = e.target;
+		setAccountInfo((prev) => ({
+			...prev,
+			[name]: value,
+		}));
 	};
 
 	useEffect(() => {
 		const allFieldsFilled =
-			bankGroom &&
-			accountNumGroom &&
-			accountNameGroom &&
-			bankBride &&
-			accountNumBride &&
-			accountNameBride;
+			accountInfo.bankGroom &&
+			accountInfo.accountNumGroom &&
+			accountInfo.accountNameGroom &&
+			accountInfo.bankBride &&
+			accountInfo.accountNumBride &&
+			accountInfo.accountNameBride;
 
 		setIsNextActive(allFieldsFilled);
-	}, [bankGroom, accountNumGroom, accountNameGroom, bankBride, accountNumBride, accountNameBride]);
+	}, [accountInfo]);
+
+	const handlePrevious = () => {
+		navigate('/option-selection');
+	};
+
+	const handleNext = async () => {
+		const updatedContent = {
+			...content,
+			bankAccounts: [
+				{
+					side: 'GROOM',
+					accountNumber: accountInfo.accountNumGroom,
+					bankName: accountInfo.bankGroom,
+					accountHolder: accountInfo.accountNameGroom,
+				},
+				{
+					side: 'BRIDE',
+					accountNumber: accountInfo.accountNumBride,
+					bankName: accountInfo.bankBride,
+					accountHolder: accountInfo.accountNameBride,
+				},
+			],
+		};
+
+		setContent(updatedContent);
+
+		// API 호출 전에 보낼 데이터 확인
+		console.log('Sending data to API:', {
+			images: selectedImages,
+			content: updatedContent,
+		});
+
+		try {
+			const token = ''; // 토큰 가져오는 로직 추가
+			const response = await registerInvitation(selectedImages, updatedContent, token);
+			console.log('API 요청 성공:', response);
+			navigate('/loading');
+		} catch (error) {
+			console.error('API 요청 실패:', error);
+		}
+	};
 
 	return (
 		<Wrapper>
@@ -46,13 +94,18 @@ const AccountInfoPage = () => {
 						<BankAndNumBox>
 							<InfoBox>
 								<LabelSpan>신랑측 은행:</LabelSpan>
-								<InfoInput value={bankGroom} onChange={(e) => setBankGroom(e.target.value)} />
+								<InfoInput
+									name="bankGroom"
+									value={accountInfo.bankGroom}
+									onChange={handleInputChange}
+								/>
 							</InfoBox>
 							<InfoBox>
 								<LabelSpan>신랑측 계좌번호:</LabelSpan>
 								<InfoInput
-									value={accountNumGroom}
-									onChange={(e) => setAccountNumGroom(e.target.value)}
+									name="accountNumGroom"
+									value={accountInfo.accountNumGroom}
+									onChange={handleInputChange}
 								/>
 							</InfoBox>
 						</BankAndNumBox>
@@ -60,8 +113,9 @@ const AccountInfoPage = () => {
 							<InfoBox>
 								<LabelSpan>신랑측 계좌명:</LabelSpan>
 								<NameInput
-									value={accountNameGroom}
-									onChange={(e) => setAccountNameGroom(e.target.value)}
+									name="accountNameGroom"
+									value={accountInfo.accountNameGroom}
+									onChange={handleInputChange}
 								/>
 							</InfoBox>
 						</AccountNameBox>
@@ -70,13 +124,18 @@ const AccountInfoPage = () => {
 						<BankAndNumBox>
 							<InfoBox>
 								<LabelSpan>신부측 은행:</LabelSpan>
-								<InfoInput value={bankBride} onChange={(e) => setBankBride(e.target.value)} />
+								<InfoInput
+									name="bankBride"
+									value={accountInfo.bankBride}
+									onChange={handleInputChange}
+								/>
 							</InfoBox>
 							<InfoBox>
 								<LabelSpan>신부측 계좌번호:</LabelSpan>
 								<InfoInput
-									value={accountNumBride}
-									onChange={(e) => setAccountNumBride(e.target.value)}
+									name="accountNumBride"
+									value={accountInfo.accountNumBride}
+									onChange={handleInputChange}
 								/>
 							</InfoBox>
 						</BankAndNumBox>
@@ -84,8 +143,9 @@ const AccountInfoPage = () => {
 							<InfoBox>
 								<LabelSpan>신부측 계좌명:</LabelSpan>
 								<NameInput
-									value={accountNameBride}
-									onChange={(e) => setAccountNameBride(e.target.value)}
+									name="accountNameBride"
+									value={accountInfo.accountNameBride}
+									onChange={handleInputChange}
 								/>
 							</InfoBox>
 						</AccountNameBox>
