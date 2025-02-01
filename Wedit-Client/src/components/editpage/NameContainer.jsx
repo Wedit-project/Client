@@ -1,43 +1,68 @@
 import React from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
+import { useRecoilState } from 'recoil';
+import {
+	groomNameState,
+	groomFatherNameState,
+	groomMotherNameState,
+	brideNameState,
+	brideFatherNameState,
+	brideMotherNameState,
+} from '../../atoms';
 
-const NameContainer = ({
-	setGroomName,
-	setGroomFatherName,
-	setGroomMotherName,
-	setBrideName,
-	setBrideFatherName,
-	setBrideMotherName,
-}) => {
+const NameContainer = () => {
+	const [groomName, setGroomName] = useRecoilState(groomNameState);
+	const [groomFatherName, setGroomFatherName] = useRecoilState(groomFatherNameState);
+	const [groomMotherName, setGroomMotherName] = useRecoilState(groomMotherNameState);
+	const [brideName, setBrideName] = useRecoilState(brideNameState);
+	const [brideFatherName, setBrideFatherName] = useRecoilState(brideFatherNameState);
+	const [brideMotherName, setBrideMotherName] = useRecoilState(brideMotherNameState);
+
 	return (
 		<Container>
 			<GroomNameContainer>
 				<NameBox>
 					<NameLabelSpan>신랑 이름:</NameLabelSpan>
-					<NameInput type="text" onChange={(e) => setGroomName(e.target.value)} />
+					<NameInput type="text" value={groomName} onChange={(e) => setGroomName(e.target.value)} />
 				</NameBox>
 				<NameBox>
 					<NameLabelSpan>신랑 아버지 이름:</NameLabelSpan>
-					<NameInput type="text" onChange={(e) => setGroomFatherName(e.target.value)} />
+					<NameInput
+						type="text"
+						value={groomFatherName}
+						onChange={(e) => setGroomFatherName(e.target.value)}
+					/>
 				</NameBox>
 				<NameBox>
 					<NameLabelSpan>신랑 어머니 이름:</NameLabelSpan>
-					<NameInput type="text" onChange={(e) => setGroomMotherName(e.target.value)} />
+					<NameInput
+						type="text"
+						value={groomMotherName}
+						onChange={(e) => setGroomMotherName(e.target.value)}
+					/>
 				</NameBox>
 			</GroomNameContainer>
 			<BrideNameContainer>
 				<NameBox>
 					<NameLabelSpan>신부 이름:</NameLabelSpan>
-					<NameInput type="text" onChange={(e) => setBrideName(e.target.value)} />
+					<NameInput type="text" value={brideName} onChange={(e) => setBrideName(e.target.value)} />
 				</NameBox>
 				<NameBox>
 					<NameLabelSpan>신부 아버지 이름:</NameLabelSpan>
-					<NameInput type="text" onChange={(e) => setBrideFatherName(e.target.value)} />
+					<NameInput
+						type="text"
+						value={brideFatherName}
+						onChange={(e) => setBrideFatherName(e.target.value)}
+					/>
 				</NameBox>
 				<NameBox>
 					<NameLabelSpan>신부 어머니이름:</NameLabelSpan>
-					<NameInput type="text" onChange={(e) => setBrideMotherName(e.target.value)} />
+					<NameInput
+						type="text"
+						value={brideMotherName}
+						onChange={(e) => setBrideMotherName(e.target.value)}
+					/>
 				</NameBox>
 			</BrideNameContainer>
 		</Container>
