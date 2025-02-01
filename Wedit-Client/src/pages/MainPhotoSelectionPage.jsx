@@ -7,10 +7,13 @@ import PhotoSelectionButton from '../components/PhotoSelectionPage/PhotoSelectio
 import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
 import NavButton from '../components/editpage/NavButton';
 import PhotoVector from '../assets/img/photovector1.svg?react';
+import { useRecoilState } from 'recoil';
+import { selectedImagesState } from '../atoms';
 
 const MainPhotoSelectionPage = () => {
 	const [isNextActive, setIsNextActive] = useState(false);
 	const [previewImage, setPreviewImage] = useState(null);
+	const [selectedImages, setSelectedImages] = useRecoilState(selectedImagesState);
 	const navigate = useNavigate();
 
 	const handlePrevious = () => {
@@ -19,7 +22,8 @@ const MainPhotoSelectionPage = () => {
 
 	const handleNext = () => {
 		if (isNextActive) {
-			navigate('/gallery-photo-selection', { state: { mainImage: previewImage } });
+			setSelectedImages([previewImage]); // 선택된 이미지를 Recoil 상태에 저장
+			navigate('/gallery-photo-selection');
 		}
 	};
 
