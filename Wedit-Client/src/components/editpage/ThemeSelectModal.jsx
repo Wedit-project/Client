@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 import { Link } from 'react-router-dom';
 
-const ThemaSelectModal = ({ isVisible, onClose }) => {
+const ThemaSelectModal = ({ isVisible, onClose, onSelectTheme, onNext }) => {
 	const [selectedCheckbox, setSelectedCheckbox] = useState(null);
 
 	const handleCheckboxChange = (thema) => {
@@ -16,6 +16,13 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 		}
 	};
 
+	const handleNextButtonClick = () => {
+		if (selectedCheckbox) {
+			onSelectTheme(selectedCheckbox); // 선택한 테마를 부모에게 전달
+			onNext(); // 다음 페이지로 이동
+		}
+	};
+
 	return (
 		isVisible && (
 			<ModalWrapper>
@@ -25,8 +32,8 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						<BasicContainer>
 							<BasicCheckbox
 								type="checkbox"
-								checked={selectedCheckbox === 'basic'}
-								onChange={() => handleCheckboxChange('basic')}></BasicCheckbox>
+								checked={selectedCheckbox === 'BASIC'}
+								onChange={() => handleCheckboxChange('BASIC')}></BasicCheckbox>
 							<BasicBox>
 								<BasicSpan>기본형</BasicSpan>
 								<BasicText>
@@ -39,8 +46,8 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						<TraditionContainer>
 							<TraditionCheckbox
 								type="checkbox"
-								checked={selectedCheckbox === 'tradition'}
-								onChange={() => handleCheckboxChange('tradition')}></TraditionCheckbox>
+								checked={selectedCheckbox === 'TRADITIONAL'}
+								onChange={() => handleCheckboxChange('TRADITIONAL')}></TraditionCheckbox>
 							<TraditionBox>
 								<TraditionSpan>전통형</TraditionSpan>
 								<TraditionText>
@@ -53,7 +60,7 @@ const ThemaSelectModal = ({ isVisible, onClose }) => {
 						<ThemaText $isVisible={!selectedCheckbox}>테마를 선택해 주세요!</ThemaText>
 						<ButtonBox>
 							<PreviousButton onClick={handlePreviousButtonClick}>이전</PreviousButton>
-							<NextButton isEnabled={selectedCheckbox} to="/edit">
+							<NextButton onClick={handleNextButtonClick} isEnabled={selectedCheckbox}>
 								다음
 							</NextButton>
 						</ButtonBox>
