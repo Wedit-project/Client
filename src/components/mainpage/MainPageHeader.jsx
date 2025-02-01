@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { useRecoilValue } from "recoil";
+import { authState } from "../../store/authState";
 import { LoginButton } from "./LoginButton";
 import { CreateInvitationButton } from "./CreateInvitationButton";
-import Logo from "../../assets/icons/Logo.svg?react"; // Logo 컴포넌트를 불러옵니다.
+import Logo from "../../assets/icons/Logo.svg?react";
 
 const Header = () => {
+  const token = useRecoilValue(authState);
+
   return (
     <HeaderContainer>
       <StyledLogo />
-      <StyledCreateInvitationButton />
-      {/* <StyledLoginButton /> */}
+      {token ? <StyledCreateInvitationButton /> : <StyledLoginButton />}
     </HeaderContainer>
   );
 };
