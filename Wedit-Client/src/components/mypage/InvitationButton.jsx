@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import ThemaSelectModal from '../editpage/ThemeSelectModal';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { selectedThemeState } from '../../atoms';
 
 const InvitationButton = () => {
 	const [isModalVisible, setModalVisible] = useState(false);
+	const [selectedTheme, setSelectedTheme] = useRecoilState(selectedThemeState);
+	const navigate = useNavigate();
 
 	const handleInvitationButtonClick = () => {
 		setModalVisible(true);
@@ -14,10 +19,26 @@ const InvitationButton = () => {
 		setModalVisible(false);
 	};
 
+	const handleThemeSelect = (theme) => {
+		setSelectedTheme(theme); // 선택한 테마 저장
+	};
+
+	const handleNextButtonClick = () => {
+		if (selectedTheme) {
+			handleModalClose();
+			navigate('/edit');
+		}
+	};
+
 	return (
 		<InvitationButtonWrapper>
 			<CreateButton onClick={handleInvitationButtonClick}>청첩장 제작하기</CreateButton>
-			<ThemaSelectModal isVisible={isModalVisible} onClose={handleModalClose} />
+			<ThemaSelectModal
+				isVisible={isModalVisible}
+				onClose={handleModalClose}
+				onSelectTheme={handleThemeSelect}
+				onNext={handleNextButtonClick}
+			/>
 		</InvitationButtonWrapper>
 	);
 };
