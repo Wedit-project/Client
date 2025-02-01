@@ -1,32 +1,35 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "../../styles/theme";
+import kakaobutton from "../../assets/icons/kakaobutton.png";
 
 const KakaoLoginButton = () => {
+
+  const link = `${import.meta.env.VITE_KAKAO_LOGIN}`;
+
   return (
-    <Button>
-      <Text>로그인</Text>
-    </Button>
+    <Link href={link}>
+      <Button>
+        <Img src={kakaobutton} alt="카카오 로그인" />
+      </Button>
+    </Link>
   );
 };
 
 export default KakaoLoginButton;
 
-const Button = styled.button`
+const Link = styled.a`
+  text-decoration: none;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60rem;
-  height: 9rem;
-  background-color: ${theme.colors.example.kakao};
+`;
+
+const Button = styled.button`
   border: none;
-  border-radius: 1.2rem;
+  background-color: transparent;
   cursor: pointer;
   margin-bottom: 27.7rem;
 `;
 
-const Text = styled.span`
-  font-size: 3rem;
-  font-weight: ${theme.font.bold.fontWeight};
-  color: #3e3e3e;
+const Img = styled.img`
+  width: 60rem;
+  height: 9rem;
 `;
