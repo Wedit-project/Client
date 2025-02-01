@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
@@ -7,10 +7,12 @@ import GalleryPhoto from '../components/PhotoSelectionPage/GalleryPhoto';
 import PhotoSelectionButton from '../components/PhotoSelectionPage/PhotoSelectionButton';
 import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
 import NavButton from '../components/editpage/NavButton';
+import { useRecoilState } from 'recoil';
+import { selectedImagesState } from '../atoms';
 
 const GalleryPhotoSelectionPage = () => {
-	const location = useLocation();
-	const mainImage = location.state?.mainImage;
+	const [selectedImages, setSelectedImages] = useRecoilState(selectedImagesState);
+	const mainImage = selectedImages[0];
 	const [isNextActive, setIsNextActive] = useState(false);
 	const [previewImage, setPreviewImage] = useState(null);
 	const [secondImage, setSecondImage] = useState(null);
@@ -20,15 +22,15 @@ const GalleryPhotoSelectionPage = () => {
 	const navigate = useNavigate();
 
 	const handlePrevious = () => {
+		setSelectedImages([]);
 		navigate('/main-photo-selection');
 	};
 
 	const handleNext = () => {
 		if (isNextActive) {
 			if (step === 3) {
-				navigate('/edit', {
-					state: { selectedImages: [mainImage, previewImage, secondImage, thirdImage] },
-				});
+				setSelectedImages([mainImage, previewImage, secondImage, thirdImage]); // Recoil 상태에 전체 이미지 저장
+				navigate('/edit');
 			} else {
 				setStep((prev) => prev + 1);
 			}
