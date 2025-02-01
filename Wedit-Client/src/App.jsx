@@ -1,5 +1,6 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 import HomePage from './pages/HomePage.jsx';
 import NotFound from './pages/NotFound.jsx';
 import LoginPage from './pages/LoginPage.jsx';
@@ -68,9 +69,9 @@ const router = createBrowserRouter([
 
 function App() {
 	return (
-		<>
+		<RecoilRoot>
 			<RouterProvider router={router} />
-		</>
+		</RecoilRoot>
 	);
 }
 
