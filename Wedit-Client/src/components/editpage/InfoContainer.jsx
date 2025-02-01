@@ -7,19 +7,20 @@ import ko from 'date-fns/locale/ko';
 import SearchSymbol from '../../assets/img/material-symbols_search.svg?react';
 import Calendar from '../../assets/img/Calendar.svg?react';
 import Clock from '../../assets/img/Group.svg?react';
+import { useRecoilState } from 'recoil';
+import {
+	addressState,
+	addressDetailState,
+	selectedDateState,
+	selectedTimeState,
+} from '../../atoms';
 
-const InfoContainer = ({
-	isModalOpen,
-	setIsModalOpen,
-	handleAddressComplete,
-	address,
-	setSelectedDate,
-	setSelectedTime,
-	selectedDate,
-	selectedTime,
-	addressDetail,
-	setAddressDetail,
-}) => {
+const InfoContainer = ({ isModalOpen, setIsModalOpen, handleAddressComplete }) => {
+	const [address, setAddress] = useRecoilState(addressState); // Recoil 상태 사용
+	const [addressDetail, setAddressDetail] = useRecoilState(addressDetailState); // Recoil 상태 사용
+	const [selectedDate, setSelectedDate] = useRecoilState(selectedDateState); // Recoil 상태 사용
+	const [selectedTime, setSelectedTime] = useRecoilState(selectedTimeState); // Recoil 상태 사용
+
 	const datePickerRef = useRef(null);
 	const timePickerRef = useRef(null);
 
