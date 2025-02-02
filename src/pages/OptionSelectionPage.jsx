@@ -48,7 +48,7 @@ const OptionSelectionPage = () => {
 			});
 			try {
 				// 토큰을 가져오는 로직을 추가
-				const token = '';
+				const token = 'super-secret-token';
 				const response = await registerInvitation(selectedImages, updatedContent, token);
 				console.log('API 요청 성공:', response);
 				navigate('/loading');
