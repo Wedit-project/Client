@@ -49,24 +49,24 @@ const RSVPModal = ({ isVisible, onClose, invitationId }) => {
 				phoneNumber,
 				addPerson: guestNum ?? 0, // null이면 기본값 0 설정
 				side: formattedSide,
-				invitationId: invitationId ?? 2, // undefined 방지
+				invitationId,
 			});
 			console.log({
 				name,
 				phoneNumber,
 				addPerson: guestNum ?? 0,
 				side: formattedSide,
-				invitationId: invitationId ?? 2,
+				invitationId,
 			});
 
-			if (result) {
-				alert('참석의사가 등록되었습니다!');
+			if (result?.success) {
+				alert('참석의사가 등록되었습니다.');
 				onClose();
 			} else {
 				alert('참석의사 등록에 실패했습니다.');
 			}
 		} catch (error) {
-			alert(error.response?.data?.message || '참석의사 등록에 실패했습니다.');
+			console.log('API 요청 실패: ', error);
 		} finally {
 			setLoading(false);
 		}
