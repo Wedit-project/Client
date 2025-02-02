@@ -1,5 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const serverInstance = axios.create({
-    baseURL: `${import.meta.env.VITE_SERVER_ADDRESS}`,
+	baseURL: `${import.meta.env.VITE_SERVER_ADDRESS}`,
+	headers: {
+		'Content-Type': 'application/json',
+		Authorization: `Bearer super-secret-token`,
+	},
 });
