@@ -57,7 +57,7 @@ const NameContainer = () => {
 					/>
 				</NameBox>
 				<NameBox>
-					<NameLabelSpan>신부 어머니이름:</NameLabelSpan>
+					<NameLabelSpan>신부 어머니 이름:</NameLabelSpan>
 					<NameInput
 						type="text"
 						value={brideMotherName}
