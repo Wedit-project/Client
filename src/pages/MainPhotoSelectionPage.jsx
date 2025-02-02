@@ -7,10 +7,40 @@ import PhotoSelectionButton from '../components/PhotoSelectionPage/PhotoSelectio
 import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
 import NavButton from '../components/editpage/NavButton';
 import PhotoVector from '../assets/img/photovector1.svg?react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { selectedImagesState } from '../atoms';
+import {
+	groomNameState,
+	groomFatherNameState,
+	groomMotherNameState,
+	brideNameState,
+	brideFatherNameState,
+	brideMotherNameState,
+	addressState,
+	addressDetailState,
+	selectedDateState,
+	selectedTimeState,
+} from '../atoms';
 
 const MainPhotoSelectionPage = () => {
+	const groomName = useRecoilValue(groomNameState);
+	const groomFatherName = useRecoilValue(groomFatherNameState);
+	const groomMotherName = useRecoilValue(groomMotherNameState);
+	const brideName = useRecoilValue(brideNameState);
+	const brideFatherName = useRecoilValue(brideFatherNameState);
+	const brideMotherName = useRecoilValue(brideMotherNameState);
+	const address = useRecoilValue(addressState);
+	const addressDetail = useRecoilValue(addressDetailState);
+	const selectedDate = useRecoilValue(selectedDateState);
+	const selectedTime = useRecoilValue(selectedTimeState);
+	const formattedDate = selectedDate
+		? `${selectedDate.getFullYear()}년 ${selectedDate.getMonth() + 1}월 ${selectedDate.getDate()}일`
+		: '날짜 없음';
+
+	const formattedTime = selectedTime
+		? ` ${selectedTime.getHours() >= 12 ? '오후' : '오전'} ${selectedTime.getHours() % 12 || 12}시`
+		: '시간 없음';
+
 	const [isNextActive, setIsNextActive] = useState(false);
 	const [previewImage, setPreviewImage] = useState(null);
 	const [selectedImages, setSelectedImages] = useRecoilState(selectedImagesState);
@@ -57,18 +87,22 @@ const MainPhotoSelectionPage = () => {
 						)}
 					</MainPhotoBox>
 					<RequiredInfoBox>
-						<LabelSpan>김도현❤️은수아</LabelSpan>
+						<LabelSpan>
+							{groomName} ❤️ {brideName}
+						</LabelSpan>
 						<FamilyNameBox>
-							아버지 김철현/어머니 김순자
+							아버지 {groomFatherName} / 어머니 {groomMotherName}
 							<br />
-							아버지 은철수/어머니 박미영
+							아버지 {brideFatherName} / 어머니 {brideMotherName}
 						</FamilyNameBox>
 						<LabelSpan>일자</LabelSpan>
-						<DateBox>2024년 11월 30일/오후 12시</DateBox>
+						<DateBox>
+							{formattedDate} / {formattedTime}
+						</DateBox>
 						<LabelSpan>위치</LabelSpan>
 						<LocationBox>
-							경기 성남시 수정구 성남대로 1342 <br />
-							가천컨벤션센터
+							{address} <br />
+							{addressDetail}
 						</LocationBox>
 					</RequiredInfoBox>
 				</ContentContainer>
