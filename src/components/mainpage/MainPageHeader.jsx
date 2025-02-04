@@ -7,12 +7,12 @@ import { CreateInvitationButton } from "./CreateInvitationButton";
 import Logo from "../../assets/icons/Logo.svg?react";
 
 const Header = () => {
-  const token = useRecoilValue(authState);
+  const state = useRecoilValue(authState);
 
   return (
     <HeaderContainer>
       <StyledLogo />
-      {token ? <StyledCreateInvitationButton /> : <StyledLoginButton />}
+      {state ? <StyledCreateInvitationButton /> : <StyledLoginButton />}
     </HeaderContainer>
   );
 };
