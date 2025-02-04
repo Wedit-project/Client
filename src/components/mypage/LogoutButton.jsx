@@ -2,13 +2,19 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../styles/theme";
+import { fetchUserLogout } from "../../apis/api/user";
+import { authState } from "../../store/authState";
+import { useSetRecoilState } from "recoil";
 
 const LogoutButton = () => {
   const navigate = useNavigate();
+  const setAuth = useSetRecoilState(authState);
 
-  const handleLogout = () => {
-    // 로그아웃 관련 로직 추가 가능
-    navigate("/");
+  const handleLogout = async() => {
+    const response = await fetchUserLogout(setAuth);
+    if(response) {
+      navigate("/");
+    }
   };
 
   return <StyledButton onClick={handleLogout}>로그아웃</StyledButton>;
@@ -16,10 +22,11 @@ const LogoutButton = () => {
 
 export default LogoutButton;
 
-// 스타일 정의
+// CSS
 const StyledButton = styled.button`
-    font-size: ${theme.fontSize.xlarge};
-    font-weight: ${theme.font.medium.fontWeight};
-    border: none;
-    background-color: transparent;
+  font-size: ${theme.fontSize.xlarge};
+  font-weight: ${theme.font.medium.fontWeight};
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
