@@ -2,7 +2,7 @@ import { atom } from "recoil";
 import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist({
-  key: "localStorage", // 로컬스토리지에 데이터를 저장
+  key: "localStorage",
   storage: localStorage,
 });
 

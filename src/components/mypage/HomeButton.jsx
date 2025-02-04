@@ -17,8 +17,9 @@ export default HomeButton;
 
 // 스타일 정의
 const StyledButton = styled.button`
-    font-size: ${theme.fontSize.xlarge};
-    font-weight: ${theme.font.medium.fontWeight};
-    border: none;
-    background-color: transparent;
+  font-size: ${theme.fontSize.xlarge};
+  font-weight: ${theme.font.medium.fontWeight};
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 `;
