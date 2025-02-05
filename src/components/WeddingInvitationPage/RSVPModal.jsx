@@ -44,22 +44,22 @@ const RSVPModal = ({ isVisible, onClose, invitationId }) => {
 			// side 값 변환
 			const formattedSide = sideSelect === '신랑측' ? 'GROOM' : 'BRIDE';
 
-			const result = await registerAttendance({
+			const response = await registerAttendance({
 				name,
 				phoneNumber,
 				addPerson: guestNum ?? 0, // null이면 기본값 0 설정
 				side: formattedSide,
 				invitationId,
 			});
-			console.log({
-				name,
-				phoneNumber,
-				addPerson: guestNum ?? 0,
-				side: formattedSide,
-				invitationId,
-			});
 
-			if (result?.success) {
+			if (response?.success) {
+				console.log('API 요청 성공: ', {
+					name,
+					phoneNumber,
+					addPerson: guestNum ?? 0,
+					side: formattedSide,
+					invitationId,
+				});
 				alert('참석의사가 등록되었습니다.');
 				onClose();
 			} else {
@@ -121,7 +121,7 @@ const RSVPModal = ({ isVisible, onClose, invitationId }) => {
 						</DropdownBox>
 
 						<SubmitButton isActive={isButtonActive && !loading} onClick={handleSubmit}>
-							{loading ? '전송 중...' : '전달 하기'}
+							{loading ? '전달 중' : '전달 하기'}
 						</SubmitButton>
 					</ModalBox>
 				</ModalContainer>
