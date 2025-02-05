@@ -108,15 +108,11 @@ const EditPage = () => {
 	};
 
 	const formatTime = (date) => {
-		if (!date) return { hour: 0, minute: 0, second: 0, nano: 0 };
-		const hours = date.getHours();
-		const minutes = date.getMinutes();
-		return {
-			hour: hours,
-			minute: minutes,
-			second: 0, // 기본값으로 0 설정
-			nano: 0, // 기본값으로 0 설정
-		};
+		if (!date) return '00:00:00';
+		const hours = String(date.getHours()).padStart(2, '0');
+		const minutes = String(date.getMinutes()).padStart(2, '0');
+		const seconds = String(date.getSeconds()).padStart(2, '0');
+		return `${hours}:${minutes}:${seconds}`;
 	};
 
 	return (
