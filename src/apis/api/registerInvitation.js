@@ -2,41 +2,32 @@ import { serverInstance } from '../utils/apiIntance.js';
 
 const registerInvitation = async (images, content) => {
 	const url = `/api/invitations`;
-
 	const formData = new FormData();
 
-	Array.from(images).forEach((image) => {
-		formData.append('images', image);
+	// Base64 이미지를 File 객체로 변환
+	const base64ToFile = (base64String, index) => {
+		const byteString = atob(base64String.split(',')[1]); // Base64 데이터 부분만 추출
+		const mimeType = base64String.match(/data:(.*);base64/)[1]; // MIME 타입 추출
+		const arrayBuffer = new Uint8Array(byteString.length);
+
+		for (let i = 0; i < byteString.length; i++) {
+			arrayBuffer[i] = byteString.charCodeAt(i);
+		}
+
+		return new File([arrayBuffer], `image_${index}.png`, { type: mimeType });
+	};
+
+	// `images` 배열의 각 Base64 문자열을 `File` 객체로 변환 후 `FormData`에 추가
+	images.forEach((base64, index) => {
+		const file = base64ToFile(base64, index);
+		formData.append('images', file);
 	});
 
+	// `content` 객체를 Blob으로 변환하여 추가
 	formData.append('content', new Blob([JSON.stringify(content)], { type: 'application/json' }));
 
-	let totalSize = 0;
-	for (let [key, value] of formData.entries()) {
-		if (value instanceof File) {
-			totalSize += value.size;
-		}
-	}
-	console.log('Total size of images:', totalSize);
-
 	try {
-		for (const x of formData) {
-			console.log(x);
-		}
-
-		const contentBlob = formData.get('content');
-		const reader = new FileReader();
-
-		reader.onload = function () {
-			console.log('Content:', JSON.parse(reader.result));
-		};
-
-		reader.readAsText(contentBlob);
-
 		const { data } = await serverInstance.post(url, formData, {
-			headers: {
-				'Content-Type': 'multipart/form-data',
-			},
 			withCredentials: true,
 		});
 		return data.success.data;
