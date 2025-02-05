@@ -44,7 +44,7 @@ const RSVPModal = ({ isVisible, onClose, invitationId }) => {
 			// side 값 변환
 			const formattedSide = sideSelect === '신랑측' ? 'GROOM' : 'BRIDE';
 
-			const result = await registerAttendance({
+			const response = await registerAttendance({
 				name,
 				phoneNumber,
 				addPerson: guestNum ?? 0, // null이면 기본값 0 설정
@@ -59,7 +59,7 @@ const RSVPModal = ({ isVisible, onClose, invitationId }) => {
 				invitationId,
 			});
 
-			if (result?.success) {
+			if (response?.success) {
 				alert('참석의사가 등록되었습니다.');
 				onClose();
 			} else {
