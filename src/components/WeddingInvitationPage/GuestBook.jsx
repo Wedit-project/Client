@@ -1,7 +1,8 @@
+//GuestBook.jsx
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
-import GuestBookModal from './guest-book-modal';
+import GuestBookModal from './GuestBookModal';
 
 const GuestBook = ({ $variant = 'basic' }) => {
 	const [isScrollable, setScrollable] = useState(false);
