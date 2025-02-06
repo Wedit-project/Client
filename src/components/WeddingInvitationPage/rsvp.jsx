@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
-import RSVPModal from '../WeddingInvitationPage/rsvp-modal';
+import RSVPModal from './RSVPModal';
 
 const RSVP = ({ $variant = 'basic' }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
