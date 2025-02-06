@@ -4,7 +4,7 @@ import theme from '../styles/theme';
 import RequiredInformation from '../components/WeddingInvitationPage/required-information';
 import Location from '../components/WeddingInvitationPage/location';
 import Gallery from '../components/WeddingInvitationPage/gallery';
-import GuestBook from '../components/WeddingInvitationPage/guest-book';
+import GuestBook from '../components/WeddingInvitationPage/GuestBook';
 import CongratulatoryMoney from '../components/WeddingInvitationPage/congratulatory-money';
 import RSVP from '../components/WeddingInvitationPage/rsvp';
 

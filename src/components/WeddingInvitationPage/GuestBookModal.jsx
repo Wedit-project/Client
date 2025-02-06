@@ -1,17 +1,19 @@
+//GuestBookModal.jsx
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
+import { registerGuestBook } from '../../apis/api/comments';
 
 // 글자 제한 설정
 const MAX_CONTENT_LENGTH = 100;
 
-const GuestBookModal = ({ isVisible, onClose }) => {
+const GuestBookModal = ({ isVisible, onClose, invitationId }) => {
 	const [name, setName] = useState('');
 	const [content, setContent] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	// ModalContainer 밖인 ModalWrapper 클릭 시 모달창 닫힘
 	const handleWrapperClick = (e) => {
-		// e.target이 ModalWrapper일 경우에만 onClose 호출
 		if (e.target === e.currentTarget) {
 			onClose();
 		}
@@ -21,6 +23,38 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 		const newValue = e.target.value;
 		if (newValue.length <= MAX_CONTENT_LENGTH) {
 			setContent(newValue);
+		}
+	};
+
+	// 방명록 등록
+	const handleSubmit = async () => {
+		if (!isButtonActive || loading) return;
+
+		setLoading(true);
+		try {
+			const response = await registerGuestBook({
+				name,
+				content,
+				invitationId,
+			});
+
+			if (response?.success) {
+				console.log('API 요청 성공: ', {
+					name,
+					content,
+					invitationId,
+				});
+				alert('방명록이 등록되었습니다.');
+				setName('');
+				setContent('');
+				onClose();
+			} else {
+				alert('방명록 등록에 실패했습니다.');
+			}
+		} catch (error) {
+			console.log('API 요청 실패: ', error);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -49,7 +83,9 @@ const GuestBookModal = ({ isVisible, onClose }) => {
 								{content.length}/{MAX_CONTENT_LENGTH}
 							</ContentCount>
 						</ContentBox>
-						<SubmitButton isActive={isButtonActive}>작성 완료</SubmitButton>
+						<SubmitButton isActive={isButtonActive && !loading} onClick={handleSubmit}>
+							{loading ? '등록 중' : '작성 완료'}
+						</SubmitButton>{' '}
 					</ModalBox>
 				</ModalContainer>
 			</ModalWrapper>
