@@ -38,13 +38,12 @@ const GuestBookModal = ({ isVisible, onClose, invitationId }) => {
 				invitationId,
 			});
 
-			console.log({
-				name,
-				content,
-				invitationId,
-			});
-
 			if (response?.success) {
+				console.log('API 요청 성공: ', {
+					name,
+					content,
+					invitationId,
+				});
 				alert('방명록이 등록되었습니다.');
 				setName('');
 				setContent('');

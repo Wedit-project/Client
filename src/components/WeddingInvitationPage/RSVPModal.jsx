@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import Dropdown from '../../assets/icons/DropdownIcon.svg?react';
+import { registerAttendance } from '../../apis/api/decisions';
 
-const RSVPModal = ({ isVisible, onClose }) => {
+const RSVPModal = ({ isVisible, onClose, invitationId }) => {
 	const [name, setName] = useState('');
-	const [phone, setPhone] = useState('');
+	const [phoneNumber, setPhoneNumber] = useState('');
 	const [guestNum, setGuestNum] = useState(null);
 	const [sideSelect, setSideSelect] = useState(null);
 	const [isSideDropdownOpen, setIsSideDropdownOpen] = useState(false);
 	const [isGuestDropdownOpen, setIsGuestDropdownOpen] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	const handleWrapperClick = (e) => {
 		if (e.target === e.currentTarget) {
@@ -18,16 +20,56 @@ const RSVPModal = ({ isVisible, onClose }) => {
 	};
 
 	const isButtonActive =
-		name.trim() !== '' && phone.trim() !== '' && guestNum !== null && sideSelect !== null;
+		name.trim() !== '' && phoneNumber.trim() !== '' && guestNum !== null && sideSelect !== null;
 
 	const handleSideSelect = (value) => {
-		setSideSelect(value);
-		setIsSideDropdownOpen(false);
+		if (value !== sideSelect) {
+			setSideSelect(value);
+			setIsSideDropdownOpen(false);
+		}
 	};
 
 	const handleGuestSelect = (value) => {
-		setGuestNum(value);
-		setIsGuestDropdownOpen(false);
+		if (value !== guestNum) {
+			setGuestNum(value);
+			setIsGuestDropdownOpen(false);
+		}
+	};
+
+	const handleSubmit = async () => {
+		if (!isButtonActive || loading) return;
+
+		setLoading(true);
+		try {
+			// side 값 변환
+			const formattedSide = sideSelect === '신랑측' ? 'GROOM' : 'BRIDE';
+
+			const response = await registerAttendance({
+				name,
+				phoneNumber,
+				addPerson: guestNum ?? 0, // null이면 기본값 0 설정
+				side: formattedSide,
+				invitationId,
+			});
+
+			if (response?.success) {
+				console.log('API 요청 성공: ', {
+					name,
+					phoneNumber,
+					addPerson: guestNum ?? 0,
+					side: formattedSide,
+					invitationId,
+				});
+				alert('참석의사가 등록되었습니다.');
+				onClose();
+			} else {
+				alert('참석의사 등록에 실패했습니다.');
+			}
+		} catch (error) {
+			console.log('API 요청 실패: ', error);
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
@@ -36,9 +78,22 @@ const RSVPModal = ({ isVisible, onClose }) => {
 				<ModalContainer>
 					<TitleSpan>참석의사 전달하기</TitleSpan>
 					<ModalBox>
+						<NameInput
+							type="text"
+							placeholder="이름"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
+						/>
+						<PhoneInput
+							type="text"
+							placeholder="연락처"
+							value={phoneNumber}
+							onChange={(e) => setPhoneNumber(e.target.value)}
+						/>
+
 						<DropdownBox>
-							<DropdownHeader onClick={() => setIsSideDropdownOpen((prev) => !prev)}>
-								{sideSelect === null ? '신랑측인지 신부측인지 선택해 주세요' : sideSelect}
+							<DropdownHeader onClick={() => setIsSideDropdownOpen(!isSideDropdownOpen)}>
+								{sideSelect || '신랑측인지 신부측인지 선택'}
 								<DropdownIcon />
 							</DropdownHeader>
 							{isSideDropdownOpen && (
@@ -48,35 +103,26 @@ const RSVPModal = ({ isVisible, onClose }) => {
 								</DropdownList>
 							)}
 						</DropdownBox>
-						<NameInput
-							type="text"
-							placeholder="이름을 입력해 주세요"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-						/>
-						<PhoneInput
-							placeholder="연락처를 입력해 주세요"
-							value={phone}
-							onChange={(e) => setPhone(e.target.value)}
-						/>
+
 						<DropdownBox>
-							<DropdownHeader onClick={() => setIsGuestDropdownOpen((prev) => !prev)}>
+							<DropdownHeader onClick={() => setIsGuestDropdownOpen(!isGuestDropdownOpen)}>
 								{guestNum === null ? '추가 인원' : `외 ${guestNum}명`}
 								<DropdownIcon />
 							</DropdownHeader>
 							{isGuestDropdownOpen && (
 								<DropdownList>
-									<DropdownItem onClick={() => handleGuestSelect(0)}>외 0명</DropdownItem>
-									<DropdownItem onClick={() => handleGuestSelect(1)}>외 1명</DropdownItem>
-									<DropdownItem onClick={() => handleGuestSelect(2)}>외 2명</DropdownItem>
-									<DropdownItem onClick={() => handleGuestSelect(3)}>외 3명</DropdownItem>
-									<DropdownItem onClick={() => handleGuestSelect(4)}>외 4명</DropdownItem>
-									<DropdownItem onClick={() => handleGuestSelect(5)}>외 5명</DropdownItem>
+									{[0, 1, 2, 3, 4, 5].map((num) => (
+										<DropdownItem key={num} onClick={() => handleGuestSelect(num)}>
+											외 {num}명
+										</DropdownItem>
+									))}
 								</DropdownList>
 							)}
 						</DropdownBox>
 
-						<SubmitButton isActive={isButtonActive}>전달 하기</SubmitButton>
+						<SubmitButton isActive={isButtonActive && !loading} onClick={handleSubmit}>
+							{loading ? '전달 중' : '전달 하기'}
+						</SubmitButton>
 					</ModalBox>
 				</ModalContainer>
 			</ModalWrapper>
