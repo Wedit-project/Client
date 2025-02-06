@@ -30,6 +30,7 @@ const registerInvitation = async (images, content) => {
 		const { data } = await serverInstance.post(url, formData, {
 			withCredentials: true,
 		});
+		console.log('API 요청 성공:', data);
 		return data.success.data;
 	} catch (error) {
 		console.error('API 요청 실패:', error);
