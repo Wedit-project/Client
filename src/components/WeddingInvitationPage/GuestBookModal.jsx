@@ -84,7 +84,7 @@ const GuestBookModal = ({ isVisible, onClose, invitationId }) => {
 							</ContentCount>
 						</ContentBox>
 						<SubmitButton isActive={isButtonActive && !loading} onClick={handleSubmit}>
-							{loading ? '등록 중...' : '작성 완료'}
+							{loading ? '등록 중' : '작성 완료'}
 						</SubmitButton>{' '}
 					</ModalBox>
 				</ModalContainer>
