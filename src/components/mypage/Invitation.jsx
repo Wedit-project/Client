@@ -1,30 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import ActionButtons from "./ActionButtons";
 import theme from "../../styles/theme";
-import { serverInstance } from "../../apis/utils/apiIntance";
 
-const Invitation = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await serverInstance.get("/api/members/mypage", {
-          headers: {
-            Authorization: "super-secret-token",
-          },
-        });
-        console.log("응답 데이터:", response.data);
-      } catch (error) {
-        console.error("API 요청 오류:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+const Invitation = ({ num }) => {
   return (
     <InvitationContainer>
-      <Title>청첩장 1</Title>
+      <Title>{`청첩장 ${num}`}</Title>
       <ActionButtons />
     </InvitationContainer>
   );

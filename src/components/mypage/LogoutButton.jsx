@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import { fetchUserLogout } from "../../apis/api/user";
-import { authState } from "../../store/authState";
+import { authState } from "../../recoil/authState";
 import { useSetRecoilState } from "recoil";
 
 const LogoutButton = () => {
