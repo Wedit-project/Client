@@ -48,7 +48,6 @@ const OptionSelectionPage = () => {
 			});
 			try {
 				const response = await registerInvitation(selectedImages, updatedContent);
-				console.log('API 요청 성공:', response);
 				navigate('/loading');
 			} catch (error) {
 				console.error('API 요청 실패:', error);
