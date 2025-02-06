@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import DaumPostcode from 'react-daum-postcode';
@@ -8,25 +8,45 @@ import NameContainer from '../components/editpage/NameContainer';
 import InfoContainer from '../components/editpage/InfoContainer';
 import ImgContainer from '../components/editpage/ImgContainer';
 import NavButton from '../components/editpage/NavButton';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { selectedThemeState } from '../recoil/atoms';
+import {
+	groomNameState,
+	brideNameState,
+	groomFatherNameState,
+	groomMotherNameState,
+	brideFatherNameState,
+	brideMotherNameState,
+	addressState,
+	addressDetailState,
+	selectedDateState,
+	selectedTimeState,
+	selectedImagesState,
+	contentState,
+} from '../recoil/atoms';
 
 const EditPage = () => {
-	const location = useLocation();
+	const [content, setContent] = useRecoilState(contentState);
 	const navigate = useNavigate();
-	const selectedImages = location.state?.selectedImages || [];
+
+	const selectedImages = useRecoilValue(selectedImagesState);
+
+	const selectedTheme = useRecoilValue(selectedThemeState);
+
+	const groomName = useRecoilValue(groomNameState);
+	const brideName = useRecoilValue(brideNameState);
+	const groomFatherName = useRecoilValue(groomFatherNameState);
+	const groomMotherName = useRecoilValue(groomMotherNameState);
+	const brideFatherName = useRecoilValue(brideFatherNameState);
+	const brideMotherName = useRecoilValue(brideMotherNameState);
+
+	const [address, setAddress] = useRecoilState(addressState);
+	const [addressDetail, setAddressDetail] = useRecoilState(addressDetailState);
+	const [selectedDate, setSelectedDate] = useRecoilState(selectedDateState);
+	const [selectedTime, setSelectedTime] = useRecoilState(selectedTimeState);
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [address, setAddress] = useState('');
-	const [addressDetail, setAddressDetail] = useState('');
 	const [isNextActive, setIsNextActive] = useState(false);
-
-	const [groomName, setGroomName] = useState('');
-	const [groomFatherName, setGroomFatherName] = useState('');
-	const [groomMotherName, setGroomMotherName] = useState('');
-	const [brideName, setBrideName] = useState('');
-	const [brideFatherName, setBrideFatherName] = useState('');
-	const [brideMotherName, setBrideMotherName] = useState('');
-
-	const [selectedDate, setSelectedDate] = useState(null);
-	const [selectedTime, setSelectedTime] = useState(null);
 
 	const handleAddressComplete = (data) => {
 		setAddress(data.address);
@@ -68,8 +88,31 @@ const EditPage = () => {
 
 	const handleNext = () => {
 		if (isNextActive) {
+			const newContent = {
+				groom: groomName,
+				bride: brideName,
+				groomF: groomFatherName,
+				groomM: groomMotherName,
+				brideF: brideFatherName,
+				brideM: brideMotherName,
+				address: address,
+				extraAddress: addressDetail,
+				date: selectedDate.toISOString().split('T')[0],
+				time: formatTime(selectedTime),
+				theme: selectedTheme,
+			};
+			setContent(newContent);
+
 			navigate('/option-selection');
 		}
+	};
+
+	const formatTime = (date) => {
+		if (!date) return '00:00:00';
+		const hours = String(date.getHours()).padStart(2, '0');
+		const minutes = String(date.getMinutes()).padStart(2, '0');
+		const seconds = String(date.getSeconds()).padStart(2, '0');
+		return `${hours}:${minutes}:${seconds}`;
 	};
 
 	return (
@@ -77,25 +120,11 @@ const EditPage = () => {
 			<LogoComponent />
 			<TitleBox>필수 정보</TitleBox>
 			<Container>
-				<NameContainer
-					setGroomName={setGroomName}
-					setGroomFatherName={setGroomFatherName}
-					setGroomMotherName={setGroomMotherName}
-					setBrideName={setBrideName}
-					setBrideFatherName={setBrideFatherName}
-					setBrideMotherName={setBrideMotherName}
-				/>
+				<NameContainer />
 				<InfoContainer
 					isModalOpen={isModalOpen}
 					setIsModalOpen={setIsModalOpen}
 					handleAddressComplete={handleAddressComplete}
-					address={address}
-					addressDetail={addressDetail}
-					setAddressDetail={setAddressDetail}
-					selectedDate={selectedDate}
-					setSelectedDate={setSelectedDate}
-					selectedTime={selectedTime}
-					setSelectedTime={setSelectedTime}
 				/>
 				<ImgContainer photos={selectedImages} />
 				<CautionBox>{!isNextActive && '필수 정보를 모두 입력해 주세요!'}</CautionBox>

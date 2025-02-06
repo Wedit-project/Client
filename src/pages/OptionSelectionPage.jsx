@@ -5,15 +5,18 @@ import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
 import OptSelection from '../components/editpage/OptSelection';
 import NavButton from '../components/editpage/NavButton';
+import { useRecoilValue, useRecoilState } from 'recoil';
+import { selectedImagesState, contentState, selectedOptionsState } from '../recoil/atoms';
+import { registerInvitation } from '../apis/api/registerInvitation';
 
 const OptionSelectionPage = () => {
 	const navigate = useNavigate();
+	const [content, setContent] = useRecoilState(contentState);
+	const selectedImages = useRecoilValue(selectedImagesState);
+
+	const [checkedItems, setCheckedItems] = useRecoilState(selectedOptionsState);
+
 	const [isNextActive, setIsNextActive] = useState(true);
-	const [checkedItems, setCheckedItems] = useState({
-		guestbook: true,
-		rsvp: false,
-		accountInfo: false,
-	});
 
 	const handleCheckChange = (newCheckedItems) => {
 		setCheckedItems(newCheckedItems);
@@ -25,11 +28,30 @@ const OptionSelectionPage = () => {
 		navigate('/edit');
 	};
 
-	const handleNext = () => {
+	const handleNext = async () => {
+		const updatedContent = {
+			...content,
+			guestBookOption: checkedItems.guestbook,
+			decisionOption: checkedItems.rsvp,
+			accountOption: checkedItems.accountInfo,
+		};
+
+		setContent(updatedContent);
+
 		if (checkedItems.accountInfo) {
 			navigate('/account-information');
 		} else {
-			navigate('/loading');
+			// API 호출 전에 보낼 데이터 확인
+			console.log('Sending data to API:', {
+				images: selectedImages,
+				content: updatedContent,
+			});
+			try {
+				const response = await registerInvitation(selectedImages, updatedContent);
+				navigate('/loading');
+			} catch (error) {
+				console.error('API 요청 실패:', error);
+			}
 		}
 	};
 
