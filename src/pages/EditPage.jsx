@@ -9,7 +9,7 @@ import InfoContainer from '../components/editpage/InfoContainer';
 import ImgContainer from '../components/editpage/ImgContainer';
 import NavButton from '../components/editpage/NavButton';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { selectedThemeState } from '../atoms';
+import { selectedThemeState } from '../recoil/atoms';
 import {
 	groomNameState,
 	brideNameState,
@@ -23,7 +23,7 @@ import {
 	selectedTimeState,
 	selectedImagesState,
 	contentState,
-} from '../atoms';
+} from '../recoil/atoms';
 
 const EditPage = () => {
 	const [content, setContent] = useRecoilState(contentState);

@@ -13,7 +13,7 @@ import {
 	addressDetailState,
 	selectedDateState,
 	selectedTimeState,
-} from '../../atoms';
+} from '../../recoil/atoms';
 
 const InfoContainer = ({ isModalOpen, setIsModalOpen, handleAddressComplete }) => {
 	const [address, setAddress] = useRecoilState(addressState); // Recoil 상태 사용

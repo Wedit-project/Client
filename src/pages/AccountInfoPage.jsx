@@ -5,7 +5,7 @@ import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
 import NavButton from '../components/editpage/NavButton';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { contentState, selectedImagesState, accountInfoState } from '../atoms';
+import { contentState, selectedImagesState, accountInfoState } from '../recoil/atoms';
 import { registerInvitation } from '../apis/api/registerInvitation';
 
 const AccountInfoPage = () => {

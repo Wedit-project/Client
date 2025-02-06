@@ -6,7 +6,7 @@ import LogoComponent from '../components/editpage/Logo';
 import OptSelection from '../components/editpage/OptSelection';
 import NavButton from '../components/editpage/NavButton';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { selectedImagesState, contentState, selectedOptionsState } from '../atoms';
+import { selectedImagesState, contentState, selectedOptionsState } from '../recoil/atoms';
 import { registerInvitation } from '../apis/api/registerInvitation';
 
 const OptionSelectionPage = () => {

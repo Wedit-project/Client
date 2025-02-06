@@ -8,7 +8,7 @@ import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
 import NavButton from '../components/editpage/NavButton';
 import PhotoVector from '../assets/img/photovector1.svg?react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { selectedImagesState } from '../atoms';
+import { selectedImagesState } from '../recoil/atoms';
 import {
 	groomNameState,
 	groomFatherNameState,
@@ -20,7 +20,7 @@ import {
 	addressDetailState,
 	selectedDateState,
 	selectedTimeState,
-} from '../atoms';
+} from '../recoil/atoms';
 
 const MainPhotoSelectionPage = () => {
 	const groomName = useRecoilValue(groomNameState);

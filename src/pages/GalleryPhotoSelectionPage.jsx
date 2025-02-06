@@ -8,7 +8,7 @@ import PhotoSelectionButton from '../components/PhotoSelectionPage/PhotoSelectio
 import PageIndicator from '../components/PhotoSelectionPage/PageIndicator';
 import NavButton from '../components/editpage/NavButton';
 import { useRecoilState } from 'recoil';
-import { selectedImagesState } from '../atoms';
+import { selectedImagesState } from '../recoil/atoms';
 
 const GalleryPhotoSelectionPage = () => {
 	const [selectedImages, setSelectedImages] = useRecoilState(selectedImagesState);

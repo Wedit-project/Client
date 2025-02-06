@@ -9,7 +9,7 @@ import {
 	brideNameState,
 	brideFatherNameState,
 	brideMotherNameState,
-} from '../../atoms';
+} from '../../recoil/atoms';
 
 const NameContainer = () => {
 	const [groomName, setGroomName] = useRecoilState(groomNameState);

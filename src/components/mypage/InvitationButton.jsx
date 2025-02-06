@@ -4,7 +4,7 @@ import theme from '../../styles/theme';
 import ThemaSelectModal from '../editpage/ThemeSelectModal';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { selectedThemeState } from '../../atoms';
+import { selectedThemeState } from '../../recoil/atoms';
 
 const InvitationButton = () => {
 	const [isModalVisible, setModalVisible] = useState(false);
