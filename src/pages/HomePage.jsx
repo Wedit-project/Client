@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
-import { authState } from "../store/authState";
+import { authState } from "../recoil/authState";
 import styled from "styled-components";
 import PreviewBox from "../components/mainpage/PreviewBox";
 import MainBanner from "../components/mainpage/MainBanner";
