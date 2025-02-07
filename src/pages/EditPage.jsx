@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import DaumPostcode from 'react-daum-postcode';
@@ -24,8 +24,12 @@ import {
 	selectedImagesState,
 	contentState,
 } from '../recoil/atoms';
+import { getInvitationById } from '../apis/api/my';
 
 const EditPage = () => {
+	const location = useLocation();
+    const invitationId = location.state?.invitationId;
+
 	const [content, setContent] = useRecoilState(contentState);
 	const navigate = useNavigate();
 
@@ -52,6 +56,20 @@ const EditPage = () => {
 		setAddress(data.address);
 		setIsModalOpen(false);
 	};
+
+	useEffect(() => {
+        if (invitationId) {
+            getInvitationById(invitationId)
+                .then((data) => {
+                    console.log("청첩장 데이터:", data);
+                })
+                .catch((error) => {
+                    console.error("청첩장 조회 실패:", error);
+                });
+        } else {
+            console.warn("invitationId가 없습니다.");
+        }
+    }, [invitationId]);
 
 	useEffect(() => {
 		const allFieldsFilled =

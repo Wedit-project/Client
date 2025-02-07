@@ -3,11 +3,11 @@ import styled from "styled-components";
 import ActionButtons from "./ActionButtons";
 import theme from "../../styles/theme";
 
-const Invitation = ({ num }) => {
+const Invitation = ({ invitation, num }) => {
   return (
     <InvitationContainer>
       <Title>{`청첩장 ${num}`}</Title>
-      <ActionButtons />
+      <ActionButtons invitationId={invitation.id} />
     </InvitationContainer>
   );
 };

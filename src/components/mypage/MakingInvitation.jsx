@@ -24,7 +24,7 @@ const MakingInvitation = () => {
       ) : (
         <ScrollableContainer>
           {invitations.map((invitation) => (
-            <Invitation key={invitation.num} num={invitation.num} />
+            <Invitation key={invitation.num} num={invitation.num} invitation={invitation} />
           ))}
         </ScrollableContainer>
       )}
