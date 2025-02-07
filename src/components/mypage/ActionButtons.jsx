@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import theme from "../../styles/theme";
 import LinkModal from "./LinkModal";
 
-const ActionButtons = () => {
+const ActionButtons = ({ invitationId }) => {
 
     const [isModalOpen, setModalOpen] = useState(false);
     const url = "https://wedit.site/1";
@@ -19,7 +19,7 @@ const ActionButtons = () => {
         <ButtonContainer>
             <Button onClick={() => setModalOpen(true)}>배포 링크</Button>
                 {isModalOpen && <LinkModal url={url} onClose={() => setModalOpen(false)} />}
-            <Button onClick={() => handleNavigation("/edit")}>수정하기</Button>
+            <Button onClick={() => handleNavigation(`/edit/${invitationId}`)}>수정하기</Button>
             <Button onClick={() => handleNavigation("/analysis")}>분석보기</Button>
         </ButtonContainer>
     );

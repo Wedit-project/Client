@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { authState } from "../../store/authState";
+import { authState } from "../../recoil/authState";
 import { LoginButton } from "./LoginButton";
 import { CreateInvitationButton } from "./CreateInvitationButton";
 import Logo from "../../assets/icons/Logo.svg?react";
 
 const Header = () => {
   const state = useRecoilValue(authState);
-
+  console.log(state)
   return (
     <HeaderContainer>
       <StyledLogo />
