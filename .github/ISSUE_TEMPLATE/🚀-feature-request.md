@@ -2,8 +2,9 @@
 name: "\U0001F680 Feature Request"
 about: "[Feat] 이슈 생성"
 title: "[Feat] "
-labels: ✨ Feat
-assignees: ""
+labels: "✨ Feat"
+assignees: ''
+
 ---
 
 ## 📋 기능 요약

@@ -2,8 +2,9 @@
 name: "\U0001F504 Refactor Request"
 about: "[Refactor] 리팩토링"
 title: "[Refactor]"
-labels: ♻️ Refactor
-assignees: ""
+labels: "♻️ Refactor"
+assignees: ''
+
 ---
 
 ## 📋 리팩토링 대상
