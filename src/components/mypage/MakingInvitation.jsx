@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../../styles/theme";
 import Invitation from "./Invitation";
-import { viewInvitation } from "../../apis/api/my";
+import { viewInvitation, DeleteInvitations } from "../../apis/api/my";
 
 const MakingInvitation = () => {
   const [invitations, setInvitations] = useState([]);
@@ -10,7 +10,14 @@ const MakingInvitation = () => {
   useEffect(() => {
     const fetchInvitations = async () => {
       const data = await viewInvitation();
-      setInvitations(data);
+      if (data.length > 10) {
+        // 가장 오래된 청첩장 삭제
+        await DeleteInvitations(data[0].num);
+        const updatedData = await viewInvitation(); // 최신 데이터 다시 불러오기
+        setInvitations(updatedData);
+      } else {
+        setInvitations(data);
+      }
     };
     fetchInvitations();
   }, []);
