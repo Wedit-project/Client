@@ -3,12 +3,21 @@ import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import toast, { Toaster } from 'react-hot-toast';
 
-const CongratulatoryMoney = ({ $variant = 'basic' }) => {
+const CongratulatoryMoney = ({ $variant = 'basic', invitationData }) => {
+
+	// invitationData가 없거나 bankAccounts가 없을 경우 처리
+    if (!invitationData || !invitationData.bankAccounts || invitationData.bankAccounts.length === 0) {
+        return null;  // 아무 것도 렌더링하지 않음
+    }
+
 	const handleCopy = (text) => {
 		navigator.clipboard.writeText(text).then(() => {
 			toast.success('복사가 완료되었습니다!');
 		});
 	};
+
+	const groomAccount = invitationData.bankAccounts.find(account => account.side === 'GROOM');
+  	const brideAccount = invitationData.bankAccounts.find(account => account.side === 'BRIDE');
 
 	return (
 		<CongratulatoryMoneyWrapper>
@@ -17,22 +26,22 @@ const CongratulatoryMoney = ({ $variant = 'basic' }) => {
 			<CongratulatoryMoneyContainer>
 				<GroomCongratulatoryMoneyBox>
 					<GroomSpan>신랑측</GroomSpan>
-					<BankText>농협은행</BankText>
+					<BankText>{groomAccount.bankName}</BankText>
 					<AccountInfoBox>
-						<AccountText>123-4567-8901</AccountText>
-						<NameText>(김도현)</NameText>
+						<AccountText>{groomAccount.accountNumber}</AccountText>
+						<NameText>({groomAccount.accountHolder})</NameText>
 					</AccountInfoBox>
-					<CopyButton onClick={() => handleCopy('123-4567-8901')}>복사하기</CopyButton>{' '}
+					<CopyButton onClick={() => handleCopy(groomAccount.accountNumber)}>복사하기</CopyButton>{' '}
 				</GroomCongratulatoryMoneyBox>
 
 				<BrideCongratulatoryMoneyBox>
 					<BrideSpan>신부측</BrideSpan>
-					<BankText>국민은행</BankText>
+					<BankText>{brideAccount.bankName}</BankText>
 					<AccountInfoBox>
-						<AccountText>234-5678-9012</AccountText>
-						<NameText>(은수아)</NameText>
+						<AccountText>{brideAccount.accountNumber}</AccountText>
+						<NameText>({brideAccount.accountHolder})</NameText>
 					</AccountInfoBox>
-					<CopyButton onClick={() => handleCopy('234-5678-9012')}>복사하기</CopyButton>{' '}
+					<CopyButton onClick={() => handleCopy(brideAccount.accountNumber)}>복사하기</CopyButton>{' '}
 				</BrideCongratulatoryMoneyBox>
 				<Toaster position="top-right" reverseOrder={true} />
 			</CongratulatoryMoneyContainer>

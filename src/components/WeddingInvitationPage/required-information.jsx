@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
-const RequiredInformation = () => {
+const RequiredInformation = ({
+	invitationData
+}) => {
 	const [isImageLoading, setIsImageLoading] = useState(true);
 
 	return (
@@ -12,19 +14,19 @@ const RequiredInformation = () => {
 					{isImageLoading && <Skeleton />}
 					<MainImage
 						isLoading={isImageLoading}
-						src="src/assets/img/gallery1.png"
+						src={invitationData.image[0]?.url}
 						alt="Main Image"
 						onLoad={() => setIsImageLoading(false)}
 					/>
 				</MainImageBox>
 				<RequiredInformationTextBox>
-					<GroomBrideNameSpan>김 도 현 ❤️ 은 수 아</GroomBrideNameSpan>
-					<GroomParentsNameText>아버지 김철현 / 어머니 김순자</GroomParentsNameText>
-					<BrideParentsNameText>아버지 은철수 / 어머니 박미영</BrideParentsNameText>
+					<GroomBrideNameSpan>{invitationData.groom} ❤️ {invitationData.bride}</GroomBrideNameSpan>
+					<GroomParentsNameText>아버지 {invitationData.groomF} / 어머니 {invitationData.groomM}</GroomParentsNameText>
+					<BrideParentsNameText>아버지 {invitationData.brideF} / 어머니 {invitationData.brideM}</BrideParentsNameText>
 					<DateText>일자</DateText>
-					<DateDetailText>2024년 11월 30일 / 오후 12시 </DateDetailText>
+					<DateDetailText>{invitationData.date} / {invitationData.time} </DateDetailText>
 					<LocationText>위치</LocationText>
-					<LocationDetailText>경기 성남시 수정구 성남대로 1342 가천컨벤션센터</LocationDetailText>
+					<LocationDetailText>{invitationData.address} {invitationData.extraAddress}</LocationDetailText>
 				</RequiredInformationTextBox>
 			</RequiredInformationTextContainer>
 		</RequiredInformationTextWrapper>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-const Gallery = ({ $variant = 'basic' }) => {
+const Gallery = ({ $variant = 'basic', invitationData }) => {
 	const [isImage2Loading, setIsImage2Loading] = useState(true);
 	const [isImage3Loading, setIsImage3Loading] = useState(true);
 	const [isImage4Loading, setIsImage4Loading] = useState(true);
@@ -15,7 +15,7 @@ const Gallery = ({ $variant = 'basic' }) => {
 					{isImage2Loading && <Skeleton />}
 					<GalleryImage2
 						isLoading={isImage2Loading}
-						src="src/assets/img/gallery2.png"
+						src={invitationData.image[1]?.url}
 						alt="Gallery Image 2"
 						onLoad={() => setIsImage2Loading(false)}
 					/>
@@ -26,7 +26,7 @@ const Gallery = ({ $variant = 'basic' }) => {
 						{isImage3Loading && <Skeleton />}
 						<GalleryImage3
 							isLoading={isImage3Loading}
-							src="src/assets/img/gallery3.png"
+							src={invitationData.image[2]?.url}
 							alt="Gallery Image 3"
 							onLoad={() => setIsImage3Loading(false)}
 						/>
@@ -36,7 +36,7 @@ const Gallery = ({ $variant = 'basic' }) => {
 						{isImage4Loading && <Skeleton />}
 						<GalleryImage4
 							isLoading={isImage4Loading}
-							src="src/assets/img/gallery4.png"
+							src={invitationData.image[3]?.url}
 							alt="Gallery Image 4"
 							onLoad={() => setIsImage4Loading(false)}
 						/>

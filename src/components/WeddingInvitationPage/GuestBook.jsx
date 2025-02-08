@@ -4,7 +4,13 @@ import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import GuestBookModal from './GuestBookModal';
 
-const GuestBook = ({ $variant = 'basic' }) => {
+const GuestBook = ({ $variant = 'basic', invitationData }) => {
+
+	// invitationData가 없거나 comments가 없을 경우 처리
+	if (!invitationData || !invitationData.comments || invitationData.comments.length === 0) {
+		return null; // 아무것도 렌더링하지 않음
+	}
+
 	const [isScrollable, setScrollable] = useState(false);
 
 	const handleMoreButtonClick = () => {
@@ -36,7 +42,7 @@ const GuestBook = ({ $variant = 'basic' }) => {
 		<GuestBookWrapper>
 			<GuestBookSpan $variant={$variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
-				{guestBookData.map((item, index) => (
+				{invitationData.comments.map((item, index) => (
 					<GuestBookItem key={index}>
 						{isLoading ? (
 							<>
@@ -53,7 +59,7 @@ const GuestBook = ({ $variant = 'basic' }) => {
 				))}
 			</GuestBookList>
 
-			{guestBookData.length > 4 && !isScrollable && (
+			{comments.length > 4 && !isScrollable && (
 				// 스크롤 활성화 후 버튼 숨김
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
