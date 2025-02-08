@@ -38,6 +38,21 @@ const createInvitationUrl = async (invitationId) => {
         const response = await serverInstance.post(`/api/invitations/url/${invitationId}`,{
             withCredentials: true,
         });
+        console.log(response.data.result);
+
+        return response.data.result;
+    } catch (error) {
+        console.error("API 요청 오류:", error);
+        return null;
+    }
+};
+
+// 청첩장 삭제 API
+const DeleteInvitations = async (invitationId) => {
+    try {
+        const response = await serverInstance.delete(`/api/invitations/url/${invitationId}`,{
+            withCredentials: true,
+        });
         console.log(response.data);
 
         return response.data;
@@ -47,4 +62,4 @@ const createInvitationUrl = async (invitationId) => {
     }
 };
 
-export { viewInvitation, getInvitationById, createInvitationUrl };
+export { viewInvitation, getInvitationById, createInvitationUrl, DeleteInvitations };

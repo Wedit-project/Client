@@ -3,22 +3,33 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import theme from "../../styles/theme";
 import LinkModal from "./LinkModal";
+import { createInvitationUrl } from "../../apis/api/my";
 
 const ActionButtons = ({ invitationId }) => {
 
     const [isModalOpen, setModalOpen] = useState(false);
-    const url = "https://wedit.site/1";
+    const [url, setUrl] = useState("");
 
     const navigate = useNavigate();
   
     const handleNavigation = (path) => {
-      navigate(path);
+        navigate(path);
     };
-  
+
+    const handleOpenModal = async () => {
+        const generatedUrl = await createInvitationUrl(invitationId);
+        setUrl(generatedUrl);
+        setModalOpen(!!generatedUrl);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    }
+
     return (
         <ButtonContainer>
-            <Button onClick={() => setModalOpen(true)}>배포 링크</Button>
-                {isModalOpen && <LinkModal url={url} onClose={() => setModalOpen(false)} />}
+            <Button onClick={handleOpenModal}>배포 링크</Button>
+                {isModalOpen && <LinkModal url={url} onClose={handleCloseModal} />}
             <Button onClick={() => handleNavigation(`/edit/${invitationId}`)}>수정하기</Button>
             <Button onClick={() => handleNavigation("/analysis")}>분석보기</Button>
         </ButtonContainer>
