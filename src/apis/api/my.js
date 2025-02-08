@@ -38,9 +38,9 @@ const createInvitationUrl = async (invitationId) => {
         const response = await serverInstance.post(`/api/invitations/url/${invitationId}`,{
             withCredentials: true,
         });
-        console.log(response.data);
+        console.log(response.data.result);
 
-        return response.data;
+        return response.data.result;
     } catch (error) {
         console.error("API 요청 오류:", error);
         return null;

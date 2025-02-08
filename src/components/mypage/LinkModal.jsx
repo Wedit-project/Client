@@ -81,7 +81,7 @@ const Content = styled.div`
 `;
 
 const LinkText = styled.span`
-    font-size: 3.2rem;
+    font-size: ${theme.fontSize.large};
     font-weight: ${theme.font.medium.fontWeight};
     color: ${theme.colors.gray[900]};
     line-height: 100%;
