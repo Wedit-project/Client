@@ -58,7 +58,7 @@ const router = createBrowserRouter([
 		element: <WeddingInvitationPage />,
 	},
 	{
-		path: 'invitation/:uniqueId',
+		path: 'invitations/:uniqueId',
 		element: <WeddingInvitationPage />,
 	},
 	{

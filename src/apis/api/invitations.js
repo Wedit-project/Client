@@ -20,7 +20,7 @@ const viewNonMemberInvitation = async (uniqueId) => {
     try {
         const response = await serverInstance.get(`/api/invitations/guest/${uniqueId}`);
         console.log("response : ", response);
-        return response;
+        return response.data.result;
 
     } catch (error) {
         console.error("API 요청 오류:", error);

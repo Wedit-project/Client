@@ -9,6 +9,7 @@ import GuestBook from '../components/WeddingInvitationPage/GuestBook';
 import CongratulatoryMoney from '../components/WeddingInvitationPage/congratulatory-money';
 import RSVP from '../components/WeddingInvitationPage/rsvp';
 import { viewPersonalInvitation } from '../apis/api/invitations';
+import { viewNonMemberInvitation } from '../apis/api/invitations';
 
 const LoadingSpinner = () => (
 	<SpinnerWrapper>
