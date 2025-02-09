@@ -11,10 +11,7 @@ import RSVP from '../components/WeddingInvitationPage/rsvp';
 import { viewPersonalInvitation } from '../apis/api/invitations';
 import { viewNonMemberInvitation } from '../apis/api/invitations';
 
-const LoadingSpinner = () => (
-	<SpinnerWrapper>
-	</SpinnerWrapper>
-);
+const LoadingSpinner = () => <SpinnerWrapper></SpinnerWrapper>;
 
 const WeddingInvitationPage = () => {
 	const [invitationData, setInvitationData] = useState(null);
@@ -28,12 +25,12 @@ const WeddingInvitationPage = () => {
 				const data = await viewPersonalInvitation(invitationId);
 				setInvitationData(data);
 				setIsLoading(false);
-			  } else if (uniqueId) {
+			} else if (uniqueId) {
 				// uniqueId가 있는 경우
 				const data = await viewNonMemberInvitation(uniqueId);
 				setInvitationData(data);
 				setIsLoading(false);
-			  }
+			}
 		};
 
 		fetchData();
@@ -52,7 +49,7 @@ const WeddingInvitationPage = () => {
 			<RequiredInformation invitationData={invitationData} />
 			<Location $variant={themeVariant} invitationData={invitationData} />
 			<Gallery $variant={themeVariant} invitationData={invitationData} />
-			<GuestBook $variant={themeVariant} invitationData={invitationData} />
+			<GuestBook $variant={themeVariant} invitationId={invitationId} />
 			<CongratulatoryMoney $variant={themeVariant} invitationData={invitationData} />
 			<RSVP $variant={themeVariant} invitationData={invitationData} />
 			<MoveButtonBox>
@@ -143,6 +140,4 @@ const MyPageButton = styled(Link)`
 		`}
 `;
 
-const SpinnerWrapper = styled.div`
-
-`;
+const SpinnerWrapper = styled.div``;
