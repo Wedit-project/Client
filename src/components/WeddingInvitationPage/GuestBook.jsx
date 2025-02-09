@@ -66,6 +66,7 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 			observer.current.observe(lastCommentRef.current);
 		}
 
+
 		return () => {
 			if (observer.current) observer.current.disconnect();
 		};
