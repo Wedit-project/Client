@@ -8,8 +8,8 @@ import NameContainer from '../components/editpage/NameContainer';
 import InfoContainer from '../components/editpage/InfoContainer';
 import ImgContainer from '../components/editpage/ImgContainer';
 import NavButton from '../components/editpage/NavButton';
+import { serverInstance } from '../apis/utils/apiIntance';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { selectedThemeState } from '../recoil/atoms';
 import {
 	groomNameState,
 	brideNameState,
@@ -23,26 +23,35 @@ import {
 	selectedTimeState,
 	selectedImagesState,
 	contentState,
+	selectedThemeState,
+	selectedOptionsState,
+	accountInfoState,
 } from '../recoil/atoms';
 import { getInvitationById } from '../apis/api/my';
+import axios from 'axios';
 
 const EditPage = () => {
 	const location = useLocation();
-    const invitationId = location.state?.invitationId;
+	const invitationId = location.state?.invitationId;
+	const isDataFetchedFromPhoto = location.state?.isDataFetched;
+	const isInitialSetupFromPhoto = location.state?.isInitialSetup;
+	const [isDataFetched, setIsDataFetched] = useState(isDataFetchedFromPhoto || false);
+	const [isInitialSetup, setIsInitialSetup] = useState(isInitialSetupFromPhoto || false);
 
 	const [content, setContent] = useRecoilState(contentState);
 	const navigate = useNavigate();
 
-	const selectedImages = useRecoilValue(selectedImagesState);
+	const [selectedImages, setSelectedImages] = useRecoilState(selectedImagesState);
+	const [selectedTheme, setSelectedTheme] = useRecoilState(selectedThemeState);
+	const [checkedItems, setCheckedItems] = useRecoilState(selectedOptionsState);
+	const [accountInfo, setAccountInfo] = useRecoilState(accountInfoState);
 
-	const selectedTheme = useRecoilValue(selectedThemeState);
-
-	const groomName = useRecoilValue(groomNameState);
-	const brideName = useRecoilValue(brideNameState);
-	const groomFatherName = useRecoilValue(groomFatherNameState);
-	const groomMotherName = useRecoilValue(groomMotherNameState);
-	const brideFatherName = useRecoilValue(brideFatherNameState);
-	const brideMotherName = useRecoilValue(brideMotherNameState);
+	const [groomName, setGroomName] = useRecoilState(groomNameState);
+	const [brideName, setBrideName] = useRecoilState(brideNameState);
+	const [groomFatherName, setGroomFatherName] = useRecoilState(groomFatherNameState);
+	const [groomMotherName, setGroomMotherName] = useRecoilState(groomMotherNameState);
+	const [brideFatherName, setBrideFatherName] = useRecoilState(brideFatherNameState);
+	const [brideMotherName, setBrideMotherName] = useRecoilState(brideMotherNameState);
 
 	const [address, setAddress] = useRecoilState(addressState);
 	const [addressDetail, setAddressDetail] = useRecoilState(addressDetailState);
@@ -52,24 +61,140 @@ const EditPage = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isNextActive, setIsNextActive] = useState(false);
 
+	const fetchImageAsBase64 = async (url) => {
+		const response = await axios.get(url, { responseType: 'blob' }); // Blob으로 응답 받기
+		const reader = new FileReader();
+		return new Promise((resolve, reject) => {
+			reader.onloadend = () => {
+				resolve(reader.result); // Base64 문자열 반환
+			};
+			reader.onerror = reject;
+			reader.readAsDataURL(response.data); // Blob을 Base64로 변환
+		});
+	};
+
+	useEffect(() => {
+		if (invitationId && !isDataFetched) {
+			// invitationId가 있을 때만 호출
+			const fetchInvitationData = async () => {
+				try {
+					const response = await getInvitationById(invitationId);
+					const invitationData = response.data.result;
+
+					setGroomName(invitationData.groom);
+					setBrideName(invitationData.bride);
+					setGroomFatherName(invitationData.groomF);
+					setGroomMotherName(invitationData.groomM);
+					setBrideFatherName(invitationData.brideF);
+					setBrideMotherName(invitationData.brideM);
+					setAddress(invitationData.address);
+					setAddressDetail(invitationData.extraAddress);
+					setSelectedDate(new Date(invitationData.date));
+					setSelectedTime(new Date(`1970-01-01T${invitationData.time}`));
+					setSelectedTheme(invitationData.theme);
+					setCheckedItems({
+						accountInfo: invitationData.accountOption,
+						rsvp: invitationData.decisionOption,
+						guestbook: invitationData.guestBookOption,
+					});
+
+					if (invitationData.accountOption) {
+						const bankAccounts = invitationData.bankAccounts || [];
+						const groomAccount = bankAccounts.find((account) => account.side === 'GROOM') || {};
+						const brideAccount = bankAccounts.find((account) => account.side === 'BRIDE') || {};
+
+						setAccountInfo({
+							bankGroom: groomAccount.bankName || '',
+							accountNumGroom: groomAccount.accountNumber || '',
+							accountNameGroom: groomAccount.accountHolder || '',
+							bankBride: brideAccount.bankName || '',
+							accountNumBride: brideAccount.accountNumber || '',
+							accountNameBride: brideAccount.accountHolder || '',
+						});
+					} else {
+						setAccountInfo({
+							bankGroom: '',
+							accountNumGroom: '',
+							accountNameGroom: '',
+							bankBride: '',
+							accountNumBride: '',
+							accountNameBride: '',
+						});
+					}
+
+					console.log('Checked items set:', {
+						accountInfo: invitationData.accountOption,
+						rsvp: invitationData.decisionOption,
+						guestbook: invitationData.guestBookOption,
+					});
+
+					const base64Images = await Promise.all(
+						(invitationData.image || []).map((image) => fetchImageAsBase64(image.url))
+					);
+					setSelectedImages(base64Images); // Base64 이미지 배열로 상태 업데이트
+
+					setSelectedImages(base64Images);
+					setIsDataFetched(true);
+				} catch (error) {
+					console.error('청첩장 데이터 요청 오류:', error);
+				}
+			};
+
+			fetchInvitationData();
+		} else if (!invitationId && !isInitialSetup) {
+			// 새 청첩장 생성 시 초기 상태 설정
+			setContent({});
+			setGroomName('');
+			setBrideName('');
+			setGroomFatherName('');
+			setGroomMotherName('');
+			setBrideFatherName('');
+			setBrideMotherName('');
+			setAddress('');
+			setAddressDetail('');
+			setSelectedDate(null);
+			setSelectedTime(null);
+			setSelectedImages([]);
+			setCheckedItems({
+				accountInfo: false,
+				rsvp: false,
+				guestbook: true,
+			});
+			setAccountInfo({
+				bankGroom: '',
+				accountNumGroom: '',
+				accountNameGroom: '',
+				bankBride: '',
+				accountNumBride: '',
+				accountNameBride: '',
+			});
+
+			setIsInitialSetup(true);
+		}
+	}, [
+		invitationId,
+		isDataFetched,
+		setAddress,
+		setAddressDetail,
+		setSelectedDate,
+		setSelectedTime,
+		setGroomName,
+		setBrideName,
+		setGroomFatherName,
+		setGroomMotherName,
+		setBrideFatherName,
+		setBrideMotherName,
+		setSelectedImages,
+		setSelectedTheme,
+		setCheckedItems,
+		setAccountInfo,
+		isInitialSetup,
+	]);
+
 	const handleAddressComplete = (data) => {
 		setAddress(data.address);
 		setIsModalOpen(false);
 	};
-
-	useEffect(() => {
-        if (invitationId) {
-            getInvitationById(invitationId)
-                .then((data) => {
-                    console.log("청첩장 데이터:", data);
-                })
-                .catch((error) => {
-                    console.error("청첩장 조회 실패:", error);
-                });
-        } else {
-            console.warn("invitationId가 없습니다.");
-        }
-    }, [invitationId]);
 
 	useEffect(() => {
 		const allFieldsFilled =
@@ -121,7 +246,16 @@ const EditPage = () => {
 			};
 			setContent(newContent);
 
-			navigate('/option-selection');
+			navigate('/option-selection', {
+				state: {
+					invitationId,
+					isDataFetched,
+					accountOption: checkedItems.accountInfo,
+					decisionOption: checkedItems.rsvp,
+					guestBookOption: checkedItems.guestbook,
+					isInitialSetup,
+				},
+			});
 		}
 	};
 
@@ -144,7 +278,12 @@ const EditPage = () => {
 					setIsModalOpen={setIsModalOpen}
 					handleAddressComplete={handleAddressComplete}
 				/>
-				<ImgContainer photos={selectedImages} />
+				<ImgContainer
+					photos={selectedImages}
+					invitationId={invitationId}
+					isDataFetched={isDataFetched}
+					isInitialSetup={isInitialSetup}
+				/>
 				<CautionBox>{!isNextActive && '필수 정보를 모두 입력해 주세요!'}</CautionBox>
 				<NavBox>
 					<NavButton onPrevious={handlePrevious} onNext={handleNext} isNextActive={isNextActive} />
