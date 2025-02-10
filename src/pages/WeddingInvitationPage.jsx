@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import theme from '../styles/theme';
 import RequiredInformation from '../components/WeddingInvitationPage/required-information';
 import Location from '../components/WeddingInvitationPage/location';
@@ -7,23 +8,55 @@ import Gallery from '../components/WeddingInvitationPage/gallery';
 import GuestBook from '../components/WeddingInvitationPage/GuestBook';
 import CongratulatoryMoney from '../components/WeddingInvitationPage/congratulatory-money';
 import RSVP from '../components/WeddingInvitationPage/rsvp';
+import { viewPersonalInvitation } from '../apis/api/invitations';
+import { viewNonMemberInvitation } from '../apis/api/invitations';
+
+const LoadingSpinner = () => <SpinnerWrapper></SpinnerWrapper>;
 
 const WeddingInvitationPage = () => {
+	const [invitationData, setInvitationData] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const { invitationId, uniqueId } = useParams();
+
+	useEffect(() => {
+		const fetchData = async () => {
+			if (invitationId) {
+				// invitationId가 있는 경우
+				const data = await viewPersonalInvitation(invitationId);
+				setInvitationData(data);
+				setIsLoading(false);
+			} else if (uniqueId) {
+				// uniqueId가 있는 경우
+				const data = await viewNonMemberInvitation(uniqueId);
+				setInvitationData(data);
+				setIsLoading(false);
+			}
+		};
+
+		fetchData();
+	}, [invitationId, uniqueId]);
+
+	if (isLoading) {
+		return <LoadingSpinner />;
+	}
+
+	const themeVariant = invitationData?.theme === 'BASIC' ? 'basic' : 'tradition';
+
 	return (
 		// 기본형 variant="basic"
 		// 전통형 = variant="tradition"
-		<WeddingInvitationWrapper $variant="tradition">
-			<RequiredInformation />
-			<Location $variant="tradition" />
-			<Gallery $variant="tradition" />
-			<GuestBook $variant="tradition" />
-			<CongratulatoryMoney $variant="tradition" />
-			<RSVP $variant="tradition" />
+		<WeddingInvitationWrapper $variant={themeVariant}>
+			<RequiredInformation invitationData={invitationData} />
+			<Location $variant={themeVariant} invitationData={invitationData} />
+			<Gallery $variant={themeVariant} invitationData={invitationData} />
+			<GuestBook $variant={themeVariant} invitationId={invitationId} />
+			<CongratulatoryMoney $variant={themeVariant} invitationData={invitationData} />
+			<RSVP $variant={themeVariant} invitationData={invitationData} />
 			<MoveButtonBox>
-				<HomePageButton to="/" $variant="tradition">
+				<HomePageButton to="/" $variant={themeVariant}>
 					홈으로 이동
 				</HomePageButton>
-				<MyPageButton to="/my" $variant="tradition">
+				<MyPageButton to="/my" $variant={themeVariant}>
 					마이페이지로 이동
 				</MyPageButton>
 			</MoveButtonBox>
@@ -35,7 +68,7 @@ export default WeddingInvitationPage;
 
 // CSS
 const WeddingInvitationWrapper = styled.div`
-	background-image: url('src/assets/img/basic.png');
+	background-image: url('/assets/basic.png');
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -47,7 +80,7 @@ const WeddingInvitationWrapper = styled.div`
 	${({ $variant }) =>
 		$variant === 'tradition' &&
 		css`
-			background-image: url('src/assets/img/tradition.png');
+			background-image: url('/assets/tradition.png');
 		`}
 `;
 
@@ -58,6 +91,7 @@ const MoveButtonBox = styled.div`
 	gap: 23.8rem;
 	margin-bottom: 63.9rem;
 `;
+
 const HomePageButton = styled(Link)`
 	text-decoration: none;
 	font-weight: ${theme.font.bold.fontWeight};
@@ -81,6 +115,7 @@ const HomePageButton = styled(Link)`
 			background: ${theme.colors.traditionalWedding.invitation4};
 		`}
 `;
+
 const MyPageButton = styled(Link)`
 	text-decoration: none;
 	font-weight: ${theme.font.bold.fontWeight};
@@ -104,3 +139,5 @@ const MyPageButton = styled(Link)`
 			background: ${theme.colors.traditionalWedding.invitation4};
 		`}
 `;
+
+const SpinnerWrapper = styled.div``;

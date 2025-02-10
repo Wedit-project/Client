@@ -1,24 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
-import { Map } from 'react-kakao-maps-sdk';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import useKakaoLoader from '../../hooks/useKakaoLoader';
 
-const Location = ({ $variant = 'basic' }) => {
-	useKakaoLoader(); // 카카오 지도 SDK 로딩
+const Location = ({ $variant = 'basic', invitationData }) => {
+	useKakaoLoader();
+
+	const [location, setLocation] = useState({ lat: 33.450701, lng: 126.570667 }); // 지도 중심좌표
+	const [isMapLoaded, setIsMapLoaded] = useState(false);
+
+	useEffect(() => {
+		console.log('주소 변경됨:', invitationData.address);
+
+		// SDK가 로드될 때까지 기다리기
+		const checkKakaoLoaded = setInterval(() => {
+			if (window.kakao && window.kakao.maps && window.kakao.maps.services) {
+				clearInterval(checkKakaoLoaded);
+				setIsMapLoaded(true);
+			}
+		}, 500);
+
+		return () => clearInterval(checkKakaoLoaded);
+	}, []);
+
+	useEffect(() => {
+		if (!isMapLoaded) return; // SDK가 로드되지 않으면 실행X
+
+		const geocoder = new window.kakao.maps.services.Geocoder();
+
+		// 주소-좌표 변환
+		geocoder.addressSearch(invitationData.address, (result, status) => {
+			if (status === window.kakao.maps.services.Status.OK) {
+				setLocation({
+					lat: parseFloat(result[0].y),
+					lng: parseFloat(result[0].x),
+				});
+			} else {
+				console.error('주소 변환 실패');
+			}
+		});
+	}, [isMapLoaded, invitationData.address]);
 
 	return (
 		<LocationWrapper>
 			<LocationSpan $variant={$variant}>위치</LocationSpan>
-			<MapBox
-				center={{
-					// 지도 중심 좌표
-					lat: 33.450701,
-					lng: 126.570667,
-				}}
-				// 지도 확대 레벨
-				level={3}
-			/>
+			{isMapLoaded && (
+				<MapBox center={location} level={3}>
+					<MapMarker position={location} />
+				</MapBox>
+			)}
 		</LocationWrapper>
 	);
 };

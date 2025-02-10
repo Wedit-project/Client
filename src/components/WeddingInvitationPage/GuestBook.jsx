@@ -39,6 +39,11 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 		}
 	}, [invitationId, page]);
 
+	// invitationId가가 없거나 comments가 없을 경우 처리
+	if (!invitationId || (comments.length === 0 && !isLoading)) {
+		return null; // 아무것도 렌더링하지 않음
+	}
+
 	// "더보기" 버튼 클릭 시 스크롤 활성화
 	const handleMoreButtonClick = () => {
 		setIsScrollable(true);
@@ -60,6 +65,7 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 		if (lastCommentRef.current) {
 			observer.current.observe(lastCommentRef.current);
 		}
+
 
 		return () => {
 			if (observer.current) observer.current.disconnect();
