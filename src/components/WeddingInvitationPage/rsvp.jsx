@@ -6,8 +6,8 @@ import RSVPModal from './RSVPModal';
 const RSVP = ({ $variant = 'basic', invitationData }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
 
-	// guestBookOption이 false일 경우 컴포넌트 렌더링하지 않음
-	if (!invitationData || invitationData.guestBookOption === false) {
+	// decisionOption이 false일 경우 컴포넌트 렌더링하지 않음
+	if (!invitationData || invitationData.decisionOption === false) {
 		return null; // 아무것도 렌더링하지 않음
 	}
 
