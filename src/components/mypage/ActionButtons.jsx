@@ -30,7 +30,7 @@ const ActionButtons = ({ invitationId }) => {
 			<Button onClick={handleOpenModal}>배포 링크</Button>
 			{isModalOpen && <LinkModal url={url} onClose={handleCloseModal} />}
 			<Button onClick={() => handleNavigation(`/edit/${invitationId}`)}>수정하기</Button>
-			<Button onClick={() => handleNavigation(`/analysis/${invitationId}`)}>분석보기</Button>
+			<Button onClick={() => handleNavigation('/analysis')}>분석보기</Button>
 		</ButtonContainer>
 	);
 };
