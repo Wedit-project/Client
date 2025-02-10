@@ -1,26 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
 import NavButton from '../components/editpage/NavButton';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { contentState, selectedImagesState, accountInfoState } from '../recoil/atoms';
+import {
+	contentState,
+	selectedImagesState,
+	accountInfoState,
+	selectedOptionsState,
+} from '../recoil/atoms';
 import { registerInvitation } from '../apis/api/registerInvitation';
+import { patchInvitation } from '../apis/api/patchInvitation';
 
 const AccountInfoPage = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const invitationId = location.state?.invitationId;
+	const isDataFetched = location.state?.isDataFetched;
+	const isInitialSetup = location.state?.isInitialSetup;
 	const [content, setContent] = useRecoilState(contentState);
 	const selectedImages = useRecoilValue(selectedImagesState);
+	const [checkedItems, setCheckedItems] = useRecoilState(selectedOptionsState);
 	const [accountInfo, setAccountInfo] = useRecoilState(accountInfoState);
 
 	const [isNextActive, setIsNextActive] = useState(false);
-	const [bankGroom, setBankGroom] = useState('');
-	const [accountNumGroom, setAccountNumGroom] = useState('');
-	const [accountNameGroom, setAccountNameGroom] = useState('');
-	const [bankBride, setBankBride] = useState('');
-	const [accountNumBride, setAccountNumBride] = useState('');
-	const [accountNameBride, setAccountNameBride] = useState('');
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -43,7 +48,16 @@ const AccountInfoPage = () => {
 	}, [accountInfo]);
 
 	const handlePrevious = () => {
-		navigate('/option-selection');
+		navigate('/option-selection', {
+			state: {
+				invitationId,
+				isDataFetched,
+				guestBookOption: checkedItems.guestbook,
+				decisionOption: checkedItems.rsvp,
+				accountOption: checkedItems.accountInfo,
+				isInitialSetup,
+			},
+		});
 	};
 
 	const handleNext = async () => {
@@ -74,7 +88,12 @@ const AccountInfoPage = () => {
 		});
 
 		try {
-			const response = await registerInvitation(selectedImages, updatedContent);
+			if (invitationId) {
+				// PATCH 요청: 기존 청첩장 수정
+				const response = await patchInvitation(invitationId, selectedImages, updatedContent);
+			} else if (!invitationId) {
+				const response = await registerInvitation(selectedImages, updatedContent);
+			}
 			navigate('/loading');
 		} catch (error) {
 			console.error('API 요청 실패:', error);
