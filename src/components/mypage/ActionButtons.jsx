@@ -25,11 +25,15 @@ const ActionButtons = ({ invitationId }) => {
 		setModalOpen(false);
 	};
 
+	const handleEditNavigation = () => {
+		navigate(`/edit/${invitationId}`, { state: { invitationId } }); // invitationId를 state로 전달
+	};
+
 	return (
 		<ButtonContainer>
 			<Button onClick={handleOpenModal}>배포 링크</Button>
 			{isModalOpen && <LinkModal url={url} onClose={handleCloseModal} />}
-			<Button onClick={() => handleNavigation(`/edit/${invitationId}`)}>수정하기</Button>
+			<Button onClick={handleEditNavigation}>수정하기</Button>
 			<Button onClick={() => handleNavigation(`/analysis/${invitationId}`)}>분석보기</Button>
 		</ButtonContainer>
 	);
