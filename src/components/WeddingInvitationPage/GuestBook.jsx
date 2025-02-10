@@ -102,7 +102,11 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 			<WritingButton $variant={$variant} onClick={() => setModalVisible(true)}>
 				작성하기
 			</WritingButton>
-			<GuestBookModal isVisible={isModalVisible} onClose={() => setModalVisible(false)} />
+			<GuestBookModal
+				isVisible={isModalVisible}
+				invitationId={invitationId}
+				onClose={() => setModalVisible(false)}
+			/>
 		</GuestBookWrapper>
 	);
 };
