@@ -5,11 +5,11 @@ import theme from '../../styles/theme';
 import PhotoPrev from '../../assets/img/PhotoPrev.svg?react';
 import Plus from '../../assets/img/Plus.svg?react';
 
-const ImgContainer = ({ photos }) => {
+const ImgContainer = ({ photos, invitationId, isDataFetched, isInitialSetup }) => {
 	const navigate = useNavigate();
 
 	const handleAddPhotoClick = () => {
-		navigate('/main-photo-selection');
+		navigate('/main-photo-selection', { state: { invitationId, isDataFetched, isInitialSetup } });
 	};
 
 	return (
@@ -20,7 +20,7 @@ const ImgContainer = ({ photos }) => {
 					photos.map((photo, index) => (
 						<PhotoContainer key={index}>
 							<PhotoPrevIcon />
-							{photo && <OverlayPhoto src={photo} alt={`preview-${index}`} />}
+							{photo && <OverlayPhoto src={photo.url || photo} alt={`preview-${index}`} />}
 						</PhotoContainer>
 					))
 				) : (
