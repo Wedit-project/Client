@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import { Link } from 'react-router-dom';
@@ -18,10 +18,17 @@ const ThemaSelectModal = ({ isVisible, onClose, onSelectTheme, onNext }) => {
 
 	const handleNextButtonClick = () => {
 		if (selectedCheckbox) {
-			onSelectTheme(selectedCheckbox); // 선택한 테마를 부모에게 전달
-			onNext(); // 다음 페이지로 이동
+			onSelectTheme(selectedCheckbox);
+			onNext();
 		}
 	};
+
+	// 모달이 열릴 때 선택된 체크박스 초기화
+	useEffect(() => {
+		if (isVisible) {
+			setSelectedCheckbox(null);
+		}
+	}, [isVisible]);
 
 	return (
 		isVisible && (
