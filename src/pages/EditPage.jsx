@@ -122,12 +122,6 @@ const EditPage = () => {
 						});
 					}
 
-					console.log('Checked items set:', {
-						accountInfo: invitationData.accountOption,
-						rsvp: invitationData.decisionOption,
-						guestbook: invitationData.guestBookOption,
-					});
-
 					const base64Images = await Promise.all(
 						(invitationData.image || []).map((image) => fetchImageAsBase64(image.url))
 					);
