@@ -1,17 +1,33 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import theme from '../../styles/theme';
+import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { getAnalysis } from '../../apis/api/analysis';
 
-const maxValue = 10; // 전체 기준값
+const ParticipantsSummary = ({ invitationId }) => {
+	const [attendees, setAttendees] = useState(null);
+	const [maxValue, setMaxValue] = useState(null);
 
-const data = [
-	{ name: '전체', value: 10, fill: theme.colors.green.main },
-	{ name: '신랑측', value: 7, fill: theme.colors.green.main },
-	{ name: '신부측', value: 3, fill: theme.colors.green.main },
-];
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const result = await getAnalysis(invitationId);
+				setAttendees(result.attendees);
+				setMaxValue(result.attendees.totalCount);
+			} catch (error) {
+				console.error('Error fetching attendees:', error);
+			}
+		};
 
-const ParticipantsSummary = () => {
+		fetchData();
+	}, [invitationId]);
+
+	const data = [
+		{ name: '전체', value: attendees?.totalCount, fill: theme.colors.green.main },
+		{ name: '신랑측', value: attendees?.groomCount, fill: theme.colors.green.main },
+		{ name: '신부측', value: attendees?.brideCount, fill: theme.colors.green.main },
+	];
+
 	return (
 		<SummaryWrapper>
 			<SummaryTitle>참석자 요약</SummaryTitle>

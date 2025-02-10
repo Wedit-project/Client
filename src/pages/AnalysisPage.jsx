@@ -1,17 +1,20 @@
-import Header from "../components/analysispage/Header";
-import Section from "../components/analysispage/Section";
-import MainPageFooter from "../components/mainpage/MainPageFooter";
+// AnalysisPage.jsx
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import Header from '../components/analysispage/Header';
+import Section from '../components/analysispage/Section';
+import MainPageFooter from '../components/mainpage/MainPageFooter';
 
 const AnalysisPage = () => {
-	return(
+	const { invitationId } = useParams();
+
+	return (
 		<>
-		<Header />
-		<Section />
-		<MainPageFooter />
+			<Header />
+			<Section invitationId={invitationId} />
+			<MainPageFooter />
 		</>
 	);
 };
 
 export default AnalysisPage;
-
-// CSS

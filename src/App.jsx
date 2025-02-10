@@ -66,7 +66,7 @@ const router = createBrowserRouter([
 		element: <PreviewInvitationPage />,
 	},
 	{
-		path: 'analysis',
+		path: '/analysis/:invitationId',
 		element: <AnalysisPage />,
 	},
 ]);
