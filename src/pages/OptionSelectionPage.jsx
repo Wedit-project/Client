@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
@@ -8,11 +8,16 @@ import NavButton from '../components/editpage/NavButton';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { selectedImagesState, contentState, selectedOptionsState } from '../recoil/atoms';
 import { registerInvitation } from '../apis/api/registerInvitation';
+import { patchInvitation } from '../apis/api/patchInvitation';
 
 const OptionSelectionPage = () => {
 	const navigate = useNavigate();
+	const location = useLocation();
+	const invitationId = location.state?.invitationId;
 	const [content, setContent] = useRecoilState(contentState);
 	const selectedImages = useRecoilValue(selectedImagesState);
+	const isDataFetched = location.state?.isDataFetched;
+	const isInitialSetup = location.state?.isInitialSetup;
 
 	const [checkedItems, setCheckedItems] = useRecoilState(selectedOptionsState);
 
@@ -25,8 +30,28 @@ const OptionSelectionPage = () => {
 	};
 
 	const handlePrevious = () => {
-		navigate('/edit');
+		if (invitationId) {
+			navigate(`/edit/${invitationId}`, { state: { invitationId, isDataFetched } });
+		} else {
+			navigate('/edit', { state: { isInitialSetup } });
+		}
 	};
+
+	useEffect(() => {
+		if (isDataFetched) {
+			const initialCheckedItems = {
+				accountInfo: location.state?.accountOption || false,
+				rsvp: location.state?.decisionOption || false,
+				guestbook: location.state?.guestBookOption || false,
+			};
+
+			setCheckedItems(initialCheckedItems);
+
+			// 다음 버튼 활성화 여부 설정
+			const anyChecked = Object.values(initialCheckedItems).some((checked) => checked);
+			setIsNextActive(anyChecked);
+		}
+	}, [isDataFetched, location.state, setCheckedItems]);
 
 	const handleNext = async () => {
 		const updatedContent = {
@@ -39,7 +64,7 @@ const OptionSelectionPage = () => {
 		setContent(updatedContent);
 
 		if (checkedItems.accountInfo) {
-			navigate('/account-information');
+			navigate('/account-information', { state: { invitationId, isDataFetched, isInitialSetup } });
 		} else {
 			// API 호출 전에 보낼 데이터 확인
 			console.log('Sending data to API:', {
@@ -47,7 +72,12 @@ const OptionSelectionPage = () => {
 				content: updatedContent,
 			});
 			try {
-				const response = await registerInvitation(selectedImages, updatedContent);
+				if (invitationId) {
+					// PATCH 요청: 기존 청첩장 수정
+					const response = await patchInvitation(invitationId, selectedImages, updatedContent);
+				} else if (!invitationId) {
+					const response = await registerInvitation(selectedImages, updatedContent);
+				}
 				navigate('/loading');
 			} catch (error) {
 				console.error('API 요청 실패:', error);
