@@ -39,11 +39,6 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 		}
 	}, [invitationId, page]);
 
-	// invitationId가가 없거나 comments가 없을 경우 처리
-	if (!invitationId || (comments.length === 0 && !isLoading)) {
-		return null; // 아무것도 렌더링하지 않음
-	}
-
 	// "더보기" 버튼 클릭 시 스크롤 활성화
 	const handleMoreButtonClick = () => {
 		setIsScrollable(true);
@@ -66,7 +61,6 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 			observer.current.observe(lastCommentRef.current);
 		}
 
-
 		return () => {
 			if (observer.current) observer.current.disconnect();
 		};
@@ -76,23 +70,29 @@ const GuestBook = ({ $variant = 'basic', invitationId }) => {
 		<GuestBookWrapper>
 			<GuestBookSpan $variant={$variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
-				{comments.map((item, index) => (
-					<GuestBookItem
-						key={item.commentId}
-						ref={index === comments.length - 1 ? lastCommentRef : null}>
-						{isLoading ? (
-							<>
-								<Skeleton />
-								<Skeleton />
-							</>
-						) : (
-							<>
-								<GuestNameText>{item.name}</GuestNameText>
-								<ContentText>{item.content}</ContentText>
-							</>
-						)}
+				{comments.length === 0 && !isLoading ? (
+					<GuestBookItem>
+						<ContentText>작성된 방명록이 없습니다.</ContentText>
 					</GuestBookItem>
-				))}
+				) : (
+					comments.map((item, index) => (
+						<GuestBookItem
+							key={item.commentId}
+							ref={index === comments.length - 1 ? lastCommentRef : null}>
+							{isLoading ? (
+								<>
+									<Skeleton />
+									<Skeleton />
+								</>
+							) : (
+								<>
+									<GuestNameText>{item.name}</GuestNameText>
+									<ContentText>{item.content}</ContentText>
+								</>
+							)}
+						</GuestBookItem>
+					))
+				)}
 			</GuestBookList>
 
 			{comments.length > 4 && !isScrollable && (
