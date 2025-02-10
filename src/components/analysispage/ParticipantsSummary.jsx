@@ -28,24 +28,31 @@ const ParticipantsSummary = ({ invitationId }) => {
 		{ name: '신부측', value: attendees?.brideCount, fill: theme.colors.green.main },
 	];
 
+	// 참석자 없을 시
+	const isTotalCountZero = attendees?.totalCount === 0;
+
 	return (
 		<SummaryWrapper>
 			<SummaryTitle>참석자 요약</SummaryTitle>
 			<SummaryContent>
-				{data.map((item) => (
-					<ChartContainer key={item.name}>
-						<Label>{item.name}</Label>
-						<ResponsiveContainer width="70%" height={60}>
-							<BarChart layout="vertical" data={[item]}>
-								<XAxis type="number" domain={[0, maxValue]} hide />
-								<YAxis type="category" dataKey="name" hide />
-								<Tooltip />
-								<Bar dataKey="value" fill={item.fill} barSize={34} radius={42.23} />
-							</BarChart>
-						</ResponsiveContainer>
-						<Label>{item.value}</Label>
-					</ChartContainer>
-				))}
+				{isTotalCountZero ? (
+					<Message>참석자 요약이 존재하지 않습니다.</Message>
+				) : (
+					data.map((item) => (
+						<ChartContainer key={item.name}>
+							<Label>{item.name}</Label>
+							<ResponsiveContainer width="70%" height={60}>
+								<BarChart layout="vertical" data={[item]}>
+									<XAxis type="number" domain={[0, maxValue]} hide />
+									<YAxis type="category" dataKey="name" hide />
+									<Tooltip />
+									<Bar dataKey="value" fill={item.fill} barSize={34} radius={42.23} />
+								</BarChart>
+							</ResponsiveContainer>
+							<Label>{item.value}</Label>
+						</ChartContainer>
+					))
+				)}
 			</SummaryContent>
 		</SummaryWrapper>
 	);
@@ -96,4 +103,11 @@ const Label = styled.div`
 	text-align: left;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
+`;
+
+const Message = styled.div`
+	margin-top: 10rem;
+	font-size: ${theme.fontSize.xlarge};
+	font-weight: ${theme.font.medium.fontWeight};
+	text-align: center;
 `;
