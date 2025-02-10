@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import RSVPModal from './RSVPModal';
 
-const RSVP = ({ $variant = 'basic', invitationData, invitationId }) => {
+const RSVP = ({ $variant = 'basic', invitationData }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
 
 	// decisionOption이 false일 경우 컴포넌트 렌더링하지 않음
