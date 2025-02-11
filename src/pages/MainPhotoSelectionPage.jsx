@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
@@ -45,15 +45,25 @@ const MainPhotoSelectionPage = () => {
 	const [previewImage, setPreviewImage] = useState(null);
 	const [selectedImages, setSelectedImages] = useRecoilState(selectedImagesState);
 	const navigate = useNavigate();
+	const location = useLocation();
+	const invitationId = useLocation().state?.invitationId;
+	const isDataFetched = location.state?.isDataFetched;
+	const isInitialSetup = location.state?.isInitialSetup;
 
 	const handlePrevious = () => {
-		navigate('/edit');
+		if (invitationId) {
+			navigate(`/edit/${invitationId}`, { state: { invitationId, isDataFetched } });
+		} else {
+			navigate('/edit', { state: { isInitialSetup } });
+		}
 	};
 
 	const handleNext = () => {
 		if (isNextActive) {
-			setSelectedImages([previewImage]); // 선택된 이미지를 Recoil 상태에 저장
-			navigate('/gallery-photo-selection');
+			setSelectedImages([previewImage]);
+			navigate('/gallery-photo-selection', {
+				state: { invitationId, isDataFetched, isInitialSetup },
+			});
 		}
 	};
 
