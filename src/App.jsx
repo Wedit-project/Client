@@ -34,6 +34,10 @@ const router = createBrowserRouter([
 		element: <EditPage />,
 	},
 	{
+		path: 'edit/:invitationId',
+		element: <EditPage />,
+	},
+	{
 		path: 'main-photo-selection',
 		element: <MainPhotoSelectionPage />,
 	},

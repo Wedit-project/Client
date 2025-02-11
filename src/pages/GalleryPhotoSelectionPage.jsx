@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoComponent from '../components/editpage/Logo';
@@ -20,17 +20,26 @@ const GalleryPhotoSelectionPage = () => {
 	const [step, setStep] = useState(1);
 
 	const navigate = useNavigate();
+	const location = useLocation();
+	const invitationId = useLocation().state?.invitationId;
+	const isDataFetched = location.state?.isDataFetched;
+	const isInitialSetup = location.state?.isInitialSetup;
 
 	const handlePrevious = () => {
 		setSelectedImages([]);
-		navigate('/main-photo-selection');
+		navigate('/main-photo-selection', { state: { invitationId, isDataFetched, isInitialSetup } });
 	};
 
 	const handleNext = () => {
 		if (isNextActive) {
 			if (step === 3) {
 				setSelectedImages([mainImage, previewImage, secondImage, thirdImage]); // Recoil 상태에 전체 이미지 저장
-				navigate('/edit');
+				// invitationId가 있을 때만 수정 페이지로 이동
+				if (invitationId) {
+					navigate(`/edit/${invitationId}`, { state: { invitationId, isDataFetched } });
+				} else {
+					navigate('/edit', { state: { isInitialSetup } }); // 새 청첩장 생성 시 수정 페이지로 이동
+				}
 			} else {
 				setStep((prev) => prev + 1);
 			}
