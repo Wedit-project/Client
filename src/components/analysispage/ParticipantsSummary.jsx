@@ -3,10 +3,12 @@ import theme from '../../styles/theme';
 import styled from 'styled-components';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { getAnalysis } from '../../apis/api/analysis';
+import { getDecisionOption } from '../../apis/api/analysis';
 
 const ParticipantsSummary = ({ invitationId }) => {
 	const [attendees, setAttendees] = useState(null);
 	const [maxValue, setMaxValue] = useState(null);
+	const [decisionOption, setDecisionOption] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -15,11 +17,21 @@ const ParticipantsSummary = ({ invitationId }) => {
 				setAttendees(result.attendees);
 				setMaxValue(result.attendees.totalCount);
 			} catch (error) {
-				console.error('Error fetching attendees:', error);
+				console.error(error);
+			}
+		};
+
+		const fetchDecisionOption = async () => {
+			try {
+				const option = await getDecisionOption(invitationId);
+				setDecisionOption(option);
+			} catch (error) {
+				console.error(error);
 			}
 		};
 
 		fetchData();
+		fetchDecisionOption();
 	}, [invitationId]);
 
 	const data = [
@@ -28,14 +40,14 @@ const ParticipantsSummary = ({ invitationId }) => {
 		{ name: '신부측', value: attendees?.brideCount, fill: theme.colors.green.main },
 	];
 
-	// 참석자 없을 시
-	const isTotalCountZero = attendees?.totalCount === 0;
+	// 참석의사 옵션 선택 안 했을 시
+	const isDecisionOption = decisionOption === false;
 
 	return (
 		<SummaryWrapper>
 			<SummaryTitle>참석자 요약</SummaryTitle>
 			<SummaryContent>
-				{isTotalCountZero ? (
+				{isDecisionOption ? (
 					<Message>참석자 요약이 존재하지 않습니다.</Message>
 				) : (
 					data.map((item) => (
