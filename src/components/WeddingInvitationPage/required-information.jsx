@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
-const RequiredInformation = ({
-	invitationData
-}) => {
+const RequiredInformation = ({ invitationData }) => {
 	const [isImageLoading, setIsImageLoading] = useState(true);
 
 	return (
@@ -20,13 +18,23 @@ const RequiredInformation = ({
 					/>
 				</MainImageBox>
 				<RequiredInformationTextBox>
-					<GroomBrideNameSpan>{invitationData.groom} ❤️ {invitationData.bride}</GroomBrideNameSpan>
-					<GroomParentsNameText>아버지 {invitationData.groomF} / 어머니 {invitationData.groomM}</GroomParentsNameText>
-					<BrideParentsNameText>아버지 {invitationData.brideF} / 어머니 {invitationData.brideM}</BrideParentsNameText>
+					<GroomBrideNameSpan>
+						{invitationData.groom} ❤️ {invitationData.bride}
+					</GroomBrideNameSpan>
+					<GroomParentsNameText>
+						아버지 {invitationData.groomF} / 어머니 {invitationData.groomM}
+					</GroomParentsNameText>
+					<BrideParentsNameText>
+						아버지 {invitationData.brideF} / 어머니 {invitationData.brideM}
+					</BrideParentsNameText>
 					<DateText>일자</DateText>
-					<DateDetailText>{invitationData.date} / {invitationData.time} </DateDetailText>
+					<DateDetailText>
+						{invitationData.date} / {invitationData.time}{' '}
+					</DateDetailText>
 					<LocationText>위치</LocationText>
-					<LocationDetailText>{invitationData.address} {invitationData.extraAddress}</LocationDetailText>
+					<LocationDetailText>
+						{invitationData.address} {invitationData.extraAddress}
+					</LocationDetailText>
 				</RequiredInformationTextBox>
 			</RequiredInformationTextContainer>
 		</RequiredInformationTextWrapper>
@@ -37,7 +45,7 @@ export default RequiredInformation;
 
 // CSS
 const RequiredInformationTextWrapper = styled.div`
-	margin-top: 51.2rem;
+	margin-top: 11.2rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
