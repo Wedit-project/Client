@@ -12,15 +12,21 @@ const LoadingPage = () => {
 	const location = useLocation();
 	const invitationId = location.state?.invitationId;
 	const [recentInvitationId, setRecentInvitationId] = useState(null);
+	const [isSuccess, setIsSuccess] = useState(false);
 
 	const [progress, setProgress] = useState(0);
 
 	useEffect(() => {
 		const fetchRecentInvitation = async () => {
-			const invitations = await viewInvitation();
-			if (invitations.length > 0) {
-				const recentInvitation = invitations[invitations.length - 1];
-				setRecentInvitationId(recentInvitation.id);
+			try {
+				const invitations = await viewInvitation();
+				if (invitations.length > 0) {
+					const recentInvitation = invitations[invitations.length - 1];
+					setRecentInvitationId(recentInvitation.id);
+					setIsSuccess(true);
+				}
+			} catch (error) {
+				console.error('API 요청 오류:', error);
 			}
 		};
 
@@ -32,11 +38,6 @@ const LoadingPage = () => {
 			setProgress((oldProgress) => {
 				if (oldProgress === 100) {
 					clearInterval(interval);
-					if (invitationId) {
-						navigate(`/wedding-invitation/${invitationId}`);
-					} else if (recentInvitationId) {
-						navigate(`/wedding-invitation/${recentInvitationId}`);
-					}
 					return 100;
 				}
 				return Math.min(oldProgress + 20, 100);
@@ -44,7 +45,17 @@ const LoadingPage = () => {
 		}, 1000);
 
 		return () => clearInterval(interval);
-	}, [navigate, invitationId, recentInvitationId]);
+	}, [navigate, invitationId]);
+
+	useEffect(() => {
+		if (progress === 100) {
+			if (invitationId) {
+				navigate(`/wedding-invitation/${invitationId}`);
+			} else if (recentInvitationId && isSuccess) {
+				navigate(`/wedding-invitation/${recentInvitationId}`);
+			}
+		}
+	}, [progress, navigate, invitationId, recentInvitationId, isSuccess]);
 
 	return (
 		<Wrapper>
