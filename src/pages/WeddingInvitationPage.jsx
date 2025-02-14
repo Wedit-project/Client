@@ -2,12 +2,14 @@ import styled, { css } from 'styled-components';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import theme from '../styles/theme';
-import RequiredInformation from '../components/WeddingInvitationPage/required-information';
-import Location from '../components/WeddingInvitationPage/location';
-import Gallery from '../components/WeddingInvitationPage/gallery';
+import BasicInvitationHeader from '../components/WeddingInvitationPage/BasicInvitationHeader';
+import TraditionInvitationHeader from '../components/WeddingInvitationPage/TraditionInvitationHeader';
+import RequiredInformation from '../components/WeddingInvitationPage/RequiredInformation';
+import Location from '../components/WeddingInvitationPage/Location';
+import Gallery from '../components/WeddingInvitationPage/Gallery';
 import GuestBook from '../components/WeddingInvitationPage/GuestBook';
-import CongratulatoryMoney from '../components/WeddingInvitationPage/congratulatory-money';
-import RSVP from '../components/WeddingInvitationPage/rsvp';
+import CongratulatoryMoney from '../components/WeddingInvitationPage/CongratulatoryMoney';
+import RSVP from '../components/WeddingInvitationPage/RSVP';
 import { viewPersonalInvitation } from '../apis/api/invitations';
 import { viewNonMemberInvitation } from '../apis/api/invitations';
 
@@ -46,6 +48,7 @@ const WeddingInvitationPage = () => {
 		// 기본형 variant="basic"
 		// 전통형 = variant="tradition"
 		<WeddingInvitationWrapper $variant={themeVariant}>
+			{themeVariant === 'basic' ? <BasicInvitationHeader /> : <TraditionInvitationHeader />}
 			<RequiredInformation invitationData={invitationData} />
 			<Location $variant={themeVariant} invitationData={invitationData} />
 			<Gallery $variant={themeVariant} invitationData={invitationData} />
@@ -71,7 +74,7 @@ export default WeddingInvitationPage;
 // CSS
 const WeddingInvitationWrapper = styled.div`
 	background-image: url('/assets/basic.png');
-	background-size: contain;
+	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	width: 100%;

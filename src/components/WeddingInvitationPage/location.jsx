@@ -98,6 +98,19 @@ const LocationSpan = styled.span`
 				margin-left: 7.1rem;
 			}
 		`}
+	@media  (min-width: 480px) and (max-width: 768px) {
+		${({ $variant }) =>
+			$variant === 'tradition' &&
+			css`
+				&::before {
+					margin-right: 6rem;
+				}
+
+				&::after {
+					margin-left: 6rem;
+				}
+			`}
+	}
 `;
 
 const MapBox = styled(Map)`

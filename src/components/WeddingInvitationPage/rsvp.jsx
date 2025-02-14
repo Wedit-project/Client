@@ -81,6 +81,19 @@ const RSVPSpan = styled.span`
 				margin-left: 5.2rem;
 			}
 		`}
+	@media  (min-width: 480px) and (max-width: 768px) {
+		${({ $variant }) =>
+			$variant === 'tradition' &&
+			css`
+				&::before {
+					margin-right: 4rem;
+				}
+
+				&::after {
+					margin-left: 4rem;
+				}
+			`}
+	}
 `;
 
 const RSVPText = styled.p`
