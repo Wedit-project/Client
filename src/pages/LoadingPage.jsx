@@ -40,7 +40,7 @@ const LoadingPage = () => {
 					clearInterval(interval);
 					return 100;
 				}
-				return Math.min(oldProgress + 20, 100);
+				return Math.min(oldProgress + 10, 100);
 			});
 		}, 1000);
 
@@ -49,11 +49,13 @@ const LoadingPage = () => {
 
 	useEffect(() => {
 		if (progress === 100) {
-			if (invitationId) {
-				navigate(`/wedding-invitation/${invitationId}`);
-			} else if (recentInvitationId && isSuccess) {
-				navigate(`/wedding-invitation/${recentInvitationId}`);
-			}
+			setTimeout(() => {
+				if (invitationId) {
+					navigate(`/wedding-invitation/${invitationId}`);
+				} else if (recentInvitationId && isSuccess) {
+					navigate(`/wedding-invitation/${recentInvitationId}`);
+				}
+			}, 1000);
 		}
 	}, [progress, navigate, invitationId, recentInvitationId, isSuccess]);
 
