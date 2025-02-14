@@ -91,4 +91,14 @@ const ScrollableContainer = styled.div`
 		background-color: ${theme.colors.gray[400]};
 		border-radius: 0.25rem;
 	}
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		height: 30rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		height: 30rem;
+	}
+	@media (max-width: 480px) {
+		height: 30rem;
+	}
 `;

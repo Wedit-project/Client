@@ -28,6 +28,16 @@ const Text = styled.p`
 	padding-bottom: 8.3rem;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 5rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 5rem;
+	}
 `;
 
 const StyledBigLogo = styled(BigLogo)`
