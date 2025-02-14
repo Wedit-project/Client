@@ -21,9 +21,11 @@ const Section = ({ invitationId }) => {
 };
 
 export default Section;
-
 const SectionWrapper = styled.section`
 	background-color: ${theme.colors.green['20%']};
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 `;
 
 const Title = styled.div`
