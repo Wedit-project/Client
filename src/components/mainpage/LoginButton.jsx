@@ -28,4 +28,8 @@ const Button = styled.button`
   background-color: transparent;
   line-height: 133.333%;
   letter-spacing: -0.0456rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.2rem;
+  }
 `;

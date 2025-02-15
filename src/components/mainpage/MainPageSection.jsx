@@ -26,6 +26,10 @@ export default IconButtonSection;
 // CSS
 const SectionContainer = styled.div`
   margin-bottom: 3.7rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 23.7rem;
+  }
 `;
 
 const IconTextWrapper = styled.div`
@@ -37,6 +41,10 @@ const IconTextWrapper = styled.div`
 
 const IconWrapper = styled.div`
   margin-right: 3.3rem;
+  
+  @media (max-width: 768px) {
+    margin-right: 0;
+  }
 `;
 
 const Text = styled.div`
@@ -48,17 +56,22 @@ const Text = styled.div`
   width: 48.5rem;
   height: 10.4rem;
 
-  @media (min-width: 529px) and (max-width: 608px) {
-    font-size: 2.5rem;
-  }
-  @media (min-width: 481px) and (max-width: 528px) {
-    font-size: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    width: 65rem;
+    height: 15rem;
   }
 `;
 
 const StyledMainInvitationIcon = styled(MainInvitationIcon)`
   width: 40.5rem;
   height: 32.8rem;
+
+  @media (max-width: 768px) {
+    width: 52rem;
+    height: 44rem;
+  }
 `;
 
 const StyledPreviewButton = styled(PreviewButton)`
