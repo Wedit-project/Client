@@ -28,6 +28,8 @@ const SidebarContainer = styled.div`
   width: 100%;
   max-width: 60.6rem;
   display: flex;
+  flex: 0 0 auto;
+
   flex-direction: row;
 
   @media (max-width: 768px) {
@@ -36,7 +38,6 @@ const SidebarContainer = styled.div`
 `;
 
 const MenuItem = styled.div`
-  flex: 1;
   cursor: pointer;
   background-color: ${({ $active, theme }) =>
     $active ? theme.colors.green.main : theme.colors.gray[300]};
@@ -46,6 +47,8 @@ const MenuItem = styled.div`
   border-radius: 2rem 2rem 0 0;
 
   display: flex;
+  flex: 1 0 auto;
+
   justify-content: center;
   align-items: center;
   text-align: center;
