@@ -22,7 +22,6 @@ const Link = styled.a`
 `;
 
 const Button = styled.button`
-	-webkit-appearance: none;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
