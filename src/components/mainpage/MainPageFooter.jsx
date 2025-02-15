@@ -24,6 +24,8 @@ export default Footer;
 
 const FooterContainer = styled.footer`
   display: flex;
+  flex: 0 0 auto;
+
   justify-content: flex-end;
   background-color: transparent;
   border-top: 0.1rem solid ${theme.colors.gray[400]};

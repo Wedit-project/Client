@@ -33,6 +33,8 @@ export default FeatureCards;
 // CSS
 const Wrapper = styled.div`
   display: flex;
+  flex: 0 0 auto;
+
   flex-wrap: wrap;
   justify-content: center;
   max-width: 104.6rem;
@@ -54,6 +56,8 @@ const Wrapper = styled.div`
 
 const Card = styled.div`
   display: flex;
+  flex: 0 0 auto;
+ 
   flex-direction: row;
   align-items: center;
   justify-content: left;

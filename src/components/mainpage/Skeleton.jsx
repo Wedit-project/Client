@@ -16,6 +16,7 @@ const SkeletonWrapper = styled.div`
   height: 100%;
   background-color: ${props => props.theme.colors.gray[200]};
   display: flex;
+  flex: 0 0 auto;
   justify-content: center;
   align-items: center;
 `;
