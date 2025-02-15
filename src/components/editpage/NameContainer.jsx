@@ -76,12 +76,15 @@ const Container = styled.div`
 	justify-content: center;
 	margin-top: 2.3rem;
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 10rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		flex-direction: column;
 		margin-top: 10rem;
 	}
-
-	@media (min-width: 768px) and (max-width: 1024px) {
+	@media (max-width: 480px) {
+		flex-direction: column;
 		margin-top: 10rem;
 	}
 `;
@@ -90,11 +93,14 @@ const GroomNameContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		gap: 2rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		gap: 1rem;
 	}
-	@media (min-width: 768px) and (max-width: 1024px) {
-		gap: 2rem;
+	@media (max-width: 480px) {
+		gap: 1rem;
 	}
 `;
 
@@ -103,13 +109,18 @@ const BrideNameContainer = styled.div`
 	flex-direction: column;
 	margin-left: 7.4rem;
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		gap: 2rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		margin-top: 8rem;
 		margin-left: 0rem;
 		gap: 1rem;
 	}
-	@media (min-width: 768px) and (max-width: 1024px) {
-		gap: 2rem;
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+		margin-left: 0rem;
+		gap: 1rem;
 	}
 `;
 

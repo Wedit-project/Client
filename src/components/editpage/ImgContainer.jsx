@@ -51,11 +51,14 @@ const Container = styled.div`
 		width: auto;
 	}
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 8rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		margin-top: 8rem;
 	}
-	@media (min-width: 768px) and (max-width: 1024px) {
-		margin-top: 8rem;
+	@media (max-width: 480px) {
+		margin-top: 9rem;
 	}
 `;
 

@@ -100,6 +100,9 @@ const Container = styled.div`
 	@media (min-width: 480px) and (max-width: 768px) {
 		flex-direction: column;
 	}
+	@media (max-width: 480px) {
+		flex-direction: column;
+	}
 `;
 
 const AddressContainer = styled.div`
@@ -107,12 +110,16 @@ const AddressContainer = styled.div`
 	flex-direction: column;
 	margin-top: 2.4rem;
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		margin-top: 6rem;
 		gap: 1rem;
 	}
-	@media (min-width: 768px) and (max-width: 1024px) {
-		margin-top: 5rem;
+	@media (max-width: 480px) {
+		margin-top: 7rem;
+		gap: 1rem;
 	}
 `;
 
@@ -121,13 +128,18 @@ const AddressBox = styled.div`
 	align-items: center;
 	margin-bottom: 4.9rem;
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-bottom: 4.5rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		margin-top: 2rem;
 		margin-left: 0rem;
 		margin-bottom: 0rem;
 	}
-	@media (min-width: 768px) and (max-width: 1024px) {
-		margin-bottom: 4.5rem;
+	@media (max-width: 480px) {
+		margin-top: 2rem;
+		margin-left: 0rem;
+		margin-bottom: 0rem;
 	}
 `;
 
@@ -227,14 +239,19 @@ const DateContainer = styled.div`
 		margin-left: 7.4rem;
 	}
 
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+		gap: 2rem;
+	}
 	@media (min-width: 480px) and (max-width: 768px) {
 		margin-top: 10rem;
 		margin-left: 0rem;
 		gap: 1rem;
 	}
-	@media (min-width: 768px) and (max-width: 1024px) {
-		margin-top: 5rem;
-		gap: 2rem;
+	@media (max-width: 480px) {
+		margin-top: 10rem;
+		margin-left: 0rem;
+		gap: 1rem;
 	}
 `;
 
