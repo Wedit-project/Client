@@ -76,6 +76,15 @@ const SummaryWrapper = styled.div`
 	width: 123rem;
 	height: 42rem;
 	border: 0.1rem solid ${theme.colors.gray[900]};
+	@media (min-width: 768px) and (max-width: 1024px) {
+		height: 70rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		height: 90rem;
+	}
+	@media (max-width: 480px) {
+		height: 110rem;
+	}
 `;
 
 const SummaryTitle = styled.div`

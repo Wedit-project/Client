@@ -21,9 +21,11 @@ const Section = ({ invitationId }) => {
 };
 
 export default Section;
-
 const SectionWrapper = styled.section`
 	background-color: ${theme.colors.green['20%']};
+	flex: 1;
+	display: flex;
+	flex-direction: column;
 `;
 
 const Title = styled.div`
@@ -40,6 +42,15 @@ const CountWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 10rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 10rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 10rem;
+	}
 `;
 
 const SummaryWrapper = styled.div`
@@ -47,4 +58,13 @@ const SummaryWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding-bottom: 3.5rem;
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 10rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 10rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 10rem;
+	}
 `;
