@@ -34,6 +34,8 @@ const SectionContainer = styled.div`
 
 const IconTextWrapper = styled.div`
   display: flex;
+  flex: 0 0 auto;
+
   align-items: center;
   justify-content: center;
   text-align: left;
