@@ -32,6 +32,7 @@ const ButtonBox = styled.div`
 		margin-top: 8rem;
 	}
 	@media (max-width: 480px) {
+		width: 47rem;
 		margin-top: 12rem;
 	}
 `;
@@ -58,6 +59,10 @@ const PrevButton = styled.button`
 		width: 24rem;
 		font-size: 3.4rem;
 	}
+	@media (max-width: 480px) {
+		width: 24rem;
+		font-size: 3rem;
+	}
 `;
 
 const NextButton = styled.button`
@@ -82,6 +87,10 @@ const NextButton = styled.button`
 	@media (min-width: 480px) and (max-width: 768px) {
 		width: 24rem;
 		font-size: 3.4rem;
+	}
+	@media (max-width: 480px) {
+		width: 24rem;
+		font-size: 3rem;
 	}
 `;
 
