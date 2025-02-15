@@ -25,12 +25,18 @@ export default MainBannerSidebar;
 // CSS
 
 const SidebarContainer = styled.div`
-  width: 60.6rem;
+  width: 100%;
+  max-width: 60.6rem;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    max-width: 120.6rem;
+  }
 `;
 
 const MenuItem = styled.div`
+  flex: 1;
   cursor: pointer;
   background-color: ${({ $active, theme }) =>
     $active ? theme.colors.green.main : theme.colors.gray[300]};
@@ -44,7 +50,7 @@ const MenuItem = styled.div`
   align-items: center;
   text-align: center;
 
-  width: 20.2rem;
+  max-width: 20.2rem;
   height: 4.1rem;
   padding: 0 4.4rem 0 4.4rem;
 
@@ -52,4 +58,10 @@ const MenuItem = styled.div`
   font-weight: ${theme.font.semibold.fontWeight};
   line-height: 160%;
   letter-spacing: -0.038rem;
+
+  @media (max-width: 768px) {
+    max-width: 30.2rem;
+    height: 6.1rem;
+    font-size: 3.2rem;
+  }
 `;
