@@ -27,10 +27,10 @@ const ButtonBox = styled.div`
 		margin-top: 8rem;
 	}
 	@media (min-width: 480px) and (max-width: 768px) {
-		margin-top: 5rem;
+		margin-top: 8rem;
 	}
 	@media (max-width: 480px) {
-		margin-top: 9rem;
+		margin-top: 10rem;
 	}
 `;
 

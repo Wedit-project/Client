@@ -72,8 +72,12 @@ const ImgLabelSpan = styled.span`
 	letter-spacing: -0.0456rem;
 
 	@media (min-width: 480px) and (max-width: 768px) {
-		font-size: 3rem;
-		width: 52rem;
+		font-size: 3.6rem;
+		width: 62rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 70rem;
 	}
 `;
 
@@ -94,13 +98,17 @@ const PhotoPrevIcon = styled(PhotoPrev)`
 	height: 10.7rem;
 	margin-right: 1rem;
 
-	@media (min-width: 480px) and (max-width: 768px) {
-		width: 11.5rem;
-		height: 11.7rem;
-	}
 	@media (min-width: 768px) and (max-width: 1024px) {
-		width: 11.5rem;
-		height: 11.7rem;
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (max-width: 480px) {
+		width: 12.5rem;
+		height: 12.7rem;
 	}
 `;
 
@@ -120,13 +128,17 @@ const AddPhotoButton = styled.button`
 	border-radius: 0.4rem;
 	background-color: ${theme.colors.gray['300']};
 
-	@media (min-width: 480px) and (max-width: 768px) {
-		width: 11.5rem;
-		height: 11.7rem;
-	}
 	@media (min-width: 768px) and (max-width: 1024px) {
-		width: 11.5rem;
-		height: 11.7rem;
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (max-width: 480px) {
+		width: 12.5rem;
+		height: 12.7rem;
 	}
 `;
 

@@ -157,8 +157,12 @@ const AddressLabelSpan = styled.span`
 	}
 
 	@media (min-width: 480px) and (max-width: 768px) {
-		font-size: 3rem;
-		width: 20rem;
+		font-size: 3.6rem;
+		width: 25rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 27rem;
 	}
 `;
 
@@ -275,8 +279,12 @@ const DateLabelSpan = styled.span`
 	}
 
 	@media (min-width: 480px) and (max-width: 768px) {
-		font-size: 3rem;
-		width: 12rem;
+		font-size: 3.6rem;
+		width: 17rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 19rem;
 	}
 `;
 

@@ -144,8 +144,12 @@ const NameLabelSpan = styled.span`
 	}
 
 	@media (min-width: 480px) and (max-width: 768px) {
-		font-size: 3rem;
-		width: 22rem;
+		font-size: 3.6rem;
+		width: 27rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 30rem;
 	}
 `;
 
