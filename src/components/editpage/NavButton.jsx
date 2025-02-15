@@ -22,6 +22,10 @@ const ButtonBox = styled.div`
 	justify-content: center;
 	align-items: flex-start;
 	gap: 4rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 5rem;
+	}
 `;
 
 const PrevButton = styled.button`
