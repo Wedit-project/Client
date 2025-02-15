@@ -5,11 +5,11 @@ import theme from '../styles/theme';
 import BasicInvitationHeader from '../components/WeddingInvitationPage/BasicInvitationHeader';
 import TraditionInvitationHeader from '../components/WeddingInvitationPage/TraditionInvitationHeader';
 import RequiredInformation from '../components/WeddingInvitationPage/RequiredInformation';
-import Location from '../components/WeddingInvitationPage/Location';
-import Gallery from '../components/WeddingInvitationPage/Gallery';
+import Location from '../components/WeddingInvitationPage/location';
+import Gallery from '../components/WeddingInvitationPage/gallery';
 import GuestBook from '../components/WeddingInvitationPage/GuestBook';
 import CongratulatoryMoney from '../components/WeddingInvitationPage/CongratulatoryMoney';
-import RSVP from '../components/WeddingInvitationPage/RSVP';
+import RSVP from '../components/WeddingInvitationPage/rsvp';
 import { viewPersonalInvitation } from '../apis/api/invitations';
 import { viewNonMemberInvitation } from '../apis/api/invitations';
 
