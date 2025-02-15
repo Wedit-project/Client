@@ -33,6 +33,11 @@ const FooterContainer = styled.footer`
     border-top: none;
     padding-bottom: 9.5rem;
   }
+
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+    padding-right: 5rem;
+  }
 `;
 
 const FooterItem = styled.a`
@@ -52,6 +57,10 @@ const FooterItem = styled.a`
   font-weight: ${theme.font.regular.fontWeight};
   line-height: 133.333%
   letter-spacing: -0.0456rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.6rem;
+  }
 `;
 
 const Divider = styled.span`
@@ -60,4 +69,8 @@ const Divider = styled.span`
   font-weight: ${theme.font.regular.fontWeight};
   margin-top: 4.5rem;
   margin-bottom: 4.7rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.6rem;
+  }
 `;
