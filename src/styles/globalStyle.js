@@ -6,9 +6,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     font-family: "Pretendard"
   }
-  button, input, select {
+  button {
     font-family: "Pretendard";
-    -webkit-appearance: none; /* 웹킷 브라우저에서 기본 스타일 제거 */
   }
 
   body {
