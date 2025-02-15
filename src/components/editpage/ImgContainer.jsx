@@ -54,6 +54,9 @@ const Container = styled.div`
 	@media (min-width: 480px) and (max-width: 768px) {
 		margin-top: 8rem;
 	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 8rem;
+	}
 `;
 
 const ImgLabelSpan = styled.span`
@@ -92,6 +95,10 @@ const PhotoPrevIcon = styled(PhotoPrev)`
 		width: 11.5rem;
 		height: 11.7rem;
 	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		width: 11.5rem;
+		height: 11.7rem;
+	}
 `;
 
 const OverlayPhoto = styled.img`
@@ -111,6 +118,10 @@ const AddPhotoButton = styled.button`
 	background-color: ${theme.colors.gray['300']};
 
 	@media (min-width: 480px) and (max-width: 768px) {
+		width: 11.5rem;
+		height: 11.7rem;
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
 		width: 11.5rem;
 		height: 11.7rem;
 	}

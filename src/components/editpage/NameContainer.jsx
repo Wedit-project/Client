@@ -80,6 +80,10 @@ const Container = styled.div`
 		flex-direction: column;
 		margin-top: 10rem;
 	}
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 10rem;
+	}
 `;
 
 const GroomNameContainer = styled.div`
@@ -88,6 +92,9 @@ const GroomNameContainer = styled.div`
 
 	@media (min-width: 480px) and (max-width: 768px) {
 		gap: 1rem;
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		gap: 2rem;
 	}
 `;
 
@@ -100,6 +107,9 @@ const BrideNameContainer = styled.div`
 		margin-top: 8rem;
 		margin-left: 0rem;
 		gap: 1rem;
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		gap: 2rem;
 	}
 `;
 

@@ -111,6 +111,9 @@ const AddressContainer = styled.div`
 		margin-top: 6rem;
 		gap: 1rem;
 	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+	}
 `;
 
 const AddressBox = styled.div`
@@ -122,6 +125,9 @@ const AddressBox = styled.div`
 		margin-top: 2rem;
 		margin-left: 0rem;
 		margin-bottom: 0rem;
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-bottom: 4.5rem;
 	}
 `;
 
@@ -225,6 +231,10 @@ const DateContainer = styled.div`
 		margin-top: 10rem;
 		margin-left: 0rem;
 		gap: 1rem;
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+		gap: 2rem;
 	}
 `;
 
