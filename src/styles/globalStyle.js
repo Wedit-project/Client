@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
   button, input, select {
     font-family: "Pretendard";
     -webkit-appearance: none; /* 웹킷 브라우저에서 기본 스타일 제거 */
+    -moz-appearance: none;
+    appearance: none;
   }
 
   body {
