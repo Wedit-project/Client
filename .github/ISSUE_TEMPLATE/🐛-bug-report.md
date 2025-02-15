@@ -2,8 +2,9 @@
 name: "\U0001F41B Bug Report"
 about: "[Fix] 오류/버그 수정"
 title: "[Fix]"
-labels: 🐛 Bug
-assignees: ""
+labels: "\U0001F41B Bug"
+assignees: ''
+
 ---
 
 ## 📋 발생한 오류

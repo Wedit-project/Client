@@ -1,112 +1,117 @@
-//GuestBook.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import GuestBookModal from './GuestBookModal';
+import { fetchGuestBook } from '../../apis/api/comments';
 
-const GuestBook = ({ $variant = 'basic' }) => {
-	const [isScrollable, setScrollable] = useState(false);
-
-	const handleMoreButtonClick = () => {
-		// 스크롤 활성화
-		setScrollable(true);
-	};
-
+const GuestBook = ({ $variant = 'basic', invitationId }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
-
-	const handleWritingButtonClick = () => {
-		setModalVisible(true);
-	};
-
-	const handleModalClose = () => {
-		setModalVisible(false);
-	};
-
 	const [isLoading, setIsLoading] = useState(true);
+	const [comments, setComments] = useState([]);
+	const [page, setPage] = useState(1);
+	const [isLast, setIsLast] = useState(false);
+	const [isScrollable, setIsScrollable] = useState(false);
+	const observer = useRef();
 
-	// 로딩 시뮬레이션, 추후 API 호출 로직으로 대체
+	// 방명록 데이터 불러오기
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			setIsLoading(false);
-		}, 1000);
-		return () => clearTimeout(timer);
-	}, []);
+		const fetchComments = async () => {
+			if (isLast) return; // 마지막 페이지이면 요청 중단
+			setIsLoading(true);
+
+			try {
+				const response = await fetchGuestBook(invitationId, page);
+				if (response.success) {
+					setComments((prev) =>
+						page === 1 ? response.result.comments : [...prev, ...response.result.comments]
+					);
+					setIsLast(response.result.isLast);
+				}
+			} catch (error) {
+				console.error(error);
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		if (invitationId) {
+			fetchComments();
+		}
+	}, [invitationId, page]);
+
+	// "더보기" 버튼 클릭 시 스크롤 활성화
+	const handleMoreButtonClick = () => {
+		setIsScrollable(true);
+		setPage((prev) => (prev >= 1 ? prev + 1 : 1));
+	};
+
+	const lastCommentRef = useRef();
+
+	// 무한스크롤
+	useEffect(() => {
+		if (isLast) return; // 마지막 페이지면 요청 중단
+
+		observer.current = new IntersectionObserver((entries) => {
+			if (entries[0].isIntersecting) {
+				setPage((prev) => (prev >= 1 ? prev + 1 : 1));
+			}
+		});
+
+		if (lastCommentRef.current) {
+			observer.current.observe(lastCommentRef.current);
+		}
+
+		return () => {
+			if (observer.current) observer.current.disconnect();
+		};
+	}, [comments, isLast]);
 
 	return (
 		<GuestBookWrapper>
 			<GuestBookSpan $variant={$variant}>방명록</GuestBookSpan>
 			<GuestBookList isScrollable={isScrollable}>
-				{guestBookData.map((item, index) => (
-					<GuestBookItem key={index}>
-						{isLoading ? (
-							<>
-								<Skeleton />
-								<Skeleton />
-							</>
-						) : (
-							<>
-								<GuestNameText>{item.name}</GuestNameText>
-								<ContentText>{item.content}</ContentText>
-							</>
-						)}
+				{comments.length === 0 && !isLoading ? (
+					<GuestBookItem>
+						<ContentText>작성된 방명록이 없습니다.</ContentText>
 					</GuestBookItem>
-				))}
+				) : (
+					comments.map((item, index) => (
+						<GuestBookItem
+							key={item.commentId}
+							ref={index === comments.length - 1 ? lastCommentRef : null}>
+							{isLoading ? (
+								<>
+									<Skeleton />
+									<Skeleton />
+								</>
+							) : (
+								<>
+									<GuestNameText>{item.name}</GuestNameText>
+									<ContentText>{item.content}</ContentText>
+								</>
+							)}
+						</GuestBookItem>
+					))
+				)}
 			</GuestBookList>
 
-			{guestBookData.length > 4 && !isScrollable && (
-				// 스크롤 활성화 후 버튼 숨김
+			{comments.length > 4 && !isScrollable && (
 				<MoreButton onClick={handleMoreButtonClick}>더보기</MoreButton>
 			)}
 
-			<WritingButton $variant={$variant} onClick={handleWritingButtonClick}>
+			<WritingButton $variant={$variant} onClick={() => setModalVisible(true)}>
 				작성하기
 			</WritingButton>
-			<GuestBookModal isVisible={isModalVisible} onClose={handleModalClose} />
+			<GuestBookModal
+				isVisible={isModalVisible}
+				invitationId={invitationId}
+				onClose={() => setModalVisible(false)}
+			/>
 		</GuestBookWrapper>
 	);
 };
-export default GuestBook;
 
-// 데이터 리스트
-const guestBookData = [
-	{
-		name: '김민수',
-		content: '결혼 축하드립니다! 두 분의 앞날에 행복만 가득하시길 바랍니다.',
-	},
-	{
-		name: '이지영',
-		content: '멋진 결혼식 기대할게요! 오랜만에 봐서 너무 좋았어요.',
-	},
-	{
-		name: '박지훈',
-		content:
-			'두 분의 결혼을 진심으로 축하드려요! 앞으로의 모든 날들이 행복으로 가득 차길 바랍니다.',
-	},
-	{
-		name: '최은영',
-		content: '늘 서로에게 힘이 되는 멋진 부부가 되길 기원할게요!',
-	},
-	{
-		name: '김민수',
-		content: '결혼 축하드립니다! 두 분의 앞날에 행복만 가득하시길 바랍니다.',
-	},
-	{
-		name: '김민수',
-		content: '결혼 축하드립니다! 두 분의 앞날에 행복만 가득하시길 바랍니다.',
-	},
-	{
-		name: '김민수',
-		content: '결혼 축하드립니다! 두 분의 앞날에 행복만 가득하시길 바랍니다.',
-	},
-	{
-		name: '김민수',
-		content: '결혼 축하드립니다! 두 분의 앞날에 행복만 가득하시길 바랍니다.',
-	},
-	{
-		name: '김민수',
-		content: '결혼 축하드립니다! 두 분의 앞날에 행복만 가득하시길 바랍니다.',
-	},
-];
+export default GuestBook;
 
 const GuestBookWrapper = styled.div`
 	margin-top: 15.9rem;
@@ -149,6 +154,19 @@ const GuestBookSpan = styled.span`
 				margin-left: 5.2rem;
 			}
 		`}
+	@media  (min-width: 480px) and (max-width: 768px) {
+		${({ $variant }) =>
+			$variant === 'tradition' &&
+			css`
+				&::before {
+					margin-right: 4rem;
+				}
+
+				&::after {
+					margin-left: 4rem;
+				}
+			`}
+	}
 `;
 
 const GuestBookList = styled.div.withConfig({

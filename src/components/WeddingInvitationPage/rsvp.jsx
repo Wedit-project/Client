@@ -3,8 +3,13 @@ import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 import RSVPModal from './RSVPModal';
 
-const RSVP = ({ $variant = 'basic' }) => {
+const RSVP = ({ $variant = 'basic', invitationData }) => {
 	const [isModalVisible, setModalVisible] = useState(false);
+
+	// decisionOption이 false일 경우 컴포넌트 렌더링하지 않음
+	if (!invitationData || invitationData.decisionOption === false) {
+		return null; // 아무것도 렌더링하지 않음
+	}
 
 	const handleWritingButtonClick = () => {
 		setModalVisible(true);
@@ -23,7 +28,11 @@ const RSVP = ({ $variant = 'basic' }) => {
 			<RSVPButton $variant={$variant} onClick={handleWritingButtonClick}>
 				참석의사 전달하기
 			</RSVPButton>
-			<RSVPModal isVisible={isModalVisible} onClose={handleModalClose} />
+			<RSVPModal
+				isVisible={isModalVisible}
+				invitationId={invitationData.id}
+				onClose={handleModalClose}
+			/>
 		</RSVPWrapper>
 	);
 };
@@ -72,6 +81,19 @@ const RSVPSpan = styled.span`
 				margin-left: 5.2rem;
 			}
 		`}
+	@media  (min-width: 480px) and (max-width: 768px) {
+		${({ $variant }) =>
+			$variant === 'tradition' &&
+			css`
+				&::before {
+					margin-right: 4rem;
+				}
+
+				&::after {
+					margin-left: 4rem;
+				}
+			`}
+	}
 `;
 
 const RSVPText = styled.p`

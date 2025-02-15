@@ -1,15 +1,70 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import theme from '../styles/theme';
 import LogoSet from '../assets/img/LogoSet.svg?react';
 import LoadingImg from '../assets/img/LoadingImg.svg?react';
+import { viewInvitation } from '../apis/api/my';
+import Invitation from '../components/mypage/Invitation';
 
 const LoadingPage = () => {
+	const navigate = useNavigate();
+	const location = useLocation();
+	const invitationId = location.state?.invitationId;
+	const [recentInvitationId, setRecentInvitationId] = useState(null);
+	const [isSuccess, setIsSuccess] = useState(false);
+
+	const [progress, setProgress] = useState(0);
+
+	useEffect(() => {
+		const fetchRecentInvitation = async () => {
+			try {
+				const invitations = await viewInvitation();
+				if (invitations.length > 0) {
+					const recentInvitation = invitations[invitations.length - 1];
+					setRecentInvitationId(recentInvitation.id);
+					setIsSuccess(true);
+				}
+			} catch (error) {
+				console.error('API 요청 오류:', error);
+			}
+		};
+
+		if (!invitationId) {
+			fetchRecentInvitation();
+		}
+
+		const interval = setInterval(() => {
+			setProgress((oldProgress) => {
+				if (oldProgress === 100) {
+					clearInterval(interval);
+					return 100;
+				}
+				return Math.min(oldProgress + 10, 100);
+			});
+		}, 1000);
+
+		return () => clearInterval(interval);
+	}, [navigate, invitationId]);
+
+	useEffect(() => {
+		if (progress === 100) {
+			setTimeout(() => {
+				if (invitationId) {
+					navigate(`/wedding-invitation/${invitationId}`);
+				} else if (recentInvitationId && isSuccess) {
+					navigate(`/wedding-invitation/${recentInvitationId}`);
+				}
+			}, 1000);
+		}
+	}, [progress, navigate, invitationId, recentInvitationId, isSuccess]);
+
 	return (
 		<Wrapper>
 			<IllustIcon />
 			<LogoFrameIcon />
 			<ProgressBarBox>
-				<ProgressBox />
+				<ProgressBox $progress={progress} />
 			</ProgressBarBox>
 			<LoadingTextBox>나만을 위한 청첩장 제작중...</LoadingTextBox>
 		</Wrapper>
@@ -112,14 +167,15 @@ const ProgressBarBox = styled.div`
 	height: 6rem;
 	border-radius: 3rem;
 	background: ${theme.colors.gray['300']};
+	position: relative;
 `;
 
 const ProgressBox = styled.div`
-	/* 일단 ui구현만 */
-	width: 52.9rem;
+	width: ${(props) => props.$progress}%;
 	height: 6rem;
 	border-radius: 3rem;
 	background: ${theme.colors.green['main']};
+	transition: width 1s linear;
 `;
 
 const LoadingTextBox = styled.div`

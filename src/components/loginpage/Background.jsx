@@ -1,31 +1,41 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 import loginBackground from '../../assets/icons/loginbackground.svg';
 
 const Background = ({ children }) => {
-    return (
-        <BackgroundContainer>
-            <BackgroundImageElement src={loginBackground} alt="background" />
-            {children}
-        </BackgroundContainer>
-    );
+	return (
+		<BackgroundContainer>
+			<BackgroundImageElement src={loginBackground} alt="background" />
+			{children}
+		</BackgroundContainer>
+	);
 };
 
 export default Background;
 
 const BackgroundContainer = styled.div`
-    position: relative;
-    align-items: center;
-    justify-items: center;
-    overflow-x: hidden;
+	position: relative;
+	align-items: center;
+	justify-items: center;
+	overflow-x: hidden;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		height: 100vh;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		height: 100vh;
+	}
+	@media (max-width: 480px) {
+		height: 100vh;
+	}
 `;
 
 const BackgroundImageElement = styled.img`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -1;
 `;

@@ -1,8 +1,8 @@
 ---
-name: "🎨 Style"
+name: "\U0001F3A8 Style"
 about: "[Style] 스타일 코드"
 title: "[Style] "
-labels: 🎨 Style
+labels: "\U0001F3A8 Style"
 assignees: ''
 
 ---

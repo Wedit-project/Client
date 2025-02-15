@@ -34,6 +34,10 @@ const router = createBrowserRouter([
 		element: <EditPage />,
 	},
 	{
+		path: 'edit/:invitationId',
+		element: <EditPage />,
+	},
+	{
 		path: 'main-photo-selection',
 		element: <MainPhotoSelectionPage />,
 	},
@@ -54,7 +58,11 @@ const router = createBrowserRouter([
 		element: <LoadingPage />,
 	},
 	{
-		path: 'wedding-invitation',
+		path: 'wedding-invitation/:invitationId',
+		element: <WeddingInvitationPage />,
+	},
+	{
+		path: 'invitations/:uniqueId',
 		element: <WeddingInvitationPage />,
 	},
 	{
@@ -62,7 +70,7 @@ const router = createBrowserRouter([
 		element: <PreviewInvitationPage />,
 	},
 	{
-		path: 'analysis',
+		path: '/analysis/:invitationId',
 		element: <AnalysisPage />,
 	},
 ]);
