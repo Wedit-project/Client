@@ -50,6 +50,16 @@ const Container = styled.div`
 	@media screen and (max-width: 1366px) {
 		width: auto;
 	}
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 8rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 8rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 9rem;
+	}
 `;
 
 const ImgLabelSpan = styled.span`
@@ -60,6 +70,15 @@ const ImgLabelSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 3.6rem;
+		width: 62rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 70rem;
+	}
 `;
 
 const UploadImgBox = styled.div`
@@ -78,6 +97,19 @@ const PhotoPrevIcon = styled(PhotoPrev)`
 	width: 10.2rem;
 	height: 10.7rem;
 	margin-right: 1rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (max-width: 480px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
 `;
 
 const OverlayPhoto = styled.img`
@@ -95,6 +127,19 @@ const AddPhotoButton = styled.button`
 	border: none;
 	border-radius: 0.4rem;
 	background-color: ${theme.colors.gray['300']};
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
+	@media (max-width: 480px) {
+		width: 12.5rem;
+		height: 12.7rem;
+	}
 `;
 
 const PlusIcon = styled(Plus)`

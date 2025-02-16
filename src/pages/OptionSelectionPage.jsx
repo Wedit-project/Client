@@ -121,6 +121,19 @@ const TitleSpan = styled.span`
 	font-family: Pretendard;
 	font-weight: ${theme.font.bold.fontWeight};
 	letter-spacing: -0.0608rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 8rem;
+		font-size: 4.6rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 8rem;
+		font-size: 4.6rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+		font-size: 4.4rem;
+	}
 `;
 
 const DescriptionSpan = styled.span`
@@ -138,6 +151,18 @@ const DescriptionSpan = styled.span`
 
 	@media screen and (min-width: 393px) and (max-width: 412px) {
 		top: 25rem;
+	}
+	@media (min-width: 768px) and (max-width: 1024px) {
+		top: 26rem;
+		font-size: 3.8rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		top: 28rem;
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		top: 30rem;
+		font-size: 3.8rem;
 	}
 `;
 
