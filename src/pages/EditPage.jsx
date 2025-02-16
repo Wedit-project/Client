@@ -318,6 +318,15 @@ const TitleBox = styled.div`
 	font-weight: ${theme.font.bold.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0608rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 8rem;
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+		font-size: 4rem;
+	}
 `;
 
 const Container = styled.div`
@@ -395,6 +404,11 @@ const CautionBox = styled.div`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 2.8rem;
+		width: 35rem;
+	}
 `;
 
 const NavBox = styled.div`

@@ -75,17 +75,53 @@ const Container = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-top: 2.3rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 10rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		flex-direction: column;
+		margin-top: 10rem;
+	}
+	@media (max-width: 480px) {
+		flex-direction: column;
+		margin-top: 10rem;
+	}
 `;
 
 const GroomNameContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		gap: 2rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		gap: 1rem;
+	}
+	@media (max-width: 480px) {
+		gap: 1rem;
+	}
 `;
 
 const BrideNameContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-left: 7.4rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		gap: 2rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 8rem;
+		margin-left: 0rem;
+		gap: 1rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+		margin-left: 0rem;
+		gap: 1rem;
+	}
 `;
 
 const NameBox = styled.div`
@@ -105,6 +141,15 @@ const NameLabelSpan = styled.span`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 17.1rem;
+	}
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 3.6rem;
+		width: 27rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 30rem;
 	}
 `;
 

@@ -65,6 +65,19 @@ const Container = styled.div`
 	flex-direction: column;
 	gap: 8.5rem;
 	padding: 12.5rem 5.9rem 12.5rem 6.3rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 15rem;
+		gap: 17rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 15rem;
+		gap: 20rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 12rem;
+		gap: 10rem;
+	}
 `;
 
 const OptBox = styled.div`
@@ -85,12 +98,35 @@ const Checkbox = styled.input`
 		background-position: 50%;
 		background-repeat: no-repeat;
 	}
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		width: 4rem;
+		height: 3.6rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		width: 4rem;
+		height: 3.6rem;
+	}
+	@media (max-width: 480px) {
+		width: 3.6rem;
+		height: 3.2rem;
+	}
 `;
 
 const ContentBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 76.1rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		width: 92rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		width: 100rem;
+	}
+	@media (max-width: 480px) {
+		width: 92rem;
+	}
 `;
 
 const TitleSpan = styled.span`
@@ -101,6 +137,16 @@ const TitleSpan = styled.span`
 	line-height: 3.2rem;
 	letter-spacing: -0.0684rem;
 	margin-bottom: 3.5rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		font-size: 4.6rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 4.8rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 4rem;
+	}
 `;
 
 const DescriptionSpan = styled.span`
@@ -110,6 +156,16 @@ const DescriptionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		font-size: 3.8rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+	}
 `;
 
 export default OptSelection;

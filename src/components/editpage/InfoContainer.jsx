@@ -96,18 +96,51 @@ export default InfoContainer;
 
 const Container = styled.div`
 	display: flex;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		flex-direction: column;
+	}
+	@media (max-width: 480px) {
+		flex-direction: column;
+	}
 `;
 
 const AddressContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: 2.4rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 6rem;
+		gap: 1rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 7rem;
+		gap: 1rem;
+	}
 `;
 
 const AddressBox = styled.div`
 	display: flex;
 	align-items: center;
 	margin-bottom: 4.9rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-bottom: 4.5rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 2rem;
+		margin-left: 0rem;
+		margin-bottom: 0rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 2rem;
+		margin-left: 0rem;
+		margin-bottom: 0rem;
+	}
 `;
 
 const AddressLabelSpan = styled.span`
@@ -121,6 +154,15 @@ const AddressLabelSpan = styled.span`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 14.8rem;
+	}
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 3.6rem;
+		width: 25rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 27rem;
 	}
 `;
 
@@ -200,6 +242,21 @@ const DateContainer = styled.div`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		margin-left: 7.4rem;
 	}
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 5rem;
+		gap: 2rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 10rem;
+		margin-left: 0rem;
+		gap: 1rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 10rem;
+		margin-left: 0rem;
+		gap: 1rem;
+	}
 `;
 
 const DateBox = styled.div`
@@ -219,6 +276,15 @@ const DateLabelSpan = styled.span`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 6.1rem;
+	}
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 3.6rem;
+		width: 17rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+		width: 19rem;
 	}
 `;
 

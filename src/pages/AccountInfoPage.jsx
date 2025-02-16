@@ -195,6 +195,10 @@ const TitleBox = styled.div`
 	font-family: Pretendard;
 	font-weight: ${theme.font.bold.fontWeight};
 	letter-spacing: -0.0608rem;
+
+	@media (max-width: 480px) {
+		font-size: 4rem;
+	}
 `;
 
 const DescriptionSpan = styled.div`
@@ -208,6 +212,10 @@ const DescriptionSpan = styled.div`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+	}
 `;
 
 const CenterBox = styled.div`
@@ -222,25 +230,45 @@ const Container = styled.div`
 	flex-direction: column;
 	margin-top: 9.1rem;
 	gap: 12.4rem;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 15rem;
+	}
 `;
 
 const AccountBox = styled.div`
 	display: flex;
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+	}
 `;
 
 const BankAndNumBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 6rem;
+
+	@media (max-width: 480px) {
+		gap: 0rem;
+	}
 `;
 
 const AccountNameBox = styled.div`
 	margin-left: 14.4rem;
+
+	@media (max-width: 480px) {
+		margin-left: 0em;
+	}
 `;
 
 const InfoBox = styled.div`
 	display: flex;
 	align-items: center;
+
+	@media (max-width: 480px) {
+		margin-top: 5rem;
+	}
 `;
 
 const LabelSpan = styled.span`
@@ -255,6 +283,11 @@ const LabelSpan = styled.span`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 16.5rem;
+	}
+
+	@media (max-width: 480px) {
+		width: 25rem;
+		font-size: 3.4rem;
 	}
 `;
 
@@ -275,6 +308,10 @@ const InfoInput = styled.input`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 25.3rem;
+	}
+
+	@media (max-width: 480px) {
+		width: 35.7rem;
 	}
 `;
 
@@ -310,6 +347,18 @@ const CautionBox = styled.div`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.456px;
+
+	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 12rem;
+	}
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 12rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 12rem;
+		width: 35rem;
+		font-size: 3rem;
+	}
 `;
 
 const NavBox = styled.div`
