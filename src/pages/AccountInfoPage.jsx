@@ -197,7 +197,8 @@ const TitleBox = styled.div`
 	letter-spacing: -0.0608rem;
 
 	@media (max-width: 480px) {
-		font-size: 4rem;
+		margin-top: 8rem;
+		font-size: 5rem;
 	}
 `;
 
@@ -214,7 +215,8 @@ const DescriptionSpan = styled.div`
 	letter-spacing: -0.0456rem;
 
 	@media (max-width: 480px) {
-		font-size: 3.6rem;
+		top: 30rem;
+		font-size: 3.8rem;
 	}
 `;
 
@@ -232,6 +234,9 @@ const Container = styled.div`
 	gap: 12.4rem;
 
 	@media (min-width: 768px) and (max-width: 1024px) {
+		margin-top: 15rem;
+	}
+	@media (max-width: 480px) {
 		margin-top: 15rem;
 	}
 `;
@@ -286,8 +291,8 @@ const LabelSpan = styled.span`
 	}
 
 	@media (max-width: 480px) {
-		width: 25rem;
-		font-size: 3.4rem;
+		font-size: 4.6rem;
+		width: 40rem;
 	}
 `;
 
@@ -311,7 +316,8 @@ const InfoInput = styled.input`
 	}
 
 	@media (max-width: 480px) {
-		width: 35.7rem;
+		height: 4.5rem;
+		width: 40rem;
 	}
 `;
 
@@ -332,6 +338,10 @@ const NameInput = styled.input`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 35.7rem;
+	}
+	@media (max-width: 480px) {
+		height: 4.5rem;
+		width: 40rem;
 	}
 `;
 
@@ -355,7 +365,7 @@ const CautionBox = styled.div`
 		margin-top: 12rem;
 	}
 	@media (max-width: 480px) {
-		margin-top: 12rem;
+		margin-top: 15rem;
 		width: 35rem;
 		font-size: 3rem;
 	}

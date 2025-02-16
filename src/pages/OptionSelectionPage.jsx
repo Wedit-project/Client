@@ -132,7 +132,7 @@ const TitleSpan = styled.span`
 	}
 	@media (max-width: 480px) {
 		margin-top: 8rem;
-		font-size: 4.4rem;
+		font-size: 5rem;
 	}
 `;
 
@@ -192,6 +192,9 @@ const CautionBox = styled.div`
 
 	@media screen and (min-width: 393px) and (max-width: 412px) {
 		top: 89rem;
+	}
+	@media (max-width: 480px) {
+		top: 125rem;
 	}
 `;
 

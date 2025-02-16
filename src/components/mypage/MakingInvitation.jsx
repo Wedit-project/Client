@@ -53,6 +53,10 @@ const Text = styled.div`
 	margin-left: 10.5rem;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+	}
 `;
 
 const Divider = styled.div`
@@ -74,6 +78,10 @@ const NothingText = styled.div`
 	padding-bottom: 10.6rem;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3rem;
+	}
 `;
 
 const ScrollableContainer = styled.div`
@@ -99,6 +107,6 @@ const ScrollableContainer = styled.div`
 		height: 30rem;
 	}
 	@media (max-width: 480px) {
-		height: 30rem;
+		height: 38rem;
 	}
 `;

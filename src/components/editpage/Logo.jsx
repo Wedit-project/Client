@@ -33,13 +33,13 @@ const LogoIcon = styled(Logo)`
 		height: 6.8rem;
 	}
 	@media (max-width: 480px) {
-		width: 8rem;
-		height: 7.7rem;
+		width: 10.1rem;
+		height: 9.2rem;
 	}
 `;
 
 const WeditIcon = styled(Wedit)`
-	width: 8.8rem;
+	width: 8.7rem;
 	font-size: 3.2rem;
 
 	@media (min-width: 768px) and (max-width: 1024px) {
@@ -49,7 +49,7 @@ const WeditIcon = styled(Wedit)`
 		width: 15rem;
 	}
 	@media (max-width: 480px) {
-		width: 15rem;
+		width: 18rem;
 	}
 `;
 

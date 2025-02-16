@@ -60,8 +60,9 @@ const PrevButton = styled.button`
 		font-size: 3.4rem;
 	}
 	@media (max-width: 480px) {
-		width: 24rem;
-		font-size: 3rem;
+		width: 30rem;
+		height: 8rem;
+		font-size: 3.4rem;
 	}
 `;
 
@@ -89,8 +90,9 @@ const NextButton = styled.button`
 		font-size: 3.4rem;
 	}
 	@media (max-width: 480px) {
-		width: 24rem;
-		font-size: 3rem;
+		width: 30rem;
+		height: 8rem;
+		font-size: 3.4rem;
 	}
 `;
 

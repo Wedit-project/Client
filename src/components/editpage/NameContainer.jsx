@@ -85,7 +85,7 @@ const Container = styled.div`
 	}
 	@media (max-width: 480px) {
 		flex-direction: column;
-		margin-top: 10rem;
+		margin-top: 15rem;
 	}
 `;
 
@@ -100,7 +100,7 @@ const GroomNameContainer = styled.div`
 		gap: 1rem;
 	}
 	@media (max-width: 480px) {
-		gap: 1rem;
+		gap: 3rem;
 	}
 `;
 
@@ -118,9 +118,9 @@ const BrideNameContainer = styled.div`
 		gap: 1rem;
 	}
 	@media (max-width: 480px) {
-		margin-top: 8rem;
+		margin-top: 10rem;
 		margin-left: 0rem;
-		gap: 1rem;
+		gap: 3rem;
 	}
 `;
 
@@ -148,8 +148,8 @@ const NameLabelSpan = styled.span`
 		width: 27rem;
 	}
 	@media (max-width: 480px) {
-		font-size: 3.6rem;
-		width: 30rem;
+		font-size: 4.6rem;
+		width: 40rem;
 	}
 `;
 
@@ -169,5 +169,10 @@ const NameInput = styled.input`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 35.3rem;
+	}
+
+	@media (max-width: 480px) {
+		height: 4.5rem;
+		width: 40rem;
 	}
 `;

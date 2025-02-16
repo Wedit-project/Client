@@ -161,8 +161,8 @@ const AddressLabelSpan = styled.span`
 		width: 25rem;
 	}
 	@media (max-width: 480px) {
-		font-size: 3.6rem;
-		width: 27rem;
+		font-size: 4.6rem;
+		width: 38rem;
 	}
 `;
 
@@ -185,6 +185,11 @@ const Zipcode = styled.input`
 		width: 100%;
 		max-width: 25rem;
 	}
+
+	@media (max-width: 480px) {
+		font-size: 3rem;
+		width: 24.5rem;
+	}
 `;
 
 const SearchButton = styled.button`
@@ -201,9 +206,14 @@ const SearchButton = styled.button`
 	font-size: 1.5rem;
 	font-weight: ${theme.font.medium.fontWeight};
 	letter-spacing: -0.075rem;
+
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 11.2rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 2.8rem;
+		width: 15rem;
 	}
 `;
 
@@ -211,6 +221,12 @@ const SearchIcon = styled(SearchSymbol)`
 	margin-left: 0.5rem;
 	width: 2rem;
 	height: 2rem;
+
+	@media (max-width: 480px) {
+		margin-left: 1rem;
+		width: 4rem;
+		height: 4rem;
+	}
 `;
 
 const AddressInput = styled.input`
@@ -230,6 +246,10 @@ const AddressInput = styled.input`
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		width: 100%;
 		max-width: 35.3rem;
+	}
+	@media (max-width: 480px) {
+		height: 4.5rem;
+		width: 40rem;
 	}
 `;
 
@@ -283,8 +303,8 @@ const DateLabelSpan = styled.span`
 		width: 17rem;
 	}
 	@media (max-width: 480px) {
-		font-size: 3.6rem;
-		width: 19rem;
+		font-size: 4.6rem;
+		width: 30rem;
 	}
 `;
 
@@ -310,6 +330,11 @@ const DateInput = styled.input`
 		width: 100%;
 		width: 32.5rem;
 		margin-left: 12.3rem;
+	}
+	@media (max-width: 480px) {
+		height: 4rem;
+		font-size: 2.6rem;
+		width: 42rem;
 	}
 `;
 
