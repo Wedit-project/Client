@@ -97,6 +97,10 @@ const SummaryTitle = styled.div`
 	padding-bottom: 1.7rem;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+	}
 `;
 
 const SummaryContent = styled.div`
@@ -124,6 +128,9 @@ const Label = styled.div`
 	text-align: left;
 	font-weight: ${theme.font.medium.fontWeight};
 	font-size: ${theme.fontSize.xlarge};
+	@media (max-width: 480px) {
+		font-size: 3.2rem;
+	}
 `;
 
 const Message = styled.div`

@@ -39,7 +39,7 @@ export default VisitorsCount;
 
 const VisitorsWrapper = styled.div`
 	width: 123rem;
-	height: 20.4rem;
+	height: 22.4rem;
 	border: 0.1rem solid ${theme.colors.gray[900]};
 	margin-bottom: 1.7rem;
 `;
@@ -54,6 +54,10 @@ const Text = styled.div`
 	padding-bottom: 1.7rem;
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.6rem;
+	}
 `;
 
 const Row = styled.div`
@@ -74,4 +78,8 @@ const Column = styled.div`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.2rem;
+	}
 `;

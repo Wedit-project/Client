@@ -325,7 +325,7 @@ const TitleBox = styled.div`
 	}
 	@media (max-width: 480px) {
 		margin-top: 8rem;
-		font-size: 4rem;
+		font-size: 5rem;
 	}
 `;
 
@@ -406,6 +406,7 @@ const CautionBox = styled.div`
 	letter-spacing: -0.0456rem;
 
 	@media (max-width: 480px) {
+		margin-top: 10rem;
 		font-size: 2.8rem;
 		width: 35rem;
 	}

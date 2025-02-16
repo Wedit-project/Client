@@ -58,7 +58,7 @@ const Container = styled.div`
 		margin-top: 8rem;
 	}
 	@media (max-width: 480px) {
-		margin-top: 9rem;
+		margin-top: 15rem;
 	}
 `;
 
@@ -107,8 +107,8 @@ const PhotoPrevIcon = styled(PhotoPrev)`
 		height: 12.7rem;
 	}
 	@media (max-width: 480px) {
-		width: 12.5rem;
-		height: 12.7rem;
+		width: 16rem;
+		height: 16rem;
 	}
 `;
 
@@ -137,8 +137,8 @@ const AddPhotoButton = styled.button`
 		height: 12.7rem;
 	}
 	@media (max-width: 480px) {
-		width: 12.5rem;
-		height: 12.7rem;
+		width: 16rem;
+		height: 16rem;
 	}
 `;
 

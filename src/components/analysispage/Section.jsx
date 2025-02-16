@@ -36,6 +36,11 @@ const Title = styled.div`
 	margin-bottom: 3.3rem;
 	line-height: 100%;
 	letter-spacing: -0.0608rem;
+
+	@media (max-width: 480px) {
+		margin-top: 5rem;
+		font-size: 3.8rem;
+	}
 `;
 
 const CountWrapper = styled.div`

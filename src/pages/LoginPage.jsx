@@ -35,6 +35,9 @@ const StyledLogo = styled(LoginLogo)`
 		margin-top: 85.3rem;
 	}
 	@media (max-width: 480px) {
-		margin-top: 145.3rem;
+		margin-top: 115.3rem;
+		margin-left: 54rem;
+		width: 82.2rem;
+		height: 60.9rem;
 	}
 `;

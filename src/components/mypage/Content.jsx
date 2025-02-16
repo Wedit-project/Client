@@ -37,6 +37,7 @@ const Text = styled.p`
 	}
 	@media (max-width: 480px) {
 		margin-top: 5rem;
+		font-size: 3.8rem;
 	}
 `;
 
@@ -45,4 +46,9 @@ const StyledBigLogo = styled(BigLogo)`
 	margin-bottom: 3.5rem;
 	width: 42.2rem;
 	height: 14.4rem;
+
+	@media (max-width: 480px) {
+		width: 72.2rem;
+		height: 44.4rem;
+	}
 `;
