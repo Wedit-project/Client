@@ -25,6 +25,7 @@ export default Footer;
 const FooterContainer = styled.footer`
   display: flex;
   flex: 0 0 auto;
+  min-height: 100%;
 
   justify-content: flex-end;
   background-color: transparent;

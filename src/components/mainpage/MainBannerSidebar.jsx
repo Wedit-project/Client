@@ -29,6 +29,7 @@ const SidebarContainer = styled.div`
   max-width: 60.6rem;
   display: flex;
   flex: 0 0 auto;
+  min-height: 100%;
 
   flex-direction: row;
 
@@ -48,6 +49,7 @@ const MenuItem = styled.div`
 
   display: flex;
   flex: 1 0 auto;
+  min-height: 100%;
 
   justify-content: center;
   align-items: center;

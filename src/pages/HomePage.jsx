@@ -33,5 +33,5 @@ export default HomePage;
 // CSS
 const HomePageContainer = styled.div`
   background-color: ${theme.colors.background.background1};
-  min-height: 100vh;
+  min-height: 100dvh;
 `;
