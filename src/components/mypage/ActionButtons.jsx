@@ -57,4 +57,8 @@ const Button = styled.button`
 	border: none;
 	cursor: pointer;
 	background-color: transparent;
+
+	@media (max-width: 480px) {
+		font-size: 3rem;
+	}
 `;

@@ -31,9 +31,19 @@ const Button = styled.button`
 	margin-bottom: 27.7rem;
 	width: 60rem;
 	height: 9rem;
+
+	@media (max-width: 480px) {
+		width: 70rem;
+		height: 11rem;
+	}
 `;
 
 const Img = styled.img`
 	width: 60rem;
 	height: 9rem;
+
+	@media (max-width: 480px) {
+		width: 70rem;
+		height: 11rem;
+	}
 `;

@@ -76,7 +76,7 @@ const Container = styled.div`
 	}
 	@media (max-width: 480px) {
 		margin-top: 12rem;
-		gap: 10rem;
+		gap: 15rem;
 	}
 `;
 
@@ -108,8 +108,8 @@ const Checkbox = styled.input`
 		height: 3.6rem;
 	}
 	@media (max-width: 480px) {
-		width: 3.6rem;
-		height: 3.2rem;
+		width: 4.6rem;
+		height: 4rem;
 	}
 `;
 
@@ -145,7 +145,7 @@ const TitleSpan = styled.span`
 		font-size: 4.8rem;
 	}
 	@media (max-width: 480px) {
-		font-size: 4rem;
+		font-size: 4.2rem;
 	}
 `;
 
@@ -164,7 +164,7 @@ const DescriptionSpan = styled.span`
 		font-size: 4rem;
 	}
 	@media (max-width: 480px) {
-		font-size: 3.6rem;
+		font-size: 3.8rem;
 	}
 `;
 

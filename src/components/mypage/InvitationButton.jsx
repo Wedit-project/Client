@@ -64,4 +64,11 @@ const CreateButton = styled.button`
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
 	margin-top: 5.6rem;
+
+	@media (max-width: 480px) {
+		margin-top: 15rem;
+		width: 30rem;
+		height: 8rem;
+		font-size: 3.4rem;
+	}
 `;
