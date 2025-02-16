@@ -30,6 +30,8 @@ const Button = styled.button`
   letter-spacing: -0.0456rem;
 
   @media (max-width: 768px) {
-    font-size: 3.2rem;
+    font-size: 5rem;
+    border-radius: 5rem;
+    padding: 1rem 3rem;
   }
 `;
