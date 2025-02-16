@@ -25,9 +25,16 @@ export default MainBannerSidebar;
 // CSS
 
 const SidebarContainer = styled.div`
-  width: 60.6rem;
+  width: 100%;
+  max-width: 60.6rem;
   display: flex;
+  flex: 0 0 auto;
+
   flex-direction: row;
+
+  @media (max-width: 768px) {
+    max-width: 120.6rem;
+  }
 `;
 
 const MenuItem = styled.div`
@@ -40,11 +47,13 @@ const MenuItem = styled.div`
   border-radius: 2rem 2rem 0 0;
 
   display: flex;
+  flex: 1 0 auto;
+
   justify-content: center;
   align-items: center;
   text-align: center;
 
-  width: 20.2rem;
+  max-width: 20.2rem;
   height: 4.1rem;
   padding: 0 4.4rem 0 4.4rem;
 
@@ -52,4 +61,10 @@ const MenuItem = styled.div`
   font-weight: ${theme.font.semibold.fontWeight};
   line-height: 160%;
   letter-spacing: -0.038rem;
+
+  @media (max-width: 768px) {
+    max-width: 30.2rem;
+    height: 6.1rem;
+    font-size: 3.2rem;
+  }
 `;

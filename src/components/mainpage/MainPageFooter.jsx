@@ -32,18 +32,24 @@ const Footer = ({ className }) => {
 export default Footer;
 
 const FooterContainer = styled.footer`
-	display: flex;
-	justify-content: flex-end;
-	background-color: transparent;
-	border-top: 0.1rem solid ${theme.colors.gray[400]};
+  display: flex;
+  flex: 0 0 auto;
 
-	&.center-align {
-		justify-content: center;
-		border-top: none;
-		padding-bottom: 9.5rem;
-	}
+  justify-content: flex-end;
+  background-color: transparent;
+  border-top: 0.1rem solid ${theme.colors.gray[400]};
 
-	@media (max-width: 480px) {
+  &.center-align {
+    justify-content: center;
+    border-top: none;
+    padding-bottom: 9.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 5rem 0;
+    padding-right: 5rem;
+  }
+  @media (max-width: 480px) {
 		margin-left: 8rem;
 	}
 `;
@@ -65,12 +71,20 @@ const FooterItem = styled.a`
   font-weight: ${theme.font.regular.fontWeight};
   line-height: 133.333%
   letter-spacing: -0.0456rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.6rem;
+  }
 `;
 
 const Divider = styled.span`
-	color: #000;
-	font-size: ${theme.fontSize.xlarge};
-	font-weight: ${theme.font.regular.fontWeight};
-	margin-top: 4.5rem;
-	margin-bottom: 4.7rem;
+  color: #000;
+  font-size: ${theme.fontSize.xlarge};
+  font-weight: ${theme.font.regular.fontWeight};
+  margin-top: 4.5rem;
+  margin-bottom: 4.7rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.6rem;
+  }
 `;

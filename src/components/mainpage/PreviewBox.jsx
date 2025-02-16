@@ -33,6 +33,8 @@ export default FeatureCards;
 // CSS
 const Wrapper = styled.div`
   display: flex;
+  flex: 0 0 auto;
+
   flex-wrap: wrap;
   justify-content: center;
   max-width: 104.6rem;
@@ -40,10 +42,22 @@ const Wrapper = styled.div`
   gap: 3.6rem 24rem;
   margin-top: 4.3rem;
   margin-bottom: 5rem;
+
+  @media (max-width: 768px) { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 320rem;
+    gap: 10rem;
+    margin-top: 20rem;
+    margin-bottom: 20rem;
+  }
 `;
 
 const Card = styled.div`
   display: flex;
+  flex: 0 0 auto;
+ 
   flex-direction: row;
   align-items: center;
   justify-content: left;
@@ -53,6 +67,11 @@ const Card = styled.div`
   box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.2);
   background-color: #fff;
   text-align: center;
+
+  @media (max-width: 768px) {
+    width: 60.3rem;
+    height: 23.7rem;
+  }
 `;
 
 const Icon = styled.div`
@@ -60,6 +79,13 @@ const Icon = styled.div`
   height: 6.9rem;
   margin-right: 3.1rem;
   margin-left: 3.55rem;
+
+  @media (max-width: 768px) {
+    width: 12rem;
+    height: 12rem;
+    margin-right: 5.1rem;
+    margin-left: 3.55rem;
+  }
 `;
 
 const Title = styled.p`
@@ -69,4 +95,13 @@ const Title = styled.p`
   text-align: left;
   line-height: 133.333%
   letter-spacing: -0.0456rem;
+
+  @media (max-width: 768px) {
+    font-size: 3.2rem;
+    font-weight: ${theme.font.bold.fontWeight};
+    white-space: pre-line;
+    text-align: left;
+    line-height: 133.333%
+    letter-spacing: -0.0456rem;
+  }
 `;
