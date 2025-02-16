@@ -68,5 +68,6 @@ const MenuItem = styled.div`
     max-width: 30.2rem;
     height: 6.1rem;
     font-size: 3.2rem;
+    border-radius: 3rem 3rem 0 0;
   }
 `;
