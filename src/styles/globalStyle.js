@@ -22,6 +22,11 @@ ${reset}
     margin: 0;
     background: none;
     border: none;
+    color: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: none;
 
     &:hover {
       border: none;
@@ -29,6 +34,11 @@ ${reset}
     }
 
     &:focus {
+      border: none;
+      outline: none;
+    }
+
+    &:active {
       border: none;
       outline: none;
     }

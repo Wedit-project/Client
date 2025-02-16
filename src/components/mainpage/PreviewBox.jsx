@@ -51,7 +51,7 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     max-width: 320rem;
-    gap: 10rem;
+    gap: 5rem;
     margin-top: 20rem;
     margin-bottom: 20rem;
   }
@@ -73,8 +73,15 @@ const Card = styled.div`
   text-align: center;
 
   @media (max-width: 768px) {
-    width: 60.3rem;
+    width: 70.3rem;
     height: 23.7rem;
+    border-radius: 3rem;
+  }
+
+  @media (max-width: 350px) {
+    width: 61.3rem;
+    height: 23.7rem;
+    border-radius: 3rem;
   }
 `;
 
@@ -85,8 +92,8 @@ const Icon = styled.div`
   margin-left: 3.55rem;
 
   @media (max-width: 768px) {
-    width: 12rem;
-    height: 12rem;
+    width: 13rem;
+    height: 13rem;
     margin-right: 5.1rem;
     margin-left: 3.55rem;
   }
@@ -97,15 +104,16 @@ const Title = styled.p`
   font-weight: ${theme.font.bold.fontWeight};
   white-space: pre-line;
   text-align: left;
-  line-height: 133.333%
+  line-height: 133.333%;
   letter-spacing: -0.0456rem;
 
   @media (max-width: 768px) {
-    font-size: 3.2rem;
+    font-size: 4rem;
     font-weight: ${theme.font.bold.fontWeight};
     white-space: pre-line;
     text-align: left;
-    line-height: 133.333%
+    line-height: 133.333%;
     letter-spacing: -0.0456rem;
+    padding-top: 0.1rem;
   }
 `;

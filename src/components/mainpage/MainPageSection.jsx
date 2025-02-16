@@ -65,6 +65,12 @@ const Text = styled.div`
     width: 65rem;
     height: 15rem;
   }
+
+  @media (max-width: 353px) {
+    font-size: 3.3rem;
+    width: 65rem;
+    height: 15rem;
+  }
 `;
 
 const StyledMainInvitationIcon = styled(MainInvitationIcon)`

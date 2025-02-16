@@ -26,13 +26,13 @@ const Button = styled.button`
   background-color: ${theme.colors.gray[0]};
   width: 19.8rem;
   height: 5.8rem;
-  @media (min-width: 512px) and (max-width: 564px) {
-    font-size: 2rem;
-  }
-  @media (min-width: 480px) and (max-width: 512px) {
-    font-size: 1.7rem;
-  }
-  @media (min-width: 300px) and (max-width: 480px) {
-    font-size: 2.2rem;
+  
+  @media (max-width: 768px) {
+    width: 31.8rem;
+    height: 8.8rem;
+    font-size: 3.6rem;
+    border-radius: 3rem;
+    margin-right: 5rem;
+    margin-top: 16rem;
   }
 `;
