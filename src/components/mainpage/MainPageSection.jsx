@@ -35,6 +35,7 @@ const SectionContainer = styled.div`
 const IconTextWrapper = styled.div`
   display: flex;
   flex: 0 0 auto;
+  min-height: 100%;
 
   align-items: center;
   justify-content: center;
