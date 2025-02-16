@@ -50,9 +50,6 @@ const FooterContainer = styled.footer`
     padding: 5rem 0;
     padding-right: 5rem;
   }
-  @media (max-width: 480px) {
-		margin-left: 8rem;
-	}
 `;
 
 const FooterItem = styled.a`
