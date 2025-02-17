@@ -135,8 +135,8 @@ const Wrapper = styled.div`
 `;
 
 const TitleBox = styled.div`
-	width: 12.8rem;
-	height: 4.2rem;
+	/* width: 12.8rem;
+	height: 4.2rem; */
 	margin-top: 4.1rem;
 	margin-left: 7.9rem;
 	font-size: 3.2rem;
@@ -144,17 +144,30 @@ const TitleBox = styled.div`
 	font-weight: ${theme.font.bold.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0608rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 8rem;
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+		font-size: 5rem;
+	}
 `;
 
 const DescriptionBox = styled.div`
 	display: flex;
 	margin-top: 3.2rem;
 	margin-left: 11.4rem;
+
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+	}
 `;
 
 const DescriptionSpan = styled.span`
 	display: block;
-	width: 35.2rem;
+	/* width: 35.2rem; */
 	height: 4.1rem;
 	font-family: Pretendard;
 	font-size: 2.4rem;
@@ -162,11 +175,15 @@ const DescriptionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
 `;
 
 const CautionSpan = styled.span`
 	display: block;
-	width: 36rem;
+	/* width: 36rem; */
 	height: 4.1rem;
 	margin-left: 7.4rem;
 	color: #e80c0c;
@@ -176,6 +193,10 @@ const CautionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
 `;
 
 const Container = styled.div`
@@ -185,6 +206,22 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
+
+	@media screen and (max-width: 767px) {
+		margin-top: 25rem;
+	}
+
+	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
+		margin-top: 4.3rem;
+	}
+
+	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+		margin-top: 4.3rem;
+	}
 `;
 
 const ContentContainer = styled.div`
@@ -221,6 +258,13 @@ const LabelSpan = styled.span`
 	line-height: 2.9252rem;
 	letter-spacing: -0.0608rem;
 	margin-bottom: 2.9rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 5rem;
+	}
 `;
 
 const FamilyNameBox = styled.div`
@@ -230,6 +274,13 @@ const FamilyNameBox = styled.div`
 	line-height: 4.5707rem;
 	letter-spacing: -0.0608rem;
 	margin-bottom: 5.742rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 5rem;
+	}
 `;
 
 const DateBox = styled.div`
@@ -239,6 +290,13 @@ const DateBox = styled.div`
 	line-height: 2.9252rem;
 	letter-spacing: -0.0608rem;
 	margin-bottom: 8.194rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 5rem;
+	}
 `;
 
 const LocationBox = styled.div`
@@ -247,12 +305,19 @@ const LocationBox = styled.div`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.6565rem;
 	letter-spacing: -0.0608rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		font-size: 5rem;
+	}
 `;
 
 const SelectionButtonBox = styled.div`
 	position: absolute;
-	top: 36.7rem;
-	left: 70rem;
+	top: 30rem;
+	left: 75rem;
 	z-index: 10;
 
 	@media screen and (min-width: 1181px) and (max-width: 1366px) {
@@ -267,33 +332,63 @@ const SelectionButtonBox = styled.div`
 
 	@media screen and (min-width: 821px) and (max-width: 1024px) {
 		/*ipad mini 가로*/
-		left: 80rem;
+		top: 35rem;
+		left: 75rem;
 	}
 
-	@media screen and (min-width: 768px) and (max-width: 820px) {
-		/*ipad air, mini 세로*/
+	@media screen and (min-width: 780px) and (max-width: 820px) {
+		/*ipad air 세로*/
 		left: 60rem;
 	}
 
-	@media screen and (min-width: 853px) and (max-width: 884px) {
-		/*galaxy note 20 ultra 가로*/
-		left: 68rem;
+	@media screen and (min-width: 767px) and (max-width: 779px) {
+		/*ipad mini 세로*/
+		top: 38rem;
+		left: 85rem;
 	}
 
-	@media screen and (min-width: 821px) and (max-width: 852px) {
-		/*iphone 14 pro/15/15 pro/16 가로*/
+	@media screen and (min-width: 320px) and (max-width: 375px) {
+		top: 65rem;
+		left: 50rem;
+	}
+
+	@media screen and (min-width: 375px) and (max-width: 480px) {
+		top: 65rem;
 		left: 65rem;
 	}
 
-	@media screen and (min-width: 390px) and (max-width: 480px) {
-		/*모바일 세로*/
-		top: 43rem;
+	@media screen and (min-width: 481px) and (max-width: 575px) {
+		top: 65rem;
+		left: 50rem;
+	}
+
+	@media screen and (min-width: 575px) and (max-width: 645px) {
+		top: 65rem;
+		left: 62rem;
+	}
+
+	@media screen and (min-width: 645px) and (max-width: 767px) {
+		top: 65rem;
+		left: 70rem;
+	}
+
+	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
+		top: 40rem;
+		left: 65rem;
+	}
+
+	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+		top: 40rem;
 		left: 60rem;
 	}
 `;
 
 const IndicatorBox = styled.div`
 	margin-top: 4.2rem;
+
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+	}
 `;
 
 const NavBox = styled.div`
