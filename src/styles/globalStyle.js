@@ -64,6 +64,60 @@ ${reset}
     box-sizing: border-box;
   }
 
+  .react-datepicker {
+    font-size: 2.5rem;
+
+    @media (min-width: 480px) and (max-width: 768px) {
+      font-size: 4rem;
+    }
+    @media (max-width: 480px) {
+      font-size: 5rem;
+    }
+  }
+  .react-datepicker__month {
+    margin: 0.5rem 1rem;
+  }
+
+  .react-datepicker__day-name,
+  .react-datepicker__day {
+    width: 1.9em;
+    line-height: 1.9em;
+    margin: 0.166em;
+  }
+
+  .react-datepicker__current-month {
+    font-size: 3rem;
+
+    @media (min-width: 480px) and (max-width: 768px) {
+      font-size: 4.2rem;
+    }
+    @media (max-width: 480px) {
+      font-size: 5.2rem;
+    }
+  }
+
+  .react-datepicker__time-container {
+    width: 100%;
+  }
+
+  .react-datepicker__time-list-item {
+    font-size: 2.6rem;
+    margin: 0;
+    text-align: center;
+
+    @media (min-width: 480px) and (max-width: 768px) {
+      font-size: 4.2rem;
+    }
+    @media (max-width: 480px) {
+      font-size: 6rem;
+    }
+  }
+
+  .react-datepicker__time-list {
+    padding: 0;
+    margin: 0;
+  }
+
   @media screen and (min-width: 1024px) and (max-width: 1440px) {
     html {
       font-size: 51%;

@@ -97,19 +97,6 @@ const PhotoPrevIcon = styled(PhotoPrev)`
 	width: 10.2rem;
 	height: 10.7rem;
 	margin-right: 1rem;
-
-	@media (min-width: 768px) and (max-width: 1024px) {
-		width: 12.5rem;
-		height: 12.7rem;
-	}
-	@media (min-width: 480px) and (max-width: 768px) {
-		width: 12.5rem;
-		height: 12.7rem;
-	}
-	@media (max-width: 480px) {
-		width: 16rem;
-		height: 16rem;
-	}
 `;
 
 const OverlayPhoto = styled.img`
@@ -127,19 +114,6 @@ const AddPhotoButton = styled.button`
 	border: none;
 	border-radius: 0.4rem;
 	background-color: ${theme.colors.gray['300']};
-
-	@media (min-width: 768px) and (max-width: 1024px) {
-		width: 12.5rem;
-		height: 12.7rem;
-	}
-	@media (min-width: 480px) and (max-width: 768px) {
-		width: 12.5rem;
-		height: 12.7rem;
-	}
-	@media (max-width: 480px) {
-		width: 16rem;
-		height: 16rem;
-	}
 `;
 
 const PlusIcon = styled(Plus)`
