@@ -27,21 +27,6 @@ ${reset}
     -moz-appearance: none;
     appearance: none;
     background-color: none;
-
-    &:hover {
-      border: none;
-      outline: none;
-    }
-
-    &:focus {
-      border: none;
-      outline: none;
-    }
-
-    &:active {
-      border: none;
-      outline: none;
-    }
   }
 
   :root {
