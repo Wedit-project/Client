@@ -82,14 +82,25 @@ export default LoadingPage;
 // CSS
 const Wrapper = styled.div`
 	width: 100%;
-	height: 100vh;
-	height: 100dvh;
+	height: 80vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin: auto;
 	position: relative;
+
+	@media screen and (min-width: 1180px) {
+		height: 100vh;
+	}
+
+	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
+		height: 100vh;
+	}
+
+	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+		height: 100vh;
+	}
 `;
 
 const IllustIcon = styled(LoadingImg)`
@@ -153,12 +164,12 @@ const LogoFrameIcon = styled(LogoSet)`
 
 	@media screen and (min-width: 320px) and (max-width: 375px) {
 		width: 30%;
-		top: 36%;
+		top: 35%;
 		transform: translateX(-68%);
 	}
 
 	@media screen and (min-width: 375px) and (max-width: 480px) {
-		top: 42%;
+		top: 40%;
 	}
 
 	@media screen and (min-width: 481px) and (max-width: 575px) {
@@ -181,8 +192,8 @@ const LogoFrameIcon = styled(LogoSet)`
 		top: 20%;
 	}
 
-	@media screen and (min-width: 898px) and (max-width: 932px) and (orientation: landscape) {
-		top: 45%;
+	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+		top: 28%;
 	}
 `;
 
