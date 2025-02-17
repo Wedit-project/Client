@@ -344,7 +344,7 @@ const SelectionButtonBox = styled.div`
 	@media screen and (min-width: 767px) and (max-width: 779px) {
 		/*ipad mini 세로*/
 		top: 38rem;
-		left: 85rem;
+		left: 75rem;
 	}
 
 	@media screen and (min-width: 320px) and (max-width: 375px) {

@@ -53,11 +53,6 @@ const BackgroundBox = styled.div`
 const TriangleIcon = styled(Triangle)`
 	width: 3.4rem;
 	height: 2.9rem;
-
-	@media (max-width: 480px) {
-		width: 6rem;
-		height: 5.5rem;
-	}
 `;
 
 const DescriptionSpan = styled.span`
