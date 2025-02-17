@@ -39,10 +39,11 @@ const Divider = styled.div`
 	font-size: ${theme.fontSize.xlarge};
 	font-weight: ${theme.font.medium.fontWeight};
 
-	@media (max-width: 480px) {
-		margin-top: 0.3rem;
-		font-size: 4rem;
-	}
+
+	@media (max-width: 768px) {
+		margin-top: 0.5rem;
+    	font-size: 5rem;
+  	}
 `;
 
 const StyledLogo = styled(Logo)`
@@ -51,8 +52,10 @@ const StyledLogo = styled(Logo)`
 	margin-bottom: 5.7rem;
 	height: 4rem;
 
-	@media (max-width: 480px) {
-		margin-top: 4rem;
+	@media (max-width: 778px) {
+		margin-top: 8rem;
+		margin-left: 10rem;
+		margin-bottom: 6.7rem;
 		height: 9.2rem;
 	}
 `;

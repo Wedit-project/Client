@@ -54,9 +54,9 @@ const Text = styled.div`
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
 
-	@media (max-width: 480px) {
-		font-size: 3.6rem;
-	}
+	@media (max-width: 768px) {
+    	font-size: 5rem;
+  	}
 `;
 
 const Divider = styled.div`
@@ -66,6 +66,10 @@ const Divider = styled.div`
 	margin-bottom: 5.1rem;
 	border: 0.2rem solid ${theme.colors.green.main};
 	border-radius: 0.2rem;
+
+	@media (max-width: 768px) {
+    	margin-bottom: 10rem;
+  	}
 `;
 
 const NothingText = styled.div`
@@ -79,9 +83,9 @@ const NothingText = styled.div`
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
 
-	@media (max-width: 480px) {
-		font-size: 3rem;
-	}
+	@media (max-width: 768px) {
+    	font-size: 5rem;
+  	}
 `;
 
 const ScrollableContainer = styled.div`
@@ -100,13 +104,7 @@ const ScrollableContainer = styled.div`
 		border-radius: 0.25rem;
 	}
 
-	@media (min-width: 768px) and (max-width: 1024px) {
-		height: 30rem;
-	}
-	@media (min-width: 480px) and (max-width: 768px) {
-		height: 30rem;
-	}
-	@media (max-width: 480px) {
-		height: 38rem;
-	}
+	@media (max-width: 768px) {
+    	height: 30rem;
+  	}
 `;

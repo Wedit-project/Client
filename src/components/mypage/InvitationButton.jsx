@@ -65,10 +65,11 @@ const CreateButton = styled.button`
 	letter-spacing: -0.0456rem;
 	margin-top: 5.6rem;
 
-	@media (max-width: 480px) {
+	@media (max-width: 768px) {
 		margin-top: 15rem;
-		width: 30rem;
-		height: 8rem;
-		font-size: 3.4rem;
-	}
+		width: 40rem;
+		height: 11rem;
+    	font-size: 5rem;
+		border-radius: 3.5rem;
+  	}
 `;
