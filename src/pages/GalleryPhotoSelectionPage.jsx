@@ -247,8 +247,8 @@ const SelectionButtonBox = styled.div`
 		}};
 		left: ${(props) => {
 			if (props.step === 1) return '60rem';
-			if (props.step === 2) return '120rem';
-			if (props.step === 3) return '120rem';
+			if (props.step === 2) return '110rem';
+			if (props.step === 3) return '110rem';
 		}};
 	}
 
