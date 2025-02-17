@@ -30,7 +30,7 @@ const Button = styled.button`
 	cursor: pointer;
 	margin-bottom: 27.7rem;
 	width: 60rem;
-	height: 9rem;
+	height: 0rem;
 
 	@media (max-width: 768px) {
 		width: 70rem;
