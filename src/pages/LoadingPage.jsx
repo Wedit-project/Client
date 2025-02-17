@@ -73,12 +73,22 @@ const LoadingPage = () => {
 
 export default LoadingPage;
 
+// 스몰 모바일 (320px ~ 375px)
+// 미디엄 모바일 (376px ~ 425px)
+// 라지 모바일 (426px ~ 767px)
+// 스몰 태블릿 (768px ~ 991px)
+// 라지 태블릿 (992px ~ 1199px)
+
 // CSS
 const Wrapper = styled.div`
 	width: 100%;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
+	margin: auto;
+	position: relative;
 `;
 
 const IllustIcon = styled(LoadingImg)`
@@ -96,69 +106,82 @@ const IllustIcon = styled(LoadingImg)`
 
 const LogoFrameIcon = styled(LogoSet)`
 	position: absolute;
-	top: 55%;
-	transform: translateX(-74%);
+	top: 45%;
+	transform: translateX(-70%);
 
 	@media screen and (min-width: 1181px) and (max-width: 1366px) {
 		/*ipad pro 가로*/
 		width: 25%;
-		top: 38%;
+		top: 48%;
 	}
 
 	@media screen and (max-width: 1024px) {
 		/*ipad pro 세로*/
 		width: 23%;
-		top: 17%;
+		top: 46%;
 		transform: translateX(-75%);
 	}
 
 	@media screen and (min-width: 1025px) and (max-width: 1180px) {
 		/*ipad air 가로*/
 		width: 29%;
-		top: 34%;
+		top: 40%;
 		transform: translateX(-65%);
 	}
 
 	@media screen and (min-width: 821px) and (max-width: 1024px) and (max-height: 768px) {
 		/*ipad mini 가로*/
 		width: 23%;
-		top: 30%;
+		top: 43%;
 		transform: translateX(-70%);
 	}
 
 	@media screen and (min-width: 780px) and (max-width: 820px) {
 		/*ipad air 세로*/
 		width: 28%;
-		top: 20%;
+		top: 45%;
 		transform: translateX(-75%);
 	}
 
-	@media screen and (min-width: 768px) and (max-width: 779px) {
+	@media screen and (min-width: 767px) and (max-width: 779px) {
 		/*ipad mini 세로*/
-		width: 28%;
-		top: 23%;
+		width: 23%;
+		top: 43%;
+		transform: translateX(-70%);
+	}
+
+	@media screen and (min-width: 320px) and (max-width: 375px) {
+		width: 30%;
+		top: 36%;
+		transform: translateX(-68%);
+	}
+
+	@media screen and (min-width: 375px) and (max-width: 480px) {
+		top: 42%;
+	}
+
+	@media screen and (min-width: 481px) and (max-width: 575px) {
+		width: 30%;
+		top: 43%;
 		transform: translateX(-75%);
 	}
 
-	@media screen and (min-width: 853px) and (max-width: 884px) {
-		/*galaxy note 20 ultra 가로*/
-		width: 25%;
-		top: 56%;
-		transform: translateX(-77%);
-	}
-
-	@media screen and (min-width: 821px) and (max-width: 852px) {
-		/*iphone 14 pro/15/15 pro/16 가로*/
-		width: 26%;
-		top: 59%;
-		transform: translateX(-77%);
-	}
-
-	@media screen and (min-width: 390px) and (max-width: 480px) {
-		/*모바일 세로*/
+	@media screen and (min-width: 576px) and (max-width: 645px) {
 		width: 28%;
-		top: 8%;
-		transform: translateX(-71%);
+		top: 43%;
+		transform: translateX(-68%);
+	}
+
+	@media screen and (min-width: 645px) and (max-width: 767px) {
+		top: 44%;
+	}
+
+	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
+		top: 20%;
+	}
+
+	@media screen and (min-width: 898px) and (max-width: 932px) and (orientation: landscape) {
+		top: 45%;
 	}
 `;
 
