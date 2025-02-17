@@ -6,7 +6,7 @@ const Background = ({ children }) => {
 	return (
 		<BackgroundContainer>
 			<BackgroundImageElement src={loginBackground} alt="background" />
-			{children}
+			<ContentWrapper>{children}</ContentWrapper>
 		</BackgroundContainer>
 	);
 };
@@ -18,6 +18,7 @@ const BackgroundContainer = styled.div`
 	align-items: center;
 	justify-items: center;
 	overflow-x: hidden;
+	overflow-y: hidden;
 
 	@media (min-width: 768px) and (max-width: 1024px) {
 		height: 100vh;
@@ -28,6 +29,16 @@ const BackgroundContainer = styled.div`
 	@media (max-width: 480px) {
 		height: 100vh;
 	}
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 144rem;
+  position: relative;
+  z-index: 1;
 `;
 
 const BackgroundImageElement = styled.img`
