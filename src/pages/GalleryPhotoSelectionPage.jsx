@@ -110,7 +110,7 @@ const Wrapper = styled.div`
 `;
 
 const TitleBox = styled.div`
-	width: 12.8rem;
+	/* width: 12.8rem; */
 	height: 4.2rem;
 	margin-top: 4.1rem;
 	margin-left: 7.9rem;
@@ -119,17 +119,30 @@ const TitleBox = styled.div`
 	font-weight: ${theme.font.bold.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0608rem;
+
+	@media (min-width: 480px) and (max-width: 768px) {
+		margin-top: 8rem;
+		font-size: 4rem;
+	}
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+		font-size: 5rem;
+	}
 `;
 
 const DescriptionBox = styled.div`
 	display: flex;
 	margin-top: 3.2rem;
 	margin-left: 11.4rem;
+
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+	}
 `;
 
 const DescriptionSpan = styled.span`
 	display: block;
-	width: 35.2rem;
+	/* width: 35.2rem; */
 	height: 4.1rem;
 	font-family: Pretendard;
 	font-size: 2.4rem;
@@ -137,11 +150,15 @@ const DescriptionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
 `;
 
 const CautionSpan = styled.span`
 	display: block;
-	width: 36rem;
+	/* width: 36rem; */
 	height: 4.1rem;
 	margin-left: 7.4rem;
 	color: #e80c0c;
@@ -151,6 +168,10 @@ const CautionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
 `;
 
 const Container = styled.div`
@@ -160,6 +181,22 @@ const Container = styled.div`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
+
+	@media screen and (max-width: 767px) {
+		margin-top: 25rem;
+	}
+
+	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
+		margin-top: 4.3rem;
+	}
+
+	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+		margin-top: 4.3rem;
+	}
 `;
 
 const SelectionButtonBox = styled.div`
@@ -202,24 +239,24 @@ const SelectionButtonBox = styled.div`
 		}};
 	}
 
-	@media screen and (min-width: 821px) and (max-width: 1024px) {
+	@media screen and (min-width: 820px) and (max-width: 1024px) {
 		/*ipad mini 가로*/
 		top: ${(props) => {
 			if (props.step === 2) return '22rem';
 			if (props.step === 3) return '51rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '75rem';
+			if (props.step === 1) return '60rem';
 			if (props.step === 2) return '120rem';
 			if (props.step === 3) return '120rem';
 		}};
 	}
 
-	@media screen and (min-width: 768px) and (max-width: 820px) {
+	@media screen and (min-width: 767px) and (max-width: 820px) {
 		/*ipad air, mini 세로*/
 		top: ${(props) => {
-			if (props.step === 2) return '22rem';
-			if (props.step === 3) return '51rem';
+			if (props.step === 2) return '26rem';
+			if (props.step === 3) return '55rem';
 		}};
 		left: ${(props) => {
 			if (props.step === 1) return '55rem';
@@ -228,49 +265,104 @@ const SelectionButtonBox = styled.div`
 		}};
 	}
 
-	@media screen and (min-width: 853px) and (max-width: 884px) {
-		/*galaxy note 20 ultra 가로*/
+	@media screen and (min-width: 320px) and (max-width: 375px) {
 		top: ${(props) => {
-			if (props.step === 2) return '22rem';
-			if (props.step === 3) return '51rem';
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '50rem';
+			if (props.step === 3) return '80rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '62rem';
-			if (props.step === 2) return '105rem';
-			if (props.step === 3) return '105rem';
+			if (props.step === 1) return '50rem';
+			if (props.step === 2) return '73rem';
+			if (props.step === 3) return '73rem';
 		}};
 	}
 
-	@media screen and (min-width: 821px) and (max-width: 852px) {
-		/*iphone 14 pro/15/15 pro/16 가로*/
+	@media screen and (min-width: 375px) and (max-width: 480px) {
 		top: ${(props) => {
-			if (props.step === 2) return '22rem';
-			if (props.step === 3) return '51rem';
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '50rem';
+			if (props.step === 3) return '80rem';
 		}};
 		left: ${(props) => {
-			if (props.step === 1) return '59rem';
-			if (props.step === 2) return '102rem';
-			if (props.step === 3) return '102rem';
-		}};
-	}
-
-	@media screen and (min-width: 390px) and (max-width: 480px) {
-		/*모바일 세로*/
-		top: ${(props) => {
-			if (props.step === 1) return '37rem';
-			if (props.step === 2) return '28rem';
-			if (props.step === 3) return '57rem';
-		}};
-		left: ${(props) => {
-			if (props.step === 1) return '53rem';
+			if (props.step === 1) return '60rem';
 			if (props.step === 2) return '96rem';
 			if (props.step === 3) return '96rem';
+		}};
+	}
+
+	@media screen and (min-width: 481px) and (max-width: 575px) {
+		top: ${(props) => {
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '50rem';
+			if (props.step === 3) return '80rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '45rem';
+			if (props.step === 2) return '75rem';
+			if (props.step === 3) return '75rem';
+		}};
+	}
+
+	@media screen and (min-width: 575px) and (max-width: 645px) {
+		top: ${(props) => {
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '50rem';
+			if (props.step === 3) return '80rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '55rem';
+			if (props.step === 2) return '96rem';
+			if (props.step === 3) return '96rem';
+		}};
+	}
+
+	@media screen and (min-width: 645px) and (max-width: 767px) {
+		top: ${(props) => {
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '50rem';
+			if (props.step === 3) return '80rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '96rem';
+			if (props.step === 3) return '96rem';
+		}};
+	}
+
+	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
+		top: ${(props) => {
+			if (props.step === 1) return '35rem';
+			if (props.step === 2) return '30rem';
+			if (props.step === 3) return '56rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '50rem';
+			if (props.step === 2) return '96rem';
+			if (props.step === 3) return '96rem';
+		}};
+	}
+
+	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+		top: ${(props) => {
+			if (props.step === 1) return '35rem';
+			if (props.step === 2) return '25rem';
+			if (props.step === 3) return '51rem';
+		}};
+		left: ${(props) => {
+			if (props.step === 1) return '65rem';
+			if (props.step === 2) return '110rem';
+			if (props.step === 3) return '110rem';
 		}};
 	}
 `;
 
 const IndicatorBox = styled.div`
 	margin-top: 4.2rem;
+
+	@media (max-width: 480px) {
+		margin-top: 8rem;
+	}
 `;
 
 const NavBox = styled.div`
