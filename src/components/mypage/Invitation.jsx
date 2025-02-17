@@ -23,6 +23,10 @@ const InvitationContainer = styled.div`
 	margin-right: 7.2rem;
 	margin-left: 7.3rem;
 	margin-bottom: 3.8rem;
+
+	@media (max-width: 768px) {
+    	margin-bottom: 10rem;
+  	}
 `;
 
 const Title = styled.div`
@@ -31,7 +35,7 @@ const Title = styled.div`
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
 
-	@media (max-width: 480px) {
-		font-size: 3.4rem;
-	}
+	@media (max-width: 768px) {
+    	font-size: 5rem;
+  	}
 `;
