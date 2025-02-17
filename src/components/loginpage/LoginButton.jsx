@@ -29,9 +29,13 @@ const Button = styled.button`
 	width: 60rem;
 	height: 9rem;
 
-	@media (max-width: 480px) {
+	@media (max-width: 768px) {
 		width: 70rem;
-		height: 11rem;
+		height: 9rem;
+	}
+	@media (max-width: 480px) {
+		width: 105rem;
+		height: 9rem;
 	}
 `;
 
@@ -39,8 +43,12 @@ const Img = styled.img`
 	width: 60rem;
 	height: 9rem;
 
-	@media (max-width: 480px) {
+	@media (max-width: 768px) {
 		width: 70rem;
 		height: 11rem;
+	}
+	@media (max-width: 480px) {
+		width: 105rem;
+		height: 16rem;
 	}
 `;
