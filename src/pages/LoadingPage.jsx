@@ -16,48 +16,48 @@ const LoadingPage = () => {
 
 	const [progress, setProgress] = useState(0);
 
-	// useEffect(() => {
-	// 	const fetchRecentInvitation = async () => {
-	// 		try {
-	// 			const invitations = await viewInvitation();
-	// 			if (invitations.length > 0) {
-	// 				const recentInvitation = invitations[invitations.length - 1];
-	// 				setRecentInvitationId(recentInvitation.id);
-	// 				setIsSuccess(true);
-	// 			}
-	// 		} catch (error) {
-	// 			console.error('API 요청 오류:', error);
-	// 		}
-	// 	};
+	useEffect(() => {
+		const fetchRecentInvitation = async () => {
+			try {
+				const invitations = await viewInvitation();
+				if (invitations.length > 0) {
+					const recentInvitation = invitations[invitations.length - 1];
+					setRecentInvitationId(recentInvitation.id);
+					setIsSuccess(true);
+				}
+			} catch (error) {
+				console.error('API 요청 오류:', error);
+			}
+		};
 
-	// 	if (!invitationId) {
-	// 		fetchRecentInvitation();
-	// 	}
+		if (!invitationId) {
+			fetchRecentInvitation();
+		}
 
-	// 	const interval = setInterval(() => {
-	// 		setProgress((oldProgress) => {
-	// 			if (oldProgress === 100) {
-	// 				clearInterval(interval);
-	// 				return 100;
-	// 			}
-	// 			return Math.min(oldProgress + 10, 100);
-	// 		});
-	// 	}, 1000);
+		const interval = setInterval(() => {
+			setProgress((oldProgress) => {
+				if (oldProgress === 100) {
+					clearInterval(interval);
+					return 100;
+				}
+				return Math.min(oldProgress + 10, 100);
+			});
+		}, 1000);
 
-	// 	return () => clearInterval(interval);
-	// }, [navigate, invitationId]);
+		return () => clearInterval(interval);
+	}, [navigate, invitationId]);
 
-	// useEffect(() => {
-	// 	if (progress === 100) {
-	// 		setTimeout(() => {
-	// 			if (invitationId) {
-	// 				navigate(`/wedding-invitation/${invitationId}`);
-	// 			} else if (recentInvitationId && isSuccess) {
-	// 				navigate(`/wedding-invitation/${recentInvitationId}`);
-	// 			}
-	// 		}, 1000);
-	// 	}
-	// }, [progress, navigate, invitationId, recentInvitationId, isSuccess]);
+	useEffect(() => {
+		if (progress === 100) {
+			setTimeout(() => {
+				if (invitationId) {
+					navigate(`/wedding-invitation/${invitationId}`);
+				} else if (recentInvitationId && isSuccess) {
+					navigate(`/wedding-invitation/${recentInvitationId}`);
+				}
+			}, 1000);
+		}
+	}, [progress, navigate, invitationId, recentInvitationId, isSuccess]);
 
 	return (
 		<Wrapper>
