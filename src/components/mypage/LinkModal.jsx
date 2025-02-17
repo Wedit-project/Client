@@ -34,7 +34,9 @@ const ModalOverlay = styled.div`
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100dvh;
+	height: 100vh;
+	height: -webkit-fill-available;
+  	min-height: -webkit-fill-available;
 	background-color: rgba(0, 0, 0, 0.3);
 	display: flex;
 	justify-content: center;
