@@ -43,11 +43,21 @@ const BackgroundBox = styled.div`
 	align-items: center;
 	justify-content: center;
 	background: ${theme.colors.gray['0']};
+
+	@media (max-width: 480px) {
+		width: 60rem;
+		height: 15rem;
+	}
 `;
 
 const TriangleIcon = styled(Triangle)`
 	width: 3.4rem;
 	height: 2.9rem;
+
+	@media (max-width: 480px) {
+		width: 6rem;
+		height: 5.5rem;
+	}
 `;
 
 const DescriptionSpan = styled.span`
@@ -59,6 +69,11 @@ const DescriptionSpan = styled.span`
 	font-weight: ${theme.font.medium.fontWeight};
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+		margin-bottom: 2rem;
+	}
 `;
 
 const SelectLabel = styled.label`
@@ -71,6 +86,10 @@ const SelectLabel = styled.label`
 	line-height: 3.2rem;
 	letter-spacing: -0.0456rem;
 	text-decoration-line: underline;
+
+	@media (max-width: 480px) {
+		font-size: 3.8rem;
+	}
 `;
 
 const SelectInput = styled.input`

@@ -26,4 +26,9 @@ const CircleIcon = styled(CircleGray)`
 	height: 1.8rem;
 	fill: ${(props) =>
 		props.isActive ? `${theme.colors.green['main']}` : `${theme.colors.gray['300']}`};
+
+	@media (max-width: 480px) {
+		width: 3rem;
+		height: 3rem;
+	}
 `;
