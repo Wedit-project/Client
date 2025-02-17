@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 import CloseIcon from '../../assets/icons/close.svg?react';
@@ -9,7 +10,7 @@ const LinkModal = ({ url, onClose }) => {
 		alert('링크가 복사되었습니다!');
 	};
 
-	return (
+	return ReactDOM.createPortal(
 		<ModalOverlay>
 			<ModalContainer onClick={(e) => e.stopPropagation()}>
 				<ModalHeader>
@@ -21,7 +22,8 @@ const LinkModal = ({ url, onClose }) => {
 					<CopyButton onClick={handleCopy}>복사하기</CopyButton>
 				</Content>
 			</ModalContainer>
-		</ModalOverlay>
+		</ModalOverlay>,
+		document.body
 	);
 };
 
@@ -33,7 +35,7 @@ const ModalOverlay = styled.div`
 	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
 	height: -webkit-fill-available;
   	min-height: -webkit-fill-available;
