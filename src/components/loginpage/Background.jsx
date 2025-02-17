@@ -20,9 +20,6 @@ const BackgroundContainer = styled.div`
 	overflow-x: hidden;
 	overflow-y: hidden;
 	justify-content: center;
-	align-items: center;
-	width: 100vw;
-	height: 100vh;
 
 	@media (min-width: 768px) and (max-width: 1024px) {
 		height: 100vh;
