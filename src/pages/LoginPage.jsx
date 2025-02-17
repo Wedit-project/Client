@@ -10,7 +10,7 @@ const LoginPage = () => {
 			<Background>
 				<StyledLogo />
 				<LoginButton />
-				<MainPageFooter className="center-align" />
+				<StyledMainPageFooter className="center-align" />
 			</Background>
 		</>
 	);
@@ -37,7 +37,11 @@ const StyledLogo = styled(LoginLogo)`
 	@media (max-width: 480px) {
 		margin-top: 115.3rem;
 		margin-left: 54rem;
-		width: 82.2rem;
-		height: 60.9rem;
+		width: 70.2rem;
+		height: 40.9rem;
 	}
+`;
+
+const StyledMainPageFooter = styled(MainPageFooter)`
+  padding: 0;
 `;
