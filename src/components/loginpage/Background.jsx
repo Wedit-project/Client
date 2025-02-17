@@ -20,6 +20,8 @@ const BackgroundContainer = styled.div`
 	overflow-x: hidden;
 	overflow-y: hidden;
 	justify-content: center;
+	width: 100%;
+	height: 100%;
 
 	@media (min-width: 768px) and (max-width: 1024px) {
 		height: 100vh;
@@ -37,7 +39,6 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 144rem;
   position: relative;
   z-index: 1;
 `;
