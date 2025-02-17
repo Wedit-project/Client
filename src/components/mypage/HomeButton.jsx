@@ -23,7 +23,7 @@ const StyledButton = styled.button`
 	background-color: transparent;
 	cursor: pointer;
 
-	@media (max-width: 480px) {
-		font-size: 4rem;
-	}
+	@media (max-width: 768px) {
+    	font-size: 5rem;
+  	}
 `;

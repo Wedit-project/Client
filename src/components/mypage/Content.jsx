@@ -29,16 +29,9 @@ const Text = styled.p`
 	line-height: 133.333%;
 	letter-spacing: -0.0456rem;
 
-	@media (min-width: 768px) and (max-width: 1024px) {
-		margin-top: 5rem;
-	}
-	@media (min-width: 480px) and (max-width: 768px) {
-		margin-top: 5rem;
-	}
-	@media (max-width: 480px) {
-		margin-top: 5rem;
-		font-size: 3.8rem;
-	}
+	@media (max-width: 768px) {
+    	font-size: 6rem;
+  	}
 `;
 
 const StyledBigLogo = styled(BigLogo)`
@@ -47,8 +40,9 @@ const StyledBigLogo = styled(BigLogo)`
 	width: 42.2rem;
 	height: 14.4rem;
 
-	@media (max-width: 480px) {
-		width: 72.2rem;
-		height: 44.4rem;
-	}
+	@media (max-width: 768px) {
+    	width: 92.2rem;
+		height: 54.4rem;
+		margin-bottom: 8.5rem;
+  	}
 `;
