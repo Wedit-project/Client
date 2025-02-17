@@ -6,7 +6,7 @@ import theme from "../styles/theme";
 const PreviewInvitationPage = () => {
   return (
     <PageContainer>
-        <PreviewInvitation />
+        <StyledPreviewInvitation />
     </PageContainer>
   );
 };
@@ -18,4 +18,15 @@ const PageContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${theme.colors.background.background1};
+`;
+const StyledPreviewInvitation = styled(PreviewInvitation)`
+  max-width: 300vh;
+  max-height: 500vh;
+  object-fit: contain;
+
+  @media (max-width: 1024px) {
+    max-width: 100vw;
+    max-height: 170vh;
+    object-fit: contain;
+  }
 `;

@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import theme from "../../styles/theme";
 
 const PreviewButton = () => {
-  const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate("/preview-invitation");
+    window.open("/preview-invitation");
   };
 
   return <Button onClick={handleNavigation}>청첩장 미리보기</Button>;
