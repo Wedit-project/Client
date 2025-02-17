@@ -44,9 +44,14 @@ const ModalOverlay = styled.div`
 
 const ModalContainer = styled.div`
 	width: 90.3rem;
-	hheight: 14.9rem;
+	height: 14.9rem;
 	background-color: ${theme.colors.gray[0]};
 	border-radius: 1.6rem;
+
+	@media (max-width: 768px) {
+    	width: 100.3rem;
+		height: 32.9rem;
+  	}
 `;
 
 const ModalHeader = styled.div`
@@ -64,6 +69,13 @@ const Header = styled.div`
 	margin-top: 2.1rem;
 	margin-left: 2.8rem;
 	margin-bottom: 2.9rem;
+
+	@media (max-width: 768px) {
+		margin-top: 4.1rem;
+		margin-left: 4.8rem;
+		margin-bottom: 4.9rem;
+    	font-size: 4rem;
+  	}
 `;
 
 const StyledCloseIcon = styled(CloseIcon)`
@@ -72,6 +84,13 @@ const StyledCloseIcon = styled(CloseIcon)`
 	width: 2.6rem;
 	height: 2.6rem;
 	cursor: pointer;
+
+	@media (max-width: 768px) {
+		margin-right: 3rem;
+		margin-bottom: 4rem;
+		width: 5rem;
+		height: 5rem;
+  	}
 `;
 
 const Content = styled.div`
@@ -87,11 +106,13 @@ const LinkText = styled.span`
 	line-height: 100%;
 	letter-spacing: -0.0608rem;
 	word-break: break-all;
-	margin-left: 7.4rem;
+	margin-left: 4.4rem;
 	margin-bottom: 3.5rem;
 
-	@media (max-width: 480px) {
-		font-size: 1.9rem;
+	@media (max-width: 768px) {
+		width: 66rem;
+		font-size: 4rem;
+  	}
 `;
 
 const CopyButton = styled.button`
@@ -104,13 +125,8 @@ const CopyButton = styled.button`
 	margin-right: 4rem;
 	margin-bottom: 3.5rem;
 
-	@media (min-width: 768px) and (max-width: 1024px) {
-		font-size: ${theme.fontSize.large};
-	}
-	@media (min-width: 480px) and (max-width: 768px) {
-		font-size: ${theme.fontSize.large};
-	}
-	@media (max-width: 480px) {
-		font-size: ${theme.fontSize.medium};
-	}
+	@media (max-width: 768px) {
+		margin-right: 6rem;
+		font-size: 4rem;
+  	}
 `;

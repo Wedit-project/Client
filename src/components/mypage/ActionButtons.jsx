@@ -45,7 +45,7 @@ export default ActionButtons;
 
 const ButtonContainer = styled.div`
 	display: flex;
-	gap: 0.5rem;
+	gap: 3rem;
 `;
 
 const Button = styled.button`
@@ -57,8 +57,8 @@ const Button = styled.button`
 	border: none;
 	cursor: pointer;
 	background-color: transparent;
-
-	@media (max-width: 480px) {
-		font-size: 3rem;
-	}
+	
+	@media (max-width: 768px) {
+    	font-size: 5rem;
+  	}
 `;
