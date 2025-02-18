@@ -4,11 +4,10 @@ import theme from '../../styles/theme';
 import toast, { Toaster } from 'react-hot-toast';
 
 const CongratulatoryMoney = ({ $variant = 'basic', invitationData }) => {
-
 	// invitationData가 없거나 bankAccounts가 없을 경우 처리
-    if (!invitationData || !invitationData.bankAccounts || invitationData.bankAccounts.length === 0) {
-        return null;  // 아무 것도 렌더링하지 않음
-    }
+	if (!invitationData || !invitationData.bankAccounts || invitationData.bankAccounts.length === 0) {
+		return null; // 아무 것도 렌더링하지 않음
+	}
 
 	const handleCopy = (text) => {
 		navigator.clipboard.writeText(text).then(() => {
@@ -16,8 +15,8 @@ const CongratulatoryMoney = ({ $variant = 'basic', invitationData }) => {
 		});
 	};
 
-	const groomAccount = invitationData.bankAccounts.find(account => account.side === 'GROOM');
-  	const brideAccount = invitationData.bankAccounts.find(account => account.side === 'BRIDE');
+	const groomAccount = invitationData.bankAccounts.find((account) => account.side === 'GROOM');
+	const brideAccount = invitationData.bankAccounts.find((account) => account.side === 'BRIDE');
 
 	return (
 		<CongratulatoryMoneyWrapper>
@@ -87,7 +86,7 @@ const GroomCongratulatoryMoneyBox = styled.div`
 	background: ${theme.colors.background.background2};
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
 	width: 46.6rem;
-	height: 17.8rem;
+	height: 20.8rem;
 	padding: 2.5rem 1.8rem;
 `;
 
@@ -97,7 +96,7 @@ const BrideCongratulatoryMoneyBox = styled.div`
 	background: var(--white, #fff);
 	box-shadow: 0rem 0.3657rem 0.3657rem 0rem rgba(0, 0, 0, 0.25);
 	width: 46.6rem;
-	height: 17.8rem;
+	height: 20.8rem;
 	padding: 2.5rem 1.8rem;
 `;
 
