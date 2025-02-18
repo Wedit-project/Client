@@ -171,7 +171,7 @@ const TitleSpan = styled.p`
 `;
 
 const DropdownBox = styled.div`
-	width: 63.3rem;
+	width: 59.3rem;
 	position: relative;
 	cursor: pointer;
 `;
@@ -227,7 +227,7 @@ const NameInput = styled.input`
 	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 59.3rem;
-	height: 3.2rem;
+	height: 8.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
@@ -252,7 +252,7 @@ const PhoneInput = styled.input`
 	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 59.3rem;
-	height: 3.2rem;
+	height: 8.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;

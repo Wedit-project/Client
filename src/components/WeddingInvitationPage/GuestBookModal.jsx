@@ -138,7 +138,7 @@ const NameInput = styled.input`
 	background: ${theme.colors.background.background2};
 	display: flex;
 	width: 60.1rem;
-	height: 3.2rem;
+	height: 8.2rem;
 	align-items: flex-start;
 	gap: 1rem;
 	flex-shrink: 0;
