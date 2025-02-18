@@ -363,7 +363,7 @@ const ModalContentBox = styled.div`
 		overflow-y: auto;
 	}
 
-	@media screen and (min-width: 393px) and (max-width: 412px) {
+	@media screen and (min-width: 320px) and (max-width: 480px) {
 		width: 80%;
 	}
 `;
@@ -372,7 +372,7 @@ const ModalHeaderBox = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	@media screen and (min-width: 393px) and (max-width: 412px) {
+	@media screen and (min-width: 320px) and (max-width: 480px) {
 		display: none;
 	}
 `;
