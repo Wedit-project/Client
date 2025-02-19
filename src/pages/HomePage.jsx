@@ -19,8 +19,10 @@ const HomePage = () => {
     fetchUserInfo(setAuth);
 
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  
-    if (isIOS && document.hasStorageAccess) {
+    const isMacSafari =
+    /Macintosh/i.test(navigator.userAgent) && /Safari/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
+
+    if ((isIOS || isMacSafari) && document.hasStorageAccess) {
       document.hasStorageAccess().then((hasAccess) => {
         console.log("hasStorageAccess:", hasAccess);
         if (!hasAccess) {
