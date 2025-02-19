@@ -9,8 +9,8 @@ const CookieConsentModal = ({ onClose }) => {
         setIsRequesting(true);
         try {
             await document.requestStorageAccess();
-            alert("쿠키 접근이 허용되었습니다!");
-            onClose(); // 모달 닫기
+            localStorage.setItem("cookieAllowed", "true");
+            onClose();
         } catch (error) {
             alert("쿠키 접근이 거부되었습니다.");
         } finally {

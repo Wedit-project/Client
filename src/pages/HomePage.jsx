@@ -18,20 +18,25 @@ const HomePage = () => {
   useEffect(() => {
     fetchUserInfo(setAuth);
 
-    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    const isMacSafari =
-    /Macintosh/i.test(navigator.userAgent) && /Safari/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
+    const isCookieAllowed = localStorage.getItem("cookieAllowed");
 
-    if ((isIOS || isMacSafari) && document.hasStorageAccess) {
-      document.hasStorageAccess().then((hasAccess) => {
-        console.log("hasStorageAccess:", hasAccess);
-        if (hasAccess) {
-          setShowCookieModal(true);
-        }
-      });
-    } else {
-      console.log("iOS 기기가 아니거나 hasStorageAccess 미지원");
+    if (!isCookieAllowed) {
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const isMacSafari =
+        /Macintosh/i.test(navigator.userAgent) && /Safari/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
+
+      if ((isIOS || isMacSafari) && document.hasStorageAccess) {
+        document.hasStorageAccess().then((hasAccess) => {
+          console.log("hasStorageAccess:", hasAccess);
+          if (!hasAccess) {
+            setShowCookieModal(true);
+          }
+        });
+      } else {
+        console.log("iOS 기기가 아니거나 hasStorageAccess 미지원");
+      }
     }
+    
   }, [setAuth]);
 
   return (
