@@ -136,11 +136,9 @@ const TitleSpan = styled.span`
 	}
 `;
 
-const DescriptionSpan = styled.span`
-	display: block;
-	position: absolute;
-	top: 18.8rem;
-	left: 7.5rem;
+const DescriptionSpan = styled.div`
+	margin-top: 1.6rem;
+	margin-left: 7.9rem;
 	width: 76.1rem;
 	font-family: Pretendard;
 	font-size: 2.4rem;
