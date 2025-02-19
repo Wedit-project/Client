@@ -111,7 +111,8 @@ const MainPhotoSelectionPage = () => {
 						</DateBox>
 						<LabelSpan>위치</LabelSpan>
 						<LocationBox>
-							{address} <br />
+							{address}
+							<br />
 							{addressDetail}
 						</LocationBox>
 					</RequiredInfoBox>
@@ -215,11 +216,7 @@ const Container = styled.div`
 		margin-top: 25rem;
 	}
 
-	@media screen and (min-width: 568px) and (max-width: 898px) and (orientation: landscape) {
-		margin-top: 4.3rem;
-	}
-
-	@media screen and (min-width: 898px) and (max-width: 933px) and (orientation: landscape) {
+	@media screen and (min-width: 568px) and (max-width: 933px) and (orientation: landscape) {
 		margin-top: 4.3rem;
 	}
 `;
@@ -275,11 +272,8 @@ const FamilyNameBox = styled.div`
 	letter-spacing: -0.0608rem;
 	margin-bottom: 5.742rem;
 
-	@media (min-width: 480px) and (max-width: 768px) {
+	@media (max-width: 768px) {
 		font-size: 4rem;
-	}
-	@media (max-width: 480px) {
-		font-size: 5rem;
 	}
 `;
 
@@ -287,15 +281,12 @@ const DateBox = styled.div`
 	font-family: Pretendard;
 	font-size: 3.2rem;
 	font-weight: ${theme.font.medium.fontWeight};
-	line-height: 2.9252rem;
+	line-height: 3.5rem;
 	letter-spacing: -0.0608rem;
 	margin-bottom: 8.194rem;
 
-	@media (min-width: 480px) and (max-width: 768px) {
+	@media (max-width: 768px) {
 		font-size: 4rem;
-	}
-	@media (max-width: 480px) {
-		font-size: 5rem;
 	}
 `;
 
@@ -303,14 +294,11 @@ const LocationBox = styled.div`
 	font-family: Pretendard;
 	font-size: 3.2rem;
 	font-weight: ${theme.font.medium.fontWeight};
-	line-height: 3.6565rem;
+	line-height: 4.5707rem;
 	letter-spacing: -0.0608rem;
 
-	@media (min-width: 480px) and (max-width: 768px) {
+	@media (max-width: 768px) {
 		font-size: 4rem;
-	}
-	@media (max-width: 480px) {
-		font-size: 5rem;
 	}
 `;
 
