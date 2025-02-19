@@ -25,7 +25,7 @@ const HomePage = () => {
     if ((isIOS || isMacSafari) && document.hasStorageAccess) {
       document.hasStorageAccess().then((hasAccess) => {
         console.log("hasStorageAccess:", hasAccess);
-        if (!hasAccess) {
+        if (hasAccess) {
           setShowCookieModal(true);
         }
       });
