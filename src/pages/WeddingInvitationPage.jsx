@@ -31,7 +31,6 @@ const WeddingInvitationPage = () => {
 				// uniqueId가 있는 경우
 				const data = await viewNonMemberInvitation(uniqueId);
 				setInvitationData(data);
-				console.log(data); // id 반환 확인
 				setIsLoading(false);
 			}
 		};
@@ -54,7 +53,7 @@ const WeddingInvitationPage = () => {
 			<Location $variant={themeVariant} invitationData={invitationData} />
 			<Gallery $variant={themeVariant} invitationData={invitationData} />
 			{invitationData?.guestBookOption && (
-				<GuestBook $variant={themeVariant} invitationId={invitationId} />
+				<GuestBook $variant={themeVariant} invitationId={invitationData.id} />
 			)}
 			<CongratulatoryMoney $variant={themeVariant} invitationData={invitationData} />
 			<RSVP $variant={themeVariant} invitationData={invitationData} />
