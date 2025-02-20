@@ -2,9 +2,9 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import mainbanner1 from "../../assets/icons/mainbanner1.svg";
-import mainbanner2 from "../../assets/icons/mainbanner2.svg";
-import mainbanner3 from "../../assets/icons/mainbanner3.svg";
+import mainbanner1 from "../../../public/assets/mainbanner1.svg";
+import mainbanner2 from "../../../public/assets/mainbanner2.svg";
+import mainbanner3 from "../../../public/assets/mainbanner3.svg";
 import MainBannerSlider from "../mainpage/MainBannerSlider";
 import MainBannerSidebar from "../mainpage/MainBannerSidebar";
 
