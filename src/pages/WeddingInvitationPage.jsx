@@ -54,7 +54,7 @@ const WeddingInvitationPage = () => {
 			<Location $variant={themeVariant} invitationData={invitationData} />
 			<Gallery $variant={themeVariant} invitationData={invitationData} />
 			{invitationData?.guestBookOption && (
-				<GuestBook $variant={themeVariant} invitationId={invitationId} />
+				<GuestBook $variant={themeVariant} invitationId={invitationData.id} />
 			)}
 			<CongratulatoryMoney $variant={themeVariant} invitationData={invitationData} />
 			<RSVP $variant={themeVariant} invitationData={invitationData} />
