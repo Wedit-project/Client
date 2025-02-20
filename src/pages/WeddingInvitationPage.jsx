@@ -31,7 +31,6 @@ const WeddingInvitationPage = () => {
 				// uniqueId가 있는 경우
 				const data = await viewNonMemberInvitation(uniqueId);
 				setInvitationData(data);
-				console.log(data); // id 반환 확인
 				setIsLoading(false);
 			}
 		};
